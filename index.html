@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <title>Hossein Vahid-CV</title>
 <style>
-    body { font-family: Lato, sans-serif; max-width: 700px; margin: auto; line-height: 1.5; }
-    h1, h2 { color: #1A318BFF; }
-    img.profile {
-      width: 150px;       /* adjust size */
-      height: 150px;
-      border-radius: 50%; /* makes it circular */
-      display: block;
-      margin: 20px auto;
-      object-fit: cover;
-    }
-  </style>
+  body { font-family: Lato, sans-serif; max-width: 700px; margin: auto; line-height: 1.5; }
+  h1, h2 { color: #1A318BFF; }
+
+  /* Tighter header block */
+  .header { text-align: center; }
+  .header h1 { margin: 6px 0 4px; }    /* was large by default */
+  .header p  { margin: 2px 0; }        /* tighten both lines */
+  
+  img.profile {
+    width: 150px; height: 150px; border-radius: 50%;
+    display: block; margin: 12px auto 8px; /* smaller bottom margin */
+    object-fit: cover;
+  }
+</style>
 </head>
   
 <body>
