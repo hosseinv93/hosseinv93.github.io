@@ -2,137 +2,191 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-  <title>Hossein Vahid</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hossein Vahid — CV</title>
+
+  <!-- Lato font -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --accent:#006400;              /* Dark green */
-      --content-width: 720px;        /* Content column width */
-      --outer-margin: 36px;          /* Top/bottom white space on screen */
-      --side-padding: 26px;          /* Left/right inner padding on screen */
-      --muted:#606870;
+      --ink:#0d0f12;
+      --muted:#5e6670;
+      --accent:#0d6a4f;                 /* deep green */
+      --accent-ink:#0a3e31;
+      --rule:#0d6a4f;
+      --bg:#ffffff;
+      --soft:#f6faf8;
+      --content: 760px;
+      --outer: 40px;
+      --padx: 26px;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
     }
 
-    html, body { direction:ltr; text-align:left; }
+    html,body{direction:ltr;text-align:left}
     body{
       font-family:Lato,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-      max-width:var(--content-width);
-      margin:var(--outer-margin) auto;
-      padding:0 var(--side-padding);
-      line-height:1.6;
-      color:#111;
-      background:#fff;
+      color:var(--ink);
+      background:var(--bg);
+      max-width:var(--content);
+      margin:var(--outer) auto;
+      padding:0 var(--padx) 64px;
+      line-height:1.65;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Headings & type */
-    h1{ font-size:2rem; margin:0 0 .25rem 0; color:#0b1a0b; letter-spacing:0.2px; }
-    h2{ font-size:1.1rem; margin:1.25rem 0 .35rem; color:var(--accent); text-transform:uppercase; letter-spacing:.08em; }
-    p, li{ font-size:.97rem; }
-    a{ color:#004d99; text-decoration:none; }
-    a:hover{ text-decoration:underline; }
+    /* Headings */
+    h1{ font-size:2.05rem; letter-spacing:.2px; color:var(--accent-ink); margin:.1rem 0 .25rem }
+    h2{ margin:1.6rem 0 .65rem; font-size:1.05rem; text-transform:uppercase; letter-spacing:.12em; color:var(--accent-ink) }
+    h3{ margin:.4rem 0 .2rem; font-size:1rem }
 
-    /* Fancy section divider */
-    .rule{ height:3px; width:72px; background:var(--accent); margin:.5rem 0 1rem; border-radius:2px; }
+    p, li{ font-size:1rem }
+    a{ color:#0b5cab; text-decoration:none }
+    a:hover{ text-decoration:underline }
 
-    /* Masthead: name/title left, image right */
+    /* Masthead */
     .masthead{
-      display:grid;
-      grid-template-columns: 1fr auto;
-      gap:20px;
-      align-items:center;
-      margin-bottom:8px;
+      display:grid; grid-template-columns: 1fr auto; gap:22px; align-items:center;
+      margin: 0 0 10px;
     }
-    .titleblock .subtitle{
-      color:var(--muted);
-      font-weight:600;
-      margin:0 0 .25rem 0;
-    }
-    .contact{ margin:.35rem 0 0 0; color:#333; font-size:.95rem; }
-    .contact a{ color:#0b5cab; }
-
+    .subtitle{ color:#1d1d1d; font-weight:600; margin:0 0 .25rem }
+    .subtitle small{ color:var(--muted); font-weight:600 }
+    .contact{ margin:.25rem 0 0; color:#2a2f35 }
+    .contact a{ color:#0b5cab }
     .avatar{
-      width:128px; height:128px; object-fit:cover;
-      border-radius:50%;
-      border:3px solid #e6efe6;
-      box-shadow:0 4px 14px rgba(0,0,0,.08);
+      width:132px; height:132px; object-fit:cover; border-radius:50%;
+      border:3px solid #e8f1ed; box-shadow:0 6px 18px rgba(0,0,0,.07)
     }
 
-    /* Bio callout */
-    .bio{
-      background:linear-gradient(180deg, #f5fbf5, #ffffff);
-      border:1px solid #e4efe4;
+    /* Divider */
+    .rule{ height:3px; width:82px; background:var(--rule); border-radius:2px; margin:.55rem 0 1.15rem }
+
+    /* Cards / sections */
+    .card{
+      background:linear-gradient(180deg,#f5fbf7 0%,#fff 60%);
+      border:1px solid #e6f0eb;
       border-left:4px solid var(--accent);
-      padding:14px 16px;
-      border-radius:10px;
-      margin:10px 0 18px;
+      border-radius:var(--radius);
+      padding:16px 18px;
+      box-shadow:var(--shadow);
+      margin:10px 0 20px;
     }
-    .bio p{ margin:.35rem 0; }
+    .item{ margin:.3rem 0 .75rem }
+    .when{ color:var(--muted); font-size:.95rem }
+    .place{ font-weight:600 }
+    .bullets{ margin:.35rem 0 .2rem 1.15rem }
+    .bullets li{ margin:.2rem 0 }
 
-    /* Lists tighter for CV */
-    ul{ margin:.25rem 0 .75rem 1.25rem; }
-    li{ margin:.15rem 0; }
+    /* Lists */
+    ul{ margin:.25rem 0 .9rem 1.25rem }
+    li{ margin:.15rem 0 }
 
-    /* Print/PDF styles */
+    /* Pills */
+    .pill{
+      display:inline-block; font-size:.9rem; padding:.18rem .5rem; margin:.15rem .25rem .15rem 0;
+      border-radius:999px; background:#eef6f2; border:1px solid #e1eee8; color:#103a2e; font-weight:600
+    }
+
+    /* Print */
     @media print{
-      @page{ size:A4; margin:18mm 22mm; }
-      body{ max-width:none; margin:0; padding:0; }
-      a{ text-decoration:none; color:inherit; }
-      .bio{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
-      h2{ margin-top:10pt; }
-      .masthead{ grid-template-columns:1fr auto; gap:14pt; }
-      .avatar{ width:110px; height:110px; }
-      .rule{ margin:.3rem 0 .7rem; }
+      @page{ size:A4; margin:16mm 18mm }
+      body{ max-width:none; margin:0; padding:0 }
+      .card{ box-shadow:none; background:#fff }
+      a{ color:inherit; text-decoration:none }
+      .avatar{ width:108px; height:108px }
     }
 
     /* Small screens */
-    @media (max-width:560px){
-      .masthead{ grid-template-columns:1fr; text-align:left; }
-      .avatar{ width:112px; height:112px; justify-self:start; }
+    @media (max-width:600px){
+      .masthead{ grid-template-columns:1fr; gap:14px }
+      .avatar{ width:112px; height:112px; justify-self:start }
     }
   </style>
 </head>
 <body>
 
   <!-- Masthead -->
-  <header class="masthead">
-    <div class="titleblock">
+  <header class="masthead" aria-label="Header">
+    <div>
       <h1>Hossein Vahid</h1>
-      <div class="subtitle">Computational Materials Scientist</div>
+      <div class="subtitle">Computational Physicist <small>— Modeling · MD/BD · DFT · ML</small></div>
       <div class="contact">
-        Email: <a href="mailto:h.vahid1993@gmail.com">h.vahid1993@gmail.com</a> |
-        <a href="https://www.linkedin.com/in/hossein-vahid93">LinkedIn</a> |
-        <a href="https://github.com/hosseinv93">GitHub</a>
+        Email: <a href="mailto:vahid@ipfdd.de">vahid@ipfdd.de</a> &nbsp;|&nbsp;
+        <a href="https://github.com/hosseinv93">GitHub</a> &nbsp;|&nbsp;
+        <a href="https://www.linkedin.com/in/hossein-vahid93/">LinkedIn</a>
       </div>
     </div>
-    <!-- Replace src with your photo URL/path -->
-    <img class="avatar" src="assets/img/me.JPG" alt="Portrait of Hossein Vahid" />
+    <img class="avatar" src="assets/img/me.jpg" alt="Portrait of Hossein Vahid">
   </header>
 
-  <div class="rule"></div>
+  <div class="rule" role="separator" aria-hidden="true"></div>
 
-  <!-- Bio -->
-  <section class="bio" aria-label="Professional Summary">
-    <p>I am a computational materials scientist with more than nine years of experience, including six years in engineering physics and three years in chemistry.</p>
-    <p>Expertise in <strong>density functional theory calculations</strong>, <strong>molecular dynamics simulations</strong>, and <strong>machine learning</strong> for high-throughput virtual screening.</p>
-    <p>I have a proven track record as a <strong>Python</strong> programmer and big-data analyst.</p>
+  <!-- Profile -->
+  <section class="card" aria-label="Profile">
+    <p>
+      Experienced in modeling materials and analyzing structure–property relationships using
+      <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian dynamics</strong>, <strong>Density Functional Theory (DFT)</strong>, and
+      <strong>Machine Learning (ML)</strong>. Passionate about efficient, innovative strategies for practical problems and
+      collaborative research. :contentReference[oaicite:1]{index=1}
+    </p>
   </section>
 
-  <!-- Education -->
-  <h2>Education</h2>
-  <p>PhD in Computational Physics, Aalto University, 2023</p>
-
-  <!-- Research Interests -->
-  <h2>Research Interests</h2>
-  <ul>
-    <li>Machine Learning in Physics and Chemistry</li>
-    <li>Catalytic surfaces, Redox-flow batteries, Low-dimensional materials</li>
-  </ul>
+  <!-- Interests & Personal skills -->
+  <h2>Interests</h2>
+  <p>Biological Physics, Active Matter, Molecular Dynamics, Brownian Dynamics, DFT, Machine Learning. :contentReference[oaicite:41]{index=41}</p>
 
   <!-- Skills -->
   <h2>Skills</h2>
+  <div class="item"><strong>Programming:</strong>
+    <span class="pill">Python</span><span class="pill">Bash</span><span class="pill">C++</span><span class="pill">MATLAB</span> :contentReference[oaicite:2]{index=2}
+  </div>
+  <div class="item"><strong>Materials & Simulation:</strong>
+    <span class="pill">LAMMPS</span><span class="pill">GROMACS</span><span class="pill">VASP</span><span class="pill">FHI-aims</span>
+    <span class="pill">MLIP</span><span class="pill">USPEX</span><span class="pill">ORCA</span><span class="pill">Schrödinger Maestro</span> :contentReference[oaicite:3]{index=3}
+  </div>
+  <div class="item"><strong>Data Science:</strong>
+    <span class="pill">NumPy</span><span class="pill">Pandas</span><span class="pill">scikit-learn</span><span class="pill">Matplotlib</span><span class="pill">Jupyter</span> :contentReference[oaicite:4]{index=4}
+  </div>
+  <div class="item"><strong>Other:</strong>
+    <span class="pill">Linux</span><span class="pill">LaTeX</span><span class="pill">PyCharm</span><span class="pill">VESTA</span>
+    <span class="pill">VMD</span><span class="pill">OVITO</span><span class="pill">Overleaf</span><span class="pill">Inkscape</span>
+    <span class="pill">MS Office</span><span class="pill">Git</span> :contentReference[oaicite:5]{index=5}
+  </div>
+
+  <!-- Education & Research Experience -->
+  <h2>Education & Research Experience</h2>
+
+  <div class="item">
+    <div class="place">Postdoctoral Researcher — Leibniz Institute of Polymer Research Dresden</div>
+    <div class="when">Oct 2024 – present</div>
+    <ul class="bullets">
+      <li>Active Matter. :contentReference[oaicite:6]{index=6}</li>
+    </ul>
+  </div>
+
+  <div class="item">
+    <div class="place">Doctor of Science (Applied Physics) — Aalto University</div>
+    <div class="when">Sep 2020 – Dec 2024</div>
+    <div><em>Thesis:</em> Modeling of Charged Polymers in Aqueous Solutions in the Presence of Excess Ions and Interface. :contentReference[oaicite:7]{index=7}</div>
+  </div>
+
+  <!-- Publications -->
+  <h2>Selected Publications</h2>
   <ul>
-    <li>Python, LAMMPS, ASE, ORCA</li>
-    <li>Data analysis and visualization</li>
+    <li>“Block Ratio Optimized Cationic Polyacrylamides for Enhanced Nitrate Rejection Under Applied Potential.” <em>Chemical Engineering Journal</em> (2025). <a href="https://doi.org/10.1016/j.cej.2025.162346">doi:10.1016/j.cej.2025.162346</a> :contentReference[oaicite:18]{index=18}</li>
+    <li>“Combining integral equation closures with force density functional theory for the study of inhomogeneous fluids.” <em>Soft Matter</em> (2025). <a href="https://doi.org/10.1039/D4SM01262C">doi:10.1039/D4SM01262C</a> :contentReference[oaicite:19]{index=19}</li>
+    <li>“Active transport of cargo-carrying and interconnected chiral particles.” <em>Soft Matter</em> (2025). <a href="https://doi.org/10.1039/D5SM00170F">doi:10.1039/D5SM00170F</a> :contentReference[oaicite:20]{index=20}</li>
+    <li>“Collective Dynamics in Active Polar Polymer Assemblies.” Under review (2025). <a href="https://doi.org/10.48550/arXiv.2503.11396">arXiv:2503.11396</a> :contentReference[oaicite:21]{index=21}</li>
+    <li>“Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate.” <em>J. Chem. Phys.</em> (2024). <a href="https://doi.org/10.1063/5.0223124">doi:10.1063/5.0223124</a> :contentReference[oaicite:22]{index=22}</li>
+    <li>“Non-monotonic electrophoretic mobility of rod-like polyelectrolytes by multivalent coions in added salt.” <em>Phys. Rev. E</em> (2024). <a href="https://doi.org/10.1103/PhysRevE.109.014501">doi:10.1103/PhysRevE.109.014501</a> :contentReference[oaicite:23]{index=23}</li>
+    <li>“Interactions between Rigid Polyelectrolytes Mediated by Ordering and Orientation of Multivalent Nonspherical Ions in Salt Solutions.” <em>Phys. Rev. Lett.</em> (2023). <a href="https://doi.org/10.1103/PhysRevLett.130.158202">doi:10.1103/PhysRevLett.130.158202</a> :contentReference[oaicite:24]{index=24}</li>
+    <li>“Modified Poisson–Boltzmann theory for polyelectrolytes in monovalent salt solutions with finite-size ions.” <em>J. Chem. Phys.</em> (2022). <a href="https://doi.org/10.1063/5.0092273">doi:10.1063/5.0092273</a> :contentReference[oaicite:25]{index=25}</li>
+    <li>“Interaction between two polyelectrolytes in monovalent aqueous salt solutions.” <em>PCCP</em> (2022). <a href="https://doi.org/10.1039/D2CP02066A">doi:10.1039/D2CP02066A</a> :contentReference[oaicite:26]{index=26}</li>
+    <li>“Application of amino acid ionic liquids for increasing the stability of DNA in long term storage.” <em>J. Biomol. Struct. Dyn.</em> (2022). <a href="https://doi.org/10.1080/07391102.2022.2067239">doi:10.1080/07391102.2022.2067239</a> :contentReference[oaicite:27]{index=27}</li>
   </ul>
+
 
 </body>
 </html>
