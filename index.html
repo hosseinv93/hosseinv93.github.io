@@ -139,6 +139,35 @@
       .card{ box-shadow:none; background:#fff; }
     }
 
+    /* --- Enhanced Skills layout --- */
+.skills.card{ padding:18px 18px 14px; }
+
+.skills-grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px 20px;
+}
+
+.skill-group .sg-title{
+  display:flex; align-items:center; gap:8px;
+  margin:0 0 8px; font-weight:700; color:var(--accent-ink);
+}
+.sg-title svg{ width:18px; height:18px; fill:var(--accent-ink); opacity:.9 }
+
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:.22rem .55rem; border-radius:999px;
+  background:#eef6f2; border:1px solid #e1eee8;  /* same vibe as your pills */
+  font-size:.92rem; color:#103a2e; font-weight:600;
+}
+.chip svg{ width:14px; height:14px; fill:#103a2e; opacity:.9 }
+
+/* Smaller screens */
+@media (max-width:760px){
+  .skills-grid{ grid-template-columns:1fr; }
+}
+
     /* Small screens */
     @media (max-width:760px){
       .projects-grid{ grid-template-columns:1fr; }
@@ -269,17 +298,87 @@
       </div>
   </section>
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul>
-      <li><strong>Programming:</strong> Python, Bash (Advanced); C++, MATLAB (Moderate)</li>
-      <li><strong>Materials & Simulation:</strong> LAMMPS, GROMACS, VASP, MLIP, Schrödinger Maestro, FHI-aims (Adv.); USPEX, ORCA (Moderate)</li>
-      <li><strong>Data Science:</strong> scikit-learn, NumPy, Pandas, Seaborn, Matplotlib, JupyterLab (Advanced)</li>
-      <li><strong>Other:</strong> Linux, LaTeX, PyCharm, VESTA, VMD, OVITO, Overleaf, Inkscape, MS Office (Adv.); Git (Moderate)</li>
-      <li><strong>Personal Skills:</strong> Flexible, problem solver, fast learner, persistent</li>
-    </ul>
-  </section>
+<h2>Skills</h2>
+<section class="skills card" aria-label="Skills">
+  <div class="skills-grid">
+
+    <!-- Programming -->
+    <div class="skill-group">
+      <div class="sg-title">
+        <!-- code icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>
+        <span>Programming</span>
+      </div>
+      <div class="chips">
+        <span class="chip">
+          <!-- python -->
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h4a4 4 0 0 1 4 4v2H9a2 2 0 0 0-2 2v3H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h2Zm-1.5 2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
+          Python
+        </span>
+        <span class="chip">Bash</span>
+        <span class="chip">C++</span>
+        <span class="chip">MATLAB</span>
+      </div>
+    </div>
+
+    <!-- Materials & Simulation -->
+    <div class="skill-group">
+      <div class="sg-title">
+        <!-- flask / lab icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v2h-1v3.6l5.8 9.5A2 2 0 0 1 18 21H6a2 2 0 0 1-1.8-2.9L10 8.6V5H9V3Zm1.7 7-5.3 8.6a.5.5 0 0 0 .4.7h12a.5.5 0 0 0 .4-.7L13.9 10H10.7Z"/></svg>
+        <span>Materials &amp; Simulation</span>
+      </div>
+      <div class="chips">
+        <span class="chip">LAMMPS</span>
+        <span class="chip">GROMACS</span>
+        <span class="chip">VASP</span>
+        <span class="chip">FHI-aims</span>
+        <span class="chip">MLIP</span>
+        <span class="chip">USPEX</span>
+        <span class="chip">ORCA</span>
+        <span class="chip">Schrödinger&nbsp;Maestro</span>
+      </div>
+    </div>
+
+    <!-- Data Science -->
+    <div class="skill-group">
+      <div class="sg-title">
+        <!-- database icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>
+        <span>Data Science</span>
+      </div>
+      <div class="chips">
+        <span class="chip">NumPy</span>
+        <span class="chip">Pandas</span>
+        <span class="chip">scikit-learn</span>
+        <span class="chip">Matplotlib</span>
+        <span class="chip">Jupyter</span>
+      </div>
+    </div>
+
+    <!-- Other -->
+    <div class="skill-group">
+      <div class="sg-title">
+        <!-- toolbox icon -->
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3h-4v2h-2v-2H8v2H6v-2H2V9a2 2 0 0 1 2-2h3Zm2-2h6v2H9V5Zm15 8v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-6h4v2h4v-2h8v2h4v-2h4Z"/></svg>
+        <span>Other</span>
+      </div>
+      <div class="chips">
+        <span class="chip">Linux</span>
+        <span class="chip">LaTeX</span>
+        <span class="chip">PyCharm</span>
+        <span class="chip">VESTA</span>
+        <span class="chip">VMD</span>
+        <span class="chip">OVITO</span>
+        <span class="chip">Overleaf</span>
+        <span class="chip">Inkscape</span>
+        <span class="chip">MS Office</span>
+        <span class="chip">Git</span>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
   <!-- Selected Publications -->
