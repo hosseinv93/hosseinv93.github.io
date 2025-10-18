@@ -3,190 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hossein Vahid — CV</title>
+  <title>Hossein Vahid — Academic CV</title>
 
-  <!-- Lato font -->
+  <!-- Lato (optional but recommended) -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --ink:#0d0f12;
-      --muted:#5e6670;
-      --accent:#0d6a4f;                 /* deep green */
-      --accent-ink:#0a3e31;
-      --rule:#0d6a4f;
-      --bg:#ffffff;
-      --soft:#f6faf8;
-      --content: 760px;
-      --outer: 40px;
-      --padx: 26px;
+      --accent:#1A318BFF;             /* Dark blue accent */
+      --accent-ink:#16286b;
+      --content-width: 890px;         /* Content column width */
+      --outer-margin: 36px;           /* Top/bottom white space on screen */
+      --side-padding: 26px;           /* Left/right inner padding on screen */
+      --muted:#606870;
+      --card-bg:#f7f9ff;
+      --ink:#101215;
       --radius:14px;
-      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --shadow: 0 10px 28px rgba(0,0,0,.06);
     }
 
-    html,body{direction:ltr;text-align:left}
+    html, body { direction:ltr; text-align:left; }
     body{
-      font-family:Lato,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      font-family:Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+      max-width:var(--content-width);
+      margin:var(--outer-margin) auto;
+      padding:0 var(--side-padding) 64px;
+      line-height:1.6;
       color:var(--ink);
-      background:var(--bg);
-      max-width:var(--content);
-      margin:var(--outer) auto;
-      padding:0 var(--padx) 64px;
-      line-height:1.65;
+      background:#fff;
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Headings */
-    h1{ font-size:2.05rem; letter-spacing:.2px; color:var(--accent-ink); margin:.1rem 0 .25rem }
-    h2{ margin:1.6rem 0 .65rem; font-size:1.05rem; text-transform:uppercase; letter-spacing:.12em; color:var(--accent-ink) }
-    h3{ margin:.4rem 0 .2rem; font-size:1rem }
+    /* Headings & type */
+    h1{ font-size:2.05rem; margin:0 0 .25rem 0; color:var(--accent-ink); letter-spacing:0.2px; }
+    h2{ font-size:1.08rem; margin:1.35rem 0 .5rem; color:var(--accent); text-transform:uppercase; letter-spacing:.12em; }
+    h3{ font-size:1.02rem; margin:.2rem 0 .3rem; color:#0b1a0b; }
+    p, li{ font-size:.98rem; }
+    a{ color:#0b5cab; text-decoration:none; }
+    a:hover{ text-decoration:underline; }
 
-    p, li{ font-size:1rem }
-    a{ color:#0b5cab; text-decoration:none }
-    a:hover{ text-decoration:underline }
+    /* Fancy section divider */
+    .rule{ height:3px; width:82px; background:var(--accent); margin:.55rem 0 1.1rem; border-radius:2px; }
 
-    /* Masthead */
+    /* Masthead: name/title left, image right */
     .masthead{
-      display:grid; grid-template-columns: 1fr auto; gap:22px; align-items:center;
-      margin: 0 0 10px;
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:20px;
+      align-items:center;
+      margin-bottom:8px;
     }
-    .subtitle{ color:#1d1d1d; font-weight:600; margin:0 0 .25rem }
-    .subtitle small{ color:var(--muted); font-weight:600 }
-    .contact{ margin:.25rem 0 0; color:#2a2f35 }
-    .contact a{ color:#0b5cab }
+    .titleblock .subtitle{
+      color:#1a1a1a;
+      font-weight:700;
+      margin:2px 0 4px 0;
+    }
+    .titleblock .subtitle small{ color:var(--muted); font-weight:600; }
+    .contact{ margin:.25rem 0 0 0; color:#333; font-size:.95rem; }
+    .contact a{ color:#0b5cab; }
+
     .avatar{
-      width:132px; height:132px; object-fit:cover; border-radius:50%;
-      border:3px solid #e8f1ed; box-shadow:0 6px 18px rgba(0,0,0,.07)
+      width:132px; height:132px; object-fit:cover;
+      border-radius:50%;
+      border:3px solid #e6ebfb;
+      box-shadow:0 6px 18px rgba(0,0,0,.07);
     }
 
-    /* Divider */
-    .rule{ height:3px; width:82px; background:var(--rule); border-radius:2px; margin:.55rem 0 1.15rem }
-
-    /* Cards / sections */
+    /* Card base (used by bio and projects) */
     .card{
-      background:linear-gradient(180deg,#f5fbf7 0%,#fff 60%);
-      border:1px solid #e6f0eb;
-      border-left:4px solid var(--accent);
-      border-radius:var(--radius);
-      padding:16px 18px;
-      box-shadow:var(--shadow);
-      margin:10px 0 20px;
+      position: relative;
+      background:linear-gradient(180deg, var(--card-bg) 0%, #ffffff 60%);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      border:1px solid #e7ecff;
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease;
     }
-    .item{ margin:.3rem 0 .75rem }
-    .when{ color:var(--muted); font-size:.95rem }
-    .place{ font-weight:600 }
-    .bullets{ margin:.35rem 0 .2rem 1.15rem }
-    .bullets li{ margin:.2rem 0 }
+    .card:hover{ transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.09); }
 
-    /* Lists */
-    ul{ margin:.25rem 0 .9rem 1.25rem }
-    li{ margin:.15rem 0 }
-
-    /* Pills */
-    .pill{
-      display:inline-block; font-size:.9rem; padding:.18rem .5rem; margin:.15rem .25rem .15rem 0;
-      border-radius:999px; background:#eef6f2; border:1px solid #e1eee8; color:#103a2e; font-weight:600
+    /* Projects grid */
+    .projects-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 18px;
+      margin-top:.4rem;
+    }
+    .project-card{ padding:14px 14px; }
+    .project-title{ display:flex; align-items:center; gap:.5rem; }
+    .dot{
+      width:14px; height:14px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:0 0 0 3px rgba(26,49,139,.12);
+      flex:0 0 auto;
     }
 
-    /* Print */
+    /* Responsive media (video/image) with aspect ratio */
+    .media{
+      position:relative;
+      width:100%;
+      aspect-ratio:16/9;
+      border-radius:10px;
+      overflow:hidden;
+      background:#eef1ff;
+      margin:.5rem 0 .35rem;
+      border:1px solid #e3e8ff;
+    }
+    .media video, .media img{
+      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    }
+
+    .project-card p{ margin:.2rem 0 0; text-align:justify; color:#2f3338; }
+    .bio-card p{ margin:.25rem 0; text-align:justify; }
+
+    /* Lists tighter for CV */
+    ul{ margin:.25rem 0 .8rem 1.25rem; }
+    li{ margin:.15rem 0; }
+
+    /* Print/PDF styles */
     @media print{
-      @page{ size:A4; margin:16mm 18mm }
-      body{ max-width:none; margin:0; padding:0 }
-      .card{ box-shadow:none; background:#fff }
-      a{ color:inherit; text-decoration:none }
-      .avatar{ width:108px; height:108px }
+      @page{ size:A4; margin:18mm 22mm; }
+      body{ max-width:none; margin:0; padding:0; }
+      a{ text-decoration:none; color:inherit; }
+      h2{ margin-top:10pt; }
+      .masthead{ grid-template-columns:1fr auto; gap:14pt; }
+      .avatar{ width:110px; height:110px; }
+      .rule{ margin:.3rem 0 .7rem; }
+      .card{ box-shadow:none; background:#fff; }
     }
 
     /* Small screens */
-    @media (max-width:600px){
-      .masthead{ grid-template-columns:1fr; gap:14px }
-      .avatar{ width:112px; height:112px; justify-self:start }
+    @media (max-width:760px){
+      .projects-grid{ grid-template-columns:1fr; }
+    }
+    @media (max-width:560px){
+      .masthead{ grid-template-columns:1fr; text-align:left; }
+      .avatar{ width:112px; height:112px; justify-self:start; }
     }
   </style>
 </head>
 <body>
 
   <!-- Masthead -->
-  <header class="masthead" aria-label="Header">
-    <div>
+  <header class="masthead">
+    <div class="titleblock">
       <h1>Hossein Vahid</h1>
-      <div class="subtitle">Computational Physicist <small>— Modeling · MD/BD · DFT · ML</small></div>
+      <div class="subtitle">Computational Materials Scientist <small>— MD · DFT · ML</small></div>
       <div class="contact">
-        Email: <a href="mailto:vahid@ipfdd.de">vahid@ipfdd.de</a> &nbsp;|&nbsp;
-        <a href="https://github.com/hosseinv93">GitHub</a> &nbsp;|&nbsp;
-        <a href="https://www.linkedin.com/in/hossein-vahid93/">LinkedIn</a>
+        Email: <a href="mailto:h.vahid1993@gmail.com">h.vahid1993@gmail.com</a> |
+        <a href="https://www.linkedin.com/in/hossein-vahid93" target="_blank" aria-label="LinkedIn">
+          LinkedIn
+        </a> |
+        <a href="https://github.com/hosseinv93" target="_blank" aria-label="GitHub">
+          GitHub
+        </a>
       </div>
     </div>
-    <img class="avatar" src="assets/img/me.jpg" alt="Portrait of Hossein Vahid">
+
+    <img class="avatar" src="assets/img/me.jpg" alt="Portrait of Hossein Vahid" />
   </header>
 
-  <div class="rule" role="separator" aria-hidden="true"></div>
+  <div class="rule"></div>
 
-  <!-- Profile -->
-  <section class="card" aria-label="Profile">
-    <p>
-      Experienced in modeling materials and analyzing structure–property relationships using
-      <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian dynamics (BD)</strong>, <strong>Density Functional Theory (DFT)</strong>, and
-      <strong>Machine Learning (ML)</strong>. Passionate about efficient, innovative strategies for practical problems and
-      collaborative research.
-    </p>
+  <!-- Projects & Movies (above bio) -->
+  <section id="projects">
+    <h2>Projects & Movies</h2>
+
+    <div class="projects-grid">
+
+      <!-- Project 1 -->
+      <article class="card project-card">
+        <div class="project-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>Mechanical Properties of Polyolefin Chains</h3>
+        </div>
+        <div class="media">
+          <video autoplay loop muted playsinline>
+            <source src="PS.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <p>
+          Exploring the mechanical response of polyolefin chains using
+          reactive Langevin dynamics with stereochemical control.
+        </p>
+      </article>
+
+      <!-- Project 2 -->
+      <article class="card project-card">
+        <div class="project-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>Plasma–Wall Interactions in Fusion Reactors</h3>
+        </div>
+        <div class="media">
+          <!-- Replace with a real video or image if you have one -->
+          <img src="images/plasma-placeholder.jpg" alt="Visualization of plasma-surface interactions">
+        </div>
+        <p>
+          Atomic-scale modeling of plasma–surface interactions, including molecular
+          sputtering in Be–D and W–D systems.
+        </p>
+      </article>
+
+      <!-- Project 3 -->
+      <article class="card project-card">
+        <div class="project-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>High-Performance Computing & Data Analysis</h3>
+        </div>
+        <div class="media">
+          <img src="images/hpc-placeholder.jpg" alt="HPC workflow schematic">
+        </div>
+        <p>
+          Scalable workflows and analysis pipelines for large-scale molecular dynamics
+          simulations; efficient post-processing with Python.
+        </p>
+      </article>
+
+      <!-- Project 4 -->
+      <article class="card project-card">
+        <div class="project-title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>Machine Learning for Materials</h3>
+        </div>
+        <div class="media">
+          <img src="images/ml-placeholder.jpg" alt="ML model and materials properties">
+        </div>
+        <p>
+          Applying ML models to predict properties and behavior of materials at the
+          atomic and molecular scales.
+        </p>
+      </article>
+
+    </div>
   </section>
 
-  <!-- Interests & Personal skills -->
-  <h2>Interests</h2>
-  <p>Biological Physics, Active Matter, Molecular Dynamics, Brownian Dynamics, DFT, Machine Learning. 
+  <!-- Bio -->
+  <section class="bio-section" style="margin-top:12px;">
+    <h2>About Me</h2>
+    <article class="card bio-card">
+      <p>
+        I’m a computational materials scientist working with
+        <strong>molecular dynamics</strong>, <strong>DFT</strong>, and <strong>machine learning</strong>
+        to study plasma–surface interactions and material behavior. I build efficient,
+        reproducible Python workflows for analysis and visualization.
+      </p>
+    </article>
+  </section>
+
+  <!-- Education -->
+  <h2>Education</h2>
+  <p>Ph.D. Candidate in Computational Physics, Aalto University, 2023</p>
+
+  <!-- Research Interests -->
+  <h2>Research Interests</h2>
+  <ul>
+    <li>Molecular Dynamics simulations of sputtering</li>
+    <li>Be–D and W–D plasma–surface interactions</li>
+  </ul>
 
   <!-- Skills -->
   <h2>Skills</h2>
-  <div class="item"><strong>Programming:</strong>
-    <span class="pill">Python</span><span class="pill">Bash</span><span class="pill">C++</span><span class="pill">MATLAB</span> 
-  </div>
-  <div class="item"><strong>Materials & Simulation:</strong>
-    <span class="pill">LAMMPS</span><span class="pill">GROMACS</span><span class="pill">VASP</span><span class="pill">FHI-aims</span>
-    <span class="pill">MLIP</span><span class="pill">USPEX</span><span class="pill">ORCA</span><span class="pill">Schrödinger Maestro</span> 
-  </div>
-  <div class="item"><strong>Data Science:</strong>
-    <span class="pill">NumPy</span><span class="pill">Pandas</span><span class="pill">scikit-learn</span><span class="pill">Matplotlib</span><span class="pill">Jupyter</span> 
-  </div>
-  <div class="item"><strong>Other:</strong>
-    <span class="pill">Linux</span><span class="pill">LaTeX</span><span class="pill">PyCharm</span><span class="pill">VESTA</span>
-    <span class="pill">VMD</span><span class="pill">OVITO</span><span class="pill">Overleaf</span><span class="pill">Inkscape</span>
-    <span class="pill">MS Office</span><span class="pill">Git</span> 
-  </div>
-
-  <!-- Education & Research Experience -->
-  <h2>Education & Research Experience</h2>
-
-  <div class="item">
-    <div class="place">Postdoctoral Researcher — Leibniz Institute of Polymer Research Dresden</div>
-    <div class="when">Oct 2024 – present</div>
-    <ul class="bullets">
-      <li>Active Matter. 
-    </ul>
-  </div>
-
-  <div class="item">
-    <div class="place">Doctor of Science (Applied Physics) — Aalto University</div>
-    <div class="when">Sep 2020 – Dec 2024</div>
-    <div><em>Thesis:</em> Modeling of Charged Polymers in Aqueous Solutions in the Presence of Excess Ions and Interface. 
-  </div>
-
-  <!-- Publications -->
-  <h2>Selected Publications</h2>
   <ul>
-    <li>“Block Ratio Optimized Cationic Polyacrylamides for Enhanced Nitrate Rejection Under Applied Potential.” <em>Chemical Engineering Journal</em> (2025). <a href="https://doi.org/10.1016/j.cej.2025.162346">doi:10.1016/j.cej.2025.162346</a> </li>
-    <li>“Combining integral equation closures with force density functional theory for the study of inhomogeneous fluids.” <em>Soft Matter</em> (2025). <a href="https://doi.org/10.1039/D4SM01262C">doi:10.1039/D4SM01262C</a> </li>
-    <li>“Active transport of cargo-carrying and interconnected chiral particles.” <em>Soft Matter</em> (2025). <a href="https://doi.org/10.1039/D5SM00170F">doi:10.1039/D5SM00170F</a> </li>
-    <li>“Collective Dynamics in Active Polar Polymer Assemblies.” Under review (2025). <a href="https://doi.org/10.48550/arXiv.2503.11396">arXiv:2503.11396</a> </li>
-    <li>“Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate.” <em>J. Chem. Phys.</em> (2024). <a href="https://doi.org/10.1063/5.0223124">doi:10.1063/5.0223124</a> </li>
-    <li>“Non-monotonic electrophoretic mobility of rod-like polyelectrolytes by multivalent coions in added salt.” <em>Phys. Rev. E</em> (2024). <a href="https://doi.org/10.1103/PhysRevE.109.014501">doi:10.1103/PhysRevE.109.014501</a> </li>
-    <li>“Interactions between Rigid Polyelectrolytes Mediated by Ordering and Orientation of Multivalent Nonspherical Ions in Salt Solutions.” <em>Phys. Rev. Lett.</em> (2023). <a href="https://doi.org/10.1103/PhysRevLett.130.158202">doi:10.1103/PhysRevLett.130.158202</a> </li>
-    <li>“Modified Poisson–Boltzmann theory for polyelectrolytes in monovalent salt solutions with finite-size ions.” <em>J. Chem. Phys.</em> (2022). <a href="https://doi.org/10.1063/5.0092273">doi:10.1063/5.0092273</a> </li>
-    <li>“Interaction between two polyelectrolytes in monovalent aqueous salt solutions.” <em>PCCP</em> (2022). <a href="https://doi.org/10.1039/D2CP02066A">doi:10.1039/D2CP02066A</a> </li>
-    <li>“Application of amino acid ionic liquids for increasing the stability of DNA in long term storage.” <em>J. Biomol. Struct. Dyn.</em> (2022). <a href="https://doi.org/10.1080/07391102.2022.2067239">doi:10.1080/07391102.2022.2067239</a> </li>
+    <li>Python, DFT, LAMMPS, ASE, ORCA</li>
+    <li>Data analysis and visualization</li>
   </ul>
-
 
 </body>
 </html>
