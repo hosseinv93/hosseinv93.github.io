@@ -43,7 +43,7 @@
     a{ color:#0b5cab; text-decoration:none; }
     a:hover{ text-decoration:underline; }
 
-    /* Fancy section divider */
+    /* Section divider */
     .rule{ height:3px; width:82px; background:var(--accent); margin:.55rem 0 1.1rem; border-radius:2px; }
 
     /* Masthead: name/title left, image right */
@@ -98,7 +98,7 @@
       flex:0 0 auto;
     }
 
-    /* Responsive media (video/image) with aspect ratio */
+    /* Media frame (video/image) with aspect ratio */
     .media{
       position:relative;
       width:100%;
@@ -120,6 +120,13 @@
     ul{ margin:.25rem 0 .8rem 1.25rem; }
     li{ margin:.15rem 0; }
 
+    /* Two-column helper for compact sections */
+    .twocol{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px 24px;
+    }
+
     /* Print/PDF styles */
     @media print{
       @page{ size:A4; margin:18mm 22mm; }
@@ -135,6 +142,7 @@
     /* Small screens */
     @media (max-width:760px){
       .projects-grid{ grid-template-columns:1fr; }
+      .twocol{ grid-template-columns:1fr; }
     }
     @media (max-width:560px){
       .masthead{ grid-template-columns:1fr; text-align:left; }
@@ -148,27 +156,35 @@
   <header class="masthead">
     <div class="titleblock">
       <h1>Hossein Vahid</h1>
-      <div class="subtitle">Computational Materials Scientist <small>— MD · DFT · ML</small></div>
+      <div class="subtitle">Computational Physicist <small>— MD · BD · DFT · ML</small></div>
       <div class="contact">
-        Email: <a href="mailto:h.vahid1993@gmail.com">h.vahid1993@gmail.com</a> |
-        <a href="https://www.linkedin.com/in/hossein-vahid93" target="_blank" aria-label="LinkedIn">
-          LinkedIn
-        </a> |
-        <a href="https://github.com/hosseinv93" target="_blank" aria-label="GitHub">
-          GitHub
-        </a>
+        Email: <a href="mailto:vahid@ipfdd.de">vahid@ipfdd.de</a> |
+        <a href="https://github.com/hosseinv93" target="_blank" aria-label="GitHub">GitHub</a> |
+        <a href="https://www.linkedin.com/in/hossein-vahid93/" target="_blank" aria-label="LinkedIn">LinkedIn</a>
+        <span style="color:#7a7f85">| Espoo, Finland</span>
       </div>
     </div>
-
     <img class="avatar" src="assets/img/me.jpg" alt="Portrait of Hossein Vahid" />
   </header>
 
   <div class="rule"></div>
 
-  <!-- Projects & Movies (above bio) -->
-  <section id="projects">
-    <h2>Projects & Movies</h2>
+  <!-- BIO FIRST -->
+  <section class="bio-section" id="about">
+    <h2>About Me</h2>
+    <article class="card bio-card">
+      <p>
+        Experienced in modeling materials and analyzing structure–property relationships using
+        <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian dynamics</strong>, <strong>Density Functional Theory (DFT)</strong>, and
+        <strong>Machine Learning (ML)</strong>. I care about efficient, innovative strategies for practical problems and
+        collaborate smoothly across teams.
+      </p>
+    </article>
+  </section>
 
+  <!-- Projects & Movies -->
+  <section id="projects" style="margin-top:12px;">
+    <h2>Projects & Movies</h2>
     <div class="projects-grid">
 
       <!-- Project 1 -->
@@ -183,10 +199,7 @@
             Your browser does not support the video tag.
           </video>
         </div>
-        <p>
-          Exploring the mechanical response of polyolefin chains using
-          reactive Langevin dynamics with stereochemical control.
-        </p>
+        <p>Reactive Langevin dynamics with stereochemical control to probe the mechanical response of polyolefin chains.</p>
       </article>
 
       <!-- Project 2 -->
@@ -196,13 +209,10 @@
           <h3>Plasma–Wall Interactions in Fusion Reactors</h3>
         </div>
         <div class="media">
-          <!-- Replace with a real video or image if you have one -->
-          <img src="images/plasma-placeholder.jpg" alt="Visualization of plasma-surface interactions">
+          <!-- Replace with a video if available -->
+          <img src="images/plasma-placeholder.jpg" alt="Visualization of plasma–surface interactions">
         </div>
-        <p>
-          Atomic-scale modeling of plasma–surface interactions, including molecular
-          sputtering in Be–D and W–D systems.
-        </p>
+        <p>Atomic-scale modeling of plasma–surface interactions, including molecular sputtering in Be–D and W–D systems.</p>
       </article>
 
       <!-- Project 3 -->
@@ -214,10 +224,7 @@
         <div class="media">
           <img src="images/hpc-placeholder.jpg" alt="HPC workflow schematic">
         </div>
-        <p>
-          Scalable workflows and analysis pipelines for large-scale molecular dynamics
-          simulations; efficient post-processing with Python.
-        </p>
+        <p>Scalable workflows and Python post-processing pipelines for large-scale MD simulations.</p>
       </article>
 
       <!-- Project 4 -->
@@ -227,47 +234,69 @@
           <h3>Machine Learning for Materials</h3>
         </div>
         <div class="media">
-          <img src="images/ml-placeholder.jpg" alt="ML model and materials properties">
+          <img src="images/ml-placeholder.jpg" alt="ML models for materials properties">
         </div>
-        <p>
-          Applying ML models to predict properties and behavior of materials at the
-          atomic and molecular scales.
-        </p>
+        <p>Applying ML models to predict properties and behavior of materials at atomic and molecular scales.</p>
       </article>
 
     </div>
   </section>
 
-  <!-- Bio -->
-  <section class="bio-section" style="margin-top:12px;">
-    <h2>About Me</h2>
-    <article class="card bio-card">
-      <p>
-        I’m a computational materials scientist working with
-        <strong>molecular dynamics</strong>, <strong>DFT</strong>, and <strong>machine learning</strong>
-        to study plasma–surface interactions and material behavior. I build efficient,
-        reproducible Python workflows for analysis and visualization.
-      </p>
-    </article>
+  <!-- Education & Research Experience -->
+  <section id="education">
+    <h2>Education & Research Experience</h2>
+
+    <div class="twocol">
+      <div>
+        <p><strong>Postdoctoral Researcher</strong> — Leibniz Institute of Polymer Research Dresden, Institute of Theoretical Physics (Active Matter Group)</p>
+        <p style="margin-top:-6px;color:#555;">Oct 2024 – present</p>
+        <ul>
+          <li>Investigating chemotaxis of active–passive assemblies via Brownian dynamics and theory.</li>
+        </ul>
+      </div>
+
+      <div>
+        <p><strong>Doctor of Science (Applied Physics)</strong> — Aalto University</p>
+        <p style="margin-top:-6px;color:#555;">Sep 2020 – Dec 2024</p>
+        <ul>
+          <li>Thesis: Modeling of Charged Polymers in Aqueous Solutions with Excess Ions and Interfaces.</li>
+          <li>Coarse-grained & atomistic MD; analysis with NumPy, Pandas, scikit-learn.</li>
+          <li>Prepared structures in Schrödinger Maestro; ran LAMMPS & GROMACS.</li>
+          <li>Developed an open-source C++ package for anisotropic particle interactions.</li>
+        </ul>
+      </div>
   </section>
 
-  <!-- Education -->
-  <h2>Education</h2>
-  <p>Ph.D. Candidate in Computational Physics, Aalto University, 2023</p>
-
-  <!-- Research Interests -->
-  <h2>Research Interests</h2>
-  <ul>
-    <li>Molecular Dynamics simulations of sputtering</li>
-    <li>Be–D and W–D plasma–surface interactions</li>
-  </ul>
-
   <!-- Skills -->
-  <h2>Skills</h2>
-  <ul>
-    <li>Python, DFT, LAMMPS, ASE, ORCA</li>
-    <li>Data analysis and visualization</li>
-  </ul>
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul>
+      <li><strong>Programming:</strong> Python, Bash (Advanced); C++, MATLAB (Moderate)</li>
+      <li><strong>Materials & Simulation:</strong> LAMMPS, GROMACS, VASP, MLIP, Schrödinger Maestro, FHI-aims (Adv.); USPEX, ORCA (Moderate)</li>
+      <li><strong>Data Science:</strong> scikit-learn, NumPy, Pandas, Seaborn, Matplotlib, JupyterLab (Advanced)</li>
+      <li><strong>Other:</strong> Linux, LaTeX, PyCharm, VESTA, VMD, OVITO, Overleaf, Inkscape, MS Office (Adv.); Git (Moderate)</li>
+      <li><strong>Personal Skills:</strong> Flexible, problem solver, fast learner, persistent</li>
+    </ul>
+  </section>
+
+
+  <!-- Selected Publications -->
+  <section id="publications">
+    <h2>Selected Publications</h2>
+    <ul>
+      <li>“Block Ratio Optimized Cationic Polyacrylamides for Enhanced Nitrate Rejection Under Applied Potential.” <em>Chemical Engineering Journal</em> (2025). <a href="https://doi.org/10.1016/j.cej.2025.162346">doi:10.1016/j.cej.2025.162346</a></li>
+      <li>“Combining integral equation closures with force density functional theory for the study of inhomogeneous fluids.” <em>Soft Matter</em> (2025). <a href="https://doi.org/10.1039/D4SM01262C">doi:10.1039/D4SM01262C</a></li>
+      <li>“Active transport of cargo-carrying and interconnected chiral particles.” <em>Soft Matter</em> (2025). <a href="https://doi.org/10.1039/D5SM00170F">doi:10.1039/D5SM00170F</a></li>
+      <li>“Collective Dynamics in Active Polar Polymer Assemblies.” Under review (2025). <a href="https://doi.org/10.48550/arXiv.2503.11396">arXiv:2503.11396</a></li>
+      <li>“Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity…” <em>J. Chem. Phys.</em> (2024). <a href="https://doi.org/10.1063/5.0223124">doi:10.1063/5.0223124</a></li>
+      <li>“Non-monotonic electrophoretic mobility of rod-like polyelectrolytes…” <em>Phys. Rev. E</em> (2024). <a href="https://doi.org/10.1103/PhysRevE.109.014501">doi:10.1103/PhysRevE.109.014501</a></li>
+      <li>“Interactions between Rigid Polyelectrolytes Mediated by Ordering and Orientation of Multivalent Nonspherical Ions…” <em>Phys. Rev. Lett.</em> (2023). <a href="https://doi.org/10.1103/PhysRevLett.130.158202">doi:10.1103/PhysRevLett.130.158202</a></li>
+      <li>“Modified Poisson–Boltzmann theory for polyelectrolytes…” <em>J. Chem. Phys.</em> (2022). <a href="https://doi.org/10.1063/5.0092273">doi:10.1063/5.0092273</a></li>
+      <li>“Interaction between two polyelectrolytes in monovalent aqueous salt solutions.” <em>PCCP</em> (2022). <a href="https://doi.org/10.1039/D2CP02066A">doi:10.1039/D2CP02066A</a></li>
+      <li>“Application of amino acid ionic liquids for increasing the stability of DNA…” <em>J. Biomol. Struct. Dyn.</em> (2022). <a href="https://doi.org/10.1080/07391102.2022.2067239">doi:10.1080/07391102.2022.2067239</a></li>
+    </ul>
+  </section>
+
 
 </body>
 </html>
