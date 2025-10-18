@@ -107,9 +107,11 @@
       margin:.5rem 0 .35rem;
       border:1px solid #e3e8ff;
     }
-    .media video, .media img{
-      position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
-    }
+  .media video{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit: contain;           /* was: cover */
+  background:#000;               /* nice letterbox bars */
+}
 
     .project-card p{ margin:.2rem 0 0; text-align:justify; color:#2f3338; }
     .bio-card p{ margin:.25rem 0; text-align:justify; }
