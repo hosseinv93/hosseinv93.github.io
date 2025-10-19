@@ -99,7 +99,7 @@
 /* Fancy card */
 .project-card{
   display:inline-block;
-  width:100%;                      /* fill the masonry column */
+  width:90%;                      /* fill the masonry column */
   margin:0 0 22px;
   break-inside: avoid;
   border:1px solid #e6e9f0;
@@ -115,7 +115,7 @@
 .project-card:hover{
   transform:translateY(-6px);
   box-shadow:0 16px 42px rgba(0,0,0,.12);
-  border-color:#dfe6ff;
+  border-color:#ff976a
 }
 
 /* Title row */
@@ -149,7 +149,7 @@
 
 /* Media: edge-to-edge inside the card, rounded, with soft border */
 .project-card .media{
-  margin:12px 70px 12px;           /* extend to card edges */
+  margin:12px 80px 20px;           /* extend to card edges */
   padding:0;
   background:#f6f7fb;
   border-top:1px solid #e6e9f0;
@@ -177,7 +177,7 @@
 .project-card .more:hover{
   transform:translateY(-1px);
   box-shadow:0 6px 16px rgba(0,0,0,.08);
-  background:#e6ecff;
+  background:#ff976a;
 }
 
 /* Responsive: single column on phones */
@@ -199,7 +199,7 @@
     li{ margin:.15rem 0; }
     .twocol{ display:grid; grid-template-columns:1fr 1fr; gap: 14px 24px; }
 
-    /* -------- Skills (kept your nicer style) -------- */
+    /* -------- Skills -------- */
     .skills.card{ padding:18px 18px 14px; }
     .skills-grid{
       display:grid; grid-template-columns:1fr 1fr; gap:16px 20px;
@@ -285,7 +285,7 @@
     <article class="card">
       <p>
         Experienced in modeling materials and analyzing structure–property relationships using
-        <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian dynamics (BD)</strong>, <strong>Density Functional Theory (DFT)</strong>, and
+        <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian Dynamics (BD)</strong>, <strong>Density Functional Theory (DFT)</strong>, and
         <strong>Machine Learning (ML)</strong>. I care about efficient, innovative strategies for practical problems and
         collaborate smoothly across teams.
       </p>
@@ -310,9 +310,9 @@
       muted
       playsinline
       preload="metadata"
-      poster="assets/img/videos/TDAP_poster.jpg"  <!-- optional thumbnail -->
+      poster="assets/videos/TDAP_poster.jpg"  <!-- optional thumbnail -->
     >
-      <source src="assets/img/videos/TDAP.mp4" type="video/mp4">
+      <source src="assets/videos/TDAP.mp4" type="video/mp4">
       <!-- (Optional) add a WebM source if you have it
       <source src="assets/img/videos/TDAP.webm" type="video/webm">
       -->
@@ -338,7 +338,9 @@
   </div>
 
   <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength, image-charge attraction, and monolayer formation in coarse-grained MD.</p>
-  <p class="meta"><em>Journal of Chemical Physics</em> 161, 134907 (2024)</p>
+  <p class="meta"><em>Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate</em><br>
+     <strong>Hossein Vahid</strong>, Alberto Scacchi, Maria Sammalkorpi, Tapio Ala-Nissila — <em>Journal of Chemical Physics</em> 161, 134907 (2024)</p>
+  </p>
   <a class="more" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a>
 </article>
 
