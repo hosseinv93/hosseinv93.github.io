@@ -90,55 +90,30 @@
     }
     .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
-    /* ---------- Projects (clean + consistent) ---------- */
-    .projects-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:18px;
-      align-items:stretch;
-      margin-top:.4rem;
-    }
+   /* Masonry columns */
+.projects-grid{
+  column-count: 2;       /* change to 1/3 responsively if you like */
+  column-gap: 18px;
+}
 
-    /* Each project is its own card with hover */
-    .project-card{
-      display:flex;
-      flex-direction:column;
-      height:100%;
-      background:#fff;
-      border:1px solid var(--hair);
-      border-radius:14px;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
-      overflow:hidden;             /* nothing escapes rounded corners */
-      transition: transform .25s ease, box-shadow .25s ease;
-    }
-    .project-card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+/* Cards become masonry items */
+.project-card{
+  display:inline-block;
+  width:100%;
+  margin: 0 0 18px;
+  break-inside: avoid;   /* avoid splitting across columns */
+  border:1px solid #e6e9f0; border-radius:14px; overflow:hidden;
+  background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.06);
+}
 
-    .project-head{ display:flex; align-items:center; gap:.5rem; padding:12px 14px 6px; }
-    .dot{ width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(26,49,139,.12); }
-
-    /* Fixed media window: same height across cards */
-    .project-card .media{
-      width:100%;
-      aspect-ratio: 4 / 3;         /* change to 16/9 if preferred */
-      overflow:hidden;
-      background:#f6f7fb;
-      border-top:1px solid var(--hair);
-      border-bottom:1px solid var(--hair);
-    }
-    .project-card .media > img,
-    .project-card .media > video{
-      width:100%; height:100%; display:block; object-fit:cover; /* fill + crop */
-      background:#f6f7fb;
-    }
-    /* If a figure must not be cropped, add .contain */
-    .project-card .media.contain > img,
-    .project-card .media.contain > video{ object-fit:contain; background:#fff; }
-
-    .project-body{ display:flex; flex-direction:column; gap:8px; padding:12px 14px 14px; min-height:0; }
-    .project-body p{ margin:0; color:#2f3338; }
-    .project-meta{ color:#667; font-style:italic; }
-    .project-cta{ margin-top:auto; }
-    .project-cta a{ font-weight:700; }
+/* Media scales naturally, no aspect clamp */
+.project-card .media > img,
+.project-card .media > video{
+  width:100%;
+  height:auto;
+  display:block;
+  object-fit:contain;
+}
 
     /* Lists / helpers */
     ul{ margin:.25rem 0 .8rem 1.25rem; }
