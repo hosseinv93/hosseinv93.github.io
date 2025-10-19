@@ -188,20 +188,6 @@
   .project-card, .project-card .more { transition:none; }
 }
 
-/* Typewriter */
-.subtitle{ position:relative; display:flex; align-items:center; gap:.35rem; }
-.cursor{
-  width:2px; height:1.2em; background:var(--accent-ink);
-  display:inline-block; translate:0 .1em;
-  animation: blink .9s steps(1) infinite;
-}
-@keyframes blink{ 50% { opacity:0; } }
-
-/* Motion-safe fallback */
-@media (prefers-reduced-motion: reduce){
-  .cursor{ display:none; animation:none; }
-}
-
 /* Body text spacing */
 .project-card p{ margin:0 0 8px; line-height:1.55; }
 .project-card .meta{ color:#667; font-style:italic; }
@@ -255,51 +241,6 @@
       .avatar{ width:112px; height:112px; justify-self:start; }
     }
   </style>
-
-<script>
-(function(){
-const phrases = ["Computational Physicist — MD · BD · DFT · ML"];
-
-  const el = document.getElementById("tw-text");
-  const cursor = document.querySelector(".cursor");
-
-  // Respect reduced motion
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduced) { el.textContent = phrases[0]; return; }
-
-  let i = 0, j = 0, typing = true;
-  const speedType = 55;      // ms per character while typing
-  const speedErase = 35;     // ms per character while erasing
-  const holdAfterType = 1200; // pause after fully typed
-  const holdAfterErase = 350; // pause after fully erased
-
-  function tick(){
-    const phrase = phrases[i];
-    if (typing){
-      el.textContent = phrase.slice(0, ++j);
-      if (j === phrase.length){
-        typing = false;
-        setTimeout(tick, holdAfterType);
-        return;
-      }
-      setTimeout(tick, speedType);
-    } else {
-      el.textContent = phrase.slice(0, --j);
-      if (j === 0){
-        typing = true;
-        i = (i + 1) % phrases.length;
-        setTimeout(tick, holdAfterErase);
-        return;
-      }
-      setTimeout(tick, speedErase);
-    }
-  }
-
-  // Start
-  el.textContent = "";
-  tick();
-})();
-</script>
 </head>
 <body>
 
@@ -307,9 +248,7 @@ const phrases = ["Computational Physicist — MD · BD · DFT · ML"];
   <header class="masthead">
     <div class="titleblock">
       <h1>Hossein Vahid, D. Sc. (Tech.)</h1>
-  <span id="tw-text" aria-live="polite"></span>
-  <span class="cursor" aria-hidden="true"></span>
-</div>
+      <div class="subtitle">Computational Physicist <small>— MD · BD · DFT · ML</small></div>
 
       <div class="social">
         <!-- LinkedIn -->
