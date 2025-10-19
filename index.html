@@ -79,7 +79,7 @@
     .contact{ margin:.2rem 0 0; color:#333; font-size:.95rem; }
     .contact a{ color:#0b5cab; }
 
-    /* Base card (hover "click" feel preserved) */
+    /* Base card */
     .card{
       background:linear-gradient(180deg, var(--card-bg) 0%, #ffffff 60%);
       border-radius: var(--radius);
@@ -90,131 +90,49 @@
     }
     .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
-    /* Masonry columns (keeps variable heights) */
-    .projects-grid{
-      column-count: 2;                 /* 1–3 works; change for width */
-      column-gap: 50px;
-    }
-
-    /* Fancy card */
+    /* Masonry */
+    .projects-grid{ column-count:2; column-gap:50px; }
     .project-card{
-      display:inline-block;
-      width:90%;                      /* fill the masonry column */
-      margin:0 0 22px;
-      break-inside: avoid;
-      border:1px solid #e6e9f0;
-      border-radius:16px;
+      display:inline-block; width:90%; margin:0 0 22px; break-inside:avoid;
+      border:1px solid #e6e9f0; border-radius:16px;
       background:
         linear-gradient(180deg,#fbfcff, #ffffff 60%) padding-box,
-        linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box; /* soft tinted border */
+        linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box;
       box-shadow:0 10px 28px rgba(0,0,0,.06);
-      padding:16px 18px;
-      overflow:hidden;
+      padding:16px 18px; overflow:hidden;
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     }
-    .project-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 16px 42px rgba(0,0,0,.12);
-      border-color:#ff976a
-    }
-
-    /* Title row */
-    .project-card .title{
-      display:flex; align-items:center; gap:.6rem; margin:0 0 10px;
-    }
-    .project-card .dot{
-      width:14px; height:14px; border-radius:50%;
-      background:var(--accent);
-      box-shadow:
-        0 0 0 3px rgba(26,49,139,.12),
-        0 0 12px rgba(26,49,139,.25);   /* subtle glow */
-      flex:0 0 auto;
-    }
-    .project-card .title h3{
-      margin:0;
-      font-weight:800;
-      font-size:1.08rem;
-      letter-spacing:.01em;
-      color:var(--accent-ink);
-      position:relative;
-    }
-    .project-card .title h3::after{     /* animated underline */
-      content:"";
-      position:absolute; left:0; bottom:-6px;
-      width:44px; height:3px; border-radius:3px;
-      background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2));
-      transition:width .25s ease;
-    }
+    .project-card:hover{ transform:translateY(-6px); box-shadow:0 16px 42px rgba(0,0,0,.12); border-color:#ff976a }
+    .project-card .title{ display:flex; align-items:center; gap:.6rem; margin:0 0 10px; }
+    .project-card .dot{ width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(26,49,139,.12),0 0 12px rgba(26,49,139,.25); flex:0 0 auto; }
+    .project-card .title h3{ margin:0; font-weight:800; font-size:1.08rem; letter-spacing:.01em; color:var(--accent-ink); position:relative; }
+    .project-card .title h3::after{ content:""; position:absolute; left:0; bottom:-6px; width:44px; height:3px; border-radius:3px; background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2)); transition:width .25s ease; }
     .project-card:hover .title h3::after{ width:72px; }
-
-    /* Media: edge-to-edge inside the card, rounded, with soft border */
-    .project-card .media{
-      margin:12px 80px 20px;           /* extend to card edges */
-      padding:0;
-      background:#f6f7fb;
-      border-top:1px solid #e6e9f0;
-      border-bottom:1px solid #e6e9f0;
-    }
-    .project-card .media > img,
-    .project-card .media > video{
-      width:100%; height:auto; display:block;
-      object-fit:contain;               /* no cropping (masonry can vary height) */
-    }
-
-    /* Body text + meta */
+    .project-card .media{ margin:12px 80px 20px; padding:0; background:#f6f7fb; border-top:1px solid #e6e9f0; border-bottom:1px solid #e6e9f0; }
+    .project-card .media > img,.project-card .media > video{ width:100%; height:auto; display:block; object-fit:contain; }
     .project-card p{ margin:0 0 10px; line-height:1.56; color:#2f3338; }
     .project-card .meta{ color:#667; font-style:italic; }
+    .project-card .more{ display:inline-flex; align-items:center; gap:6px; padding:.28rem .6rem; border-radius:999px; background:#eef1ff; border:1px solid #e3e8ff; font-weight:700; text-decoration:none; color:var(--accent-ink); transition:transform .15s ease, box-shadow .15s ease, background .15s ease; }
+    .project-card .more:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08); background:#ff976a; }
 
-    /* CTA chip */
-    .project-card .more{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:.28rem .6rem; border-radius:999px;
-      background:#eef1ff; border:1px solid #e3e8ff;
-      font-weight:700; text-decoration:none;
-      color:var(--accent-ink);
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .project-card .more:hover{
-      transform:translateY(-1px);
-      box-shadow:0 6px 16px rgba(0,0,0,.08);
-      background:#ff976a;
-    }
-
-    /* Responsive: single column on phones */
+    /* Responsive */
     @media (max-width:760px){ .projects-grid{ column-count:1; } }
-
-    /* Motion-safe */
-    @media (prefers-reduced-motion:reduce){
-      .project-card, .project-card .more { transition:none; }
-    }
-
-    /* Body text spacing */
+    @media (prefers-reduced-motion:reduce){ .project-card, .project-card .more { transition:none; } }
     .project-card p{ margin:0 0 8px; line-height:1.55; }
     .project-card .meta{ color:#667; font-style:italic; }
     .project-card .more{ font-weight:700; }
 
-    /* Lists / helpers */
     ul{ margin:.25rem 0 .8rem 1.25rem; }
     li{ margin:.15rem 0; }
-    .twocol{ display:grid; grid-template-columns:1fr 1fr; gap: 14px 24px; }
+    .twocol{ display:grid; grid-template-columns:1fr 1fr; gap:14px 24px; }
 
     /* -------- Skills -------- */
     .skills.card{ padding:18px 18px 14px; }
-    .skills-grid{
-      display:grid; grid-template-columns:1fr 1fr; gap:16px 20px;
-    }
-    .skill-group .sg-title{
-      display:flex; align-items:center; gap:8px;
-      margin:0 0 8px; font-weight:700; color:var(--accent-ink);
-    }
+    .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 20px; }
+    .skill-group .sg-title{ display:flex; align-items:center; gap:8px; margin:0 0 8px; font-weight:700; color:var(--accent-ink); }
     .sg-title svg{ width:18px; height:18px; fill:var(--accent-ink); opacity:.9 }
     .chips{ display:flex; flex-wrap:wrap; gap:8px; }
-    .chip{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:.22rem .55rem; border-radius:999px;
-      background:#eef1ff; border:1px solid #e3e8ff;
-      font-size:.92rem; color:#16286b; font-weight:700;
-    }
+    .chip{ display:inline-flex; align-items:center; gap:6px; padding:.22rem .55rem; border-radius:999px; background:#eef1ff; border:1px solid #e3e8ff; font-size:.92rem; color:#16286b; font-weight:700; }
     .chip svg{ width:14px; height:14px; fill:#16286b; opacity:.9 }
 
     /* Print */
@@ -240,7 +158,7 @@
       .avatar{ width:112px; height:112px; justify-self:start; }
     }
 
-    /* --- Typewriter ONLY (new) --- */
+    /* --- Typewriter ONLY --- */
     .subtitle{ position:relative; display:flex; align-items:center; gap:.35rem; }
     .cursor{
       width:2px; height:1.2em; background:var(--accent-ink);
@@ -248,8 +166,109 @@
       animation: blink .9s steps(1) infinite;
     }
     @keyframes blink{ 50% { opacity:0; } }
-    @media (prefers-reduced-motion: reduce){
-      .cursor{ display:none; animation:none; }
+    @media (prefers-reduced-motion: reduce){ .cursor{ display:none; animation:none; } }
+
+    /* ====== NEWS DECK — DARK, SMALL, OVERLAPPING, TILTED ====== */
+    .news-deck{ margin-top:26px; }
+.news-deck .deck{
+  display:flex; align-items:stretch;
+  overflow-x: hidden;          /* <- was auto */
+  padding:14px 9px 8px;
+  gap:0;
+  scrollbar-width: none;       /* Firefox */
+  -ms-overflow-style: none;    /* IE/Edge legacy */
+}
+.news-deck .deck::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
+    .nd-card{
+      --w: 220px;        /* collapsed width (small) */
+      --h: 180px;        /* collapsed height */
+      --overlap: 120px;  /* negative margin to overlap */
+      position:relative;
+      flex: 0 0 var(--w);
+      height: var(--h);
+      margin-left: calc(-1 * var(--overlap));
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.06);
+      background:
+        radial-gradient(120% 120% at 0% 0%, rgba(255,255,255,.08), transparent 40%),
+        linear-gradient(180deg, #1b1f28, #0f1116 70%) padding-box,
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0)) border-box;
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      color:#e9edf7;
+      display:flex; flex-direction:column;
+      cursor:default;
+      transform: rotate(var(--tilt, -6deg));
+      transition:
+        transform 1.65s ease,
+        box-shadow 1.25s ease,
+        flex-basis 0.05s ease,
+        margin-left 1.35s ease,
+        height 1.135s ease,
+        filter 1.25s ease;
+      z-index: var(--z,1);
+    }
+    .nd-card:first-child{ margin-left:0; }
+
+    /* Staggered tilt + stacking like CSS-Tricks */
+    .nd-card:nth-child(1){ --tilt:-8deg; --z:11; }
+    .nd-card:nth-child(2){ --tilt:-5deg; --z:12; }
+    .nd-card:nth-child(3){ --tilt:-2deg; --z:13; }
+    .nd-card:nth-child(4){ --tilt:-1deg; --z:14; }
+
+    .nd-head{ padding:12px 14px; }
+    .nd-meta{ display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.75); font-size:.88rem; }
+    .nd-tag{
+      display:inline-flex; align-items:center; padding:.16rem .48rem;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.08);
+      color:#fff; border-radius:999px; font-weight:700; font-size:.78rem;
+    }
+    .nd-title{
+      margin:6px 0 0; font-size:1rem; font-weight:800; color:#fff;
+      overflow: hidden; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+    }
+
+    .nd-body{
+      padding:0 14px;
+      color:#d7def0;
+      max-height:0; overflow:hidden;
+      transition:max-height .35s ease, padding-top .2s ease;
+    }
+    .nd-body p{ margin:.6rem 0; line-height:1.55; }
+    .nd-link{ color:#79a8ff; text-decoration:none; border-bottom:1px solid rgba(121,168,255,.35); }
+    .nd-link:hover{ text-decoration:underline; }
+
+    /* Hover/focus expansion — no click required */
+    .nd-card:hover,
+    .nd-card:focus-within{
+      transform: rotate(0deg) translateY(-2px);
+      flex-basis: 50%;
+      height: auto;
+      margin-left: 0;
+      z-index: 99;
+      box-shadow:0 18px 42px rgba(0,0,0,.5);
+      filter:none;
+    }
+    .nd-card:hover .nd-body,
+    .nd-card:focus-within .nd-body{
+      padding-top:6px;
+      max-height:220px;
+    }
+
+    /* De-emphasize non-hovered cards a bit when deck is hovered */
+    .news-deck .deck:hover .nd-card{ filter:saturate(.8) brightness(.9); }
+    .news-deck .deck:hover .nd-card:hover{ filter:none; }
+
+    /* Keyboard focus ring */
+    .nd-card:focus-visible{ outline:2px solid #79a8ff; outline-offset:3px; }
+
+    /* Small screens: stack vertically (still tilt until hover) */
+    @media (max-width:10px){
+      .news-deck .deck{ overflow:visible; display:block; }
+      .nd-card{ margin-left:0; flex-basis:auto; width:100%; }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .nd-card, .nd-body{ transition:none; }
     }
   </style>
 </head>
@@ -320,13 +339,7 @@
         </div>
 
         <div class="media">
-          <video
-            autoplay
-            loop
-            muted
-            playsinline
-            preload="metadata"
-            poster="assets/videos/TDAP_poster.jpg">
+          <video autoplay loop muted playsinline preload="metadata" poster="assets/videos/TDAP_poster.jpg">
             <source src="assets/videos/TDAP.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -360,7 +373,7 @@
       <article class="project-card">
         <div class="project-head">
           <span class="dot" aria-hidden="true"></span>
-          <h3>High-Performance ting & Data Analysis</h3>
+          <h3>High-Performance Computing & Data Analysis</h3>
         </div>
         <div class="media contain">
           <img src="images/hpc-placeholder.jpg" alt="HPC workflow schematic">
@@ -387,29 +400,7 @@
     </div>
   </section>
 
-  <!-- Education & Research Experience -->
-  <section id="education">
-    <h2>Education & Research Experience</h2>
-    <div class="twocol">
-      <div>
-        <p><strong>Postdoctoral Researcher</strong> — Leibniz Institute of Polymer Research Dresden, Institute of Theoretical Physics (Active Matter Group)</p>
-        <p style="margin-top:-6px;color:#555;">Oct 2024 – present</p>
-        <ul><li>Investigating chemotaxis of active–passive assemblies via Brownian dynamics and theory.</li></ul>
-      </div>
-      <div>
-        <p><strong>Doctor of Science (Applied Physics)</strong> — Aalto University</p>
-        <p style="margin-top:-6px;color:#555;">Sep 2020 – Dec 2024</p>
-        <ul>
-          <li>Thesis: Modeling of Charged Polymers in Aqueous Solutions with Excess Ions and Interfaces.</li>
-          <li>Coarse-grained &amp; atomistic MD; analysis with NumPy, Pandas, scikit-learn.</li>
-          <li>Prepared structures in Schrödinger Maestro; ran LAMMPS &amp; GROMACS.</li>
-          <li>Developed an open-source C++ package for anisotropic particle interactions.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
+ <!-- Skills -->
   <section id="skills">
     <h2>Skills</h2>
     <div class="card skills">
@@ -468,6 +459,59 @@
       </div>
     </div>
   </section>
+  <!-- ======= NEWS (dark overlapping deck, tilted, hover to open) ======= -->
+  <section id="news" class="news-deck">
+    <h2>News</h2>
+    <div class="deck" aria-label="News deck">
+      <!-- Card 1 -->
+      <article class="nd-card" tabindex="0">
+        <div class="nd-head">
+          <div class="nd-meta">
+            <span class="nd-tag">Paper</span>
+            <time datetime="2025-09-10">Sep 10, 2025</time>
+          </div>
+          <h3 class="nd-title">Active polar polymer assemblies — preprint out</h3>
+        </div>
+        <div class="nd-body">
+          <p>Our preprint on collective dynamics in <strong>active polar polymer assemblies</strong> is now online. We show long-lived entangled clusters in stochastic activity gradients.</p>
+          <p><a class="nd-link" href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Read preprint</a></p>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="nd-card" tabindex="0">
+        <div class="nd-head">
+          <div class="nd-meta">
+            <span class="nd-tag">Talk</span>
+            <time datetime="2025-07-02">Jul 2, 2025</time>
+          </div>
+          <h3 class="nd-title">Invited talk: Polyelectrolyte adsorption &amp; dielectric contrast</h3>
+        </div>
+        <div class="nd-body">
+          <p>Seminar on how <strong>substrate dielectric contrast</strong> and <strong>salt valency</strong> govern PE adsorption, image-charge attraction, and monolayer formation.</p>
+          <p><a class="nd-link" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Related paper</a></p>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="nd-card" tabindex="0">
+        <div class="nd-head">
+          <div class="nd-meta">
+            <span class="nd-tag">Position</span>
+            <time datetime="2024-10-01">Oct 1, 2024</time>
+          </div>
+          <h3 class="nd-title">Joined IPF Dresden (Active Matter Group) as Postdoc</h3>
+        </div>
+        <div class="nd-body">
+          <p>I’ve joined the <strong>Leibniz Institute of Polymer Research Dresden</strong> to study chemotaxis of active–passive assemblies using Brownian dynamics and theory.</p>
+          <p><span class="nd-tag">Brownian Dynamics</span> <span class="nd-tag">Active Matter</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+ 
 
   <!-- Typewriter script placed at end -->
   <script>
@@ -480,7 +524,7 @@
     if (reduced) { el.textContent = phrases[0]; return; }
 
     let i = 0, j = 0, typing = true;
-    const speedType = 55, speedErase = 35, holdAfterType = 1200, holdAfterErase = 350;
+    const speedType = 55, speedErase = 35, holdAfterType = 2000, holdAfterErase = 350;
 
     function tick(){
       const phrase = phrases[i];
