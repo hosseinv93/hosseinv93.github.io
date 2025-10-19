@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Hossein Vahid, D. Sc. (Tech.)</title>
 
-  <!-- Lato (optional but recommended) -->
+  <!-- Lato -->
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --accent:#1A318BFF;             /* Dark blue accent */
+      --accent:#1A318B;               /* Dark blue accent */
       --accent-ink:#16286b;
-      --content-width: 890px;         /* Content column width */
-      --outer-margin: 36px;           /* Top/bottom white space on screen */
-      --side-padding: 26px;           /* Left/right inner padding on screen */
+      --ink:#101215;
       --muted:#606870;
       --card-bg:#f7f9ff;
-      --ink:#101215;
+      --content-width: 890px;
+      --outer-margin: 36px;
+      --side-padding: 26px;
       --radius:14px;
       --shadow: 0 10px 28px rgba(0,0,0,.06);
+      --hair:#e6e9f0;
     }
 
     html, body { direction:ltr; text-align:left; }
@@ -35,9 +36,9 @@
       -moz-osx-font-smoothing:grayscale;
     }
 
-    /* Headings & type */
-    h1{ font-size:2.05rem; margin:0 0 .25rem 0; color:var(--accent-ink); letter-spacing:0.2px; }
-    h2{ font-size:1.08rem; margin:1.35rem 0 .5rem; color:var(--accent); text-transform:uppercase; letter-spacing:.12em; }
+    /* Type */
+    h1{ font-size:2.05rem; margin:0 0 .25rem 0; color:var(--accent-ink); letter-spacing:.2px; }
+    h2{ font-size:1.08rem; margin:1.35rem 0 .6rem; color:var(--accent); text-transform:uppercase; letter-spacing:.12em; }
     h3{ font-size:1.02rem; margin:.2rem 0 .3rem; color:#0b1a0b; }
     p, li{ font-size:.98rem; }
     a{ color:#0b5cab; text-decoration:none; }
@@ -46,7 +47,7 @@
     /* Section divider */
     .rule{ height:3px; width:82px; background:var(--accent); margin:.55rem 0 1.1rem; border-radius:2px; }
 
-    /* Masthead: name/title left, image right */
+    /* Masthead */
     .masthead{
       display:grid;
       grid-template-columns: 1fr auto;
@@ -54,12 +55,10 @@
       align-items:center;
       margin-bottom:8px;
     }
-    .titleblock .subtitle{
-      color:#1a1a1a;
-      font-weight:700;
-      margin:2px 0 4px 0;
+    .subtitle{
+      color:#1a1a1a; font-weight:700; margin:2px 0 4px 0;
     }
-    .titleblock .subtitle small{ color:var(--muted); font-weight:600; }
+    .subtitle small{ color:var(--muted); font-weight:600; }
 
     .avatar{
       width:132px; height:132px; object-fit:cover;
@@ -68,149 +67,94 @@
       box-shadow:0 6px 18px rgba(0,0,0,.07);
     }
 
-    /* Card base (used by bio and projects) */
+    /* Social icons */
+    .social{ display:flex; gap:10px; align-items:center; margin:.35rem 0 .2rem; }
+    .social a{
+      display:inline-flex; width:34px; height:34px; align-items:center; justify-content:center;
+      border-radius:999px; background:#eef1ff; border:1px solid #e3e8ff;
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .social a:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08); background:#e6ecff; }
+    .social svg{ width:18px; height:18px; fill:var(--accent-ink); }
+
+    .contact{ margin:.2rem 0 0; color:#333; font-size:.95rem; }
+    .contact a{ color:#0b5cab; }
+
+    /* Card (shared) */
     .card{
-      position: relative;
       background:linear-gradient(180deg, var(--card-bg) 0%, #ffffff 60%);
       border-radius: var(--radius);
-      padding: 16px 18px;
       border:1px solid #e7ecff;
       box-shadow: var(--shadow);
-      transition: transform .25s ease, box-shadow .25s ease;
+      padding:16px 18px;
     }
-    .card:hover{ transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,.09); }
 
-    /* Projects grid */
+    /* ----- Projects (CLEAN + CONSISTENT) ----- */
+
+    /* Grid with equal-height columns */
     .projects-grid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
       gap: 18px;
       margin-top:.4rem;
-    }
-    .project-card{ padding:14px 14px; }
-    .project-title{ display:flex; align-items:center; gap:.5rem; }
-    .dot{
-      width:14px; height:14px; border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 0 3px rgba(26,49,139,.12);
-      flex:0 0 auto;
+      align-items:stretch;
     }
 
-    /* Grid that makes all columns equal height */
-.project-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-  align-items: stretch;               /* stretch cards to same row height */
-}
-
-/* Card is a vertical flexbox that fills its grid cell */
-.project-card{
-  display:flex;
-  flex-direction:column;
-  height:100%;
-  border:1px solid #e6e9f0;
-  border-radius:14px;
-  background:#fff;
-  box-shadow:0 8px 24px rgba(0,0,0,.06);
-  overflow:hidden;                     /* prevent content spill */
-}
-
-/* Image area with fixed aspect ratio; image covers fully (no empty bars) */
-.project-card .media{
-  aspect-ratio: 4 / 3;                 /* choose 4:3 (or 16/9, 1/1) */
-  width:100%;
-  overflow:hidden;
-  background:#f6f7fb;                  /* nice fallback color */
-}
-.project-card .media img{
-  width:100%;
-  height:100%;
-  display:block;
-  object-fit:cover;                     /* fill + crop as needed */
-}
-
-/* Text block uses remaining height; footer sticks to bottom */
-.project-card .content{
-  display:flex;
-  flex-direction:column;
-  padding:14px 16px;
-  gap:8px;
-  min-height:0;                         /* allow flex children to shrink */
-}
-.project-card .title{ font-weight:700; }
-.project-card .summary{ color:#556; line-height:1.5; }
-.project-card .meta{ color:#667; font-style:italic; }
-.project-card .more{ margin-top:auto; } /* pushes “Read more” to bottom */
-
-
-    /* Media frame (video/image) with aspect ratio */
-    .media{
-      position:relative;
-      width:100%;
-      aspect-ratio:16/9;
-      border-radius:10px;
-      overflow:hidden;
+    /* Each card fills its grid cell */
+    .project-card{
+      display:flex;
+      flex-direction:column;
+      height:100%;
       background:#fff;
-      margin:.5rem 0 .35rem;
-      border:1px solid #e3e8ff;
+      border:1px solid var(--hair);
+      border-radius:14px;
+      box-shadow:0 8px 24px rgba(0,0,0,.06);
+      overflow:hidden;
+      padding:0;                        /* card chrome handled by inner parts */
     }
 
-    .media-img img {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  padding: 8px;
-  background: #f5f7ff;
-  border-radius: 10px;
-}
+    .project-head{ display:flex; align-items:center; gap:.5rem; padding:12px 14px 6px; }
+    .dot{ width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(26,49,139,.12); }
 
-/* video shows full frame without forcing black bars */
-.media video{
-  position:absolute; inset:0; width:100%; height:100%;
-  object-fit:contain;
-  background:transparent;            /* <-- remove the black */
-}
-    .project-card p{ margin:.2rem 0 0; text-align:justify; color:#2f3338; }
-    .bio-card p{ margin:.25rem 0; text-align:justify; }
+    /* Fixed media window: same height for all cards */
+    .media{
+      width:100%;
+      aspect-ratio: 4 / 3;              /* choose 4:3; change to 16/9 if you prefer */
+      overflow:hidden;
+      background:#f6f7fb;
+      border-top:1px solid var(--hair);
+      border-bottom:1px solid var(--hair);
+    }
+    .media > img,
+    .media > video{
+      width:100%;
+      height:100%;
+      display:block;
+      object-fit:cover;                 /* fill area; crop if needed (no empty bars) */
+      background:#f6f7fb;
+    }
+    /* Use .media.contain if you have diagrams you don't want cropped */
+    .media.contain > img,
+    .media.contain > video{ object-fit:contain; }
 
-    /* Lists tighter for CV */
+    .project-body{
+      display:flex; flex-direction:column; gap:8px;
+      padding:12px 14px 14px;
+      min-height:0;
+    }
+    .project-body p{ margin:0; color:#2f3338; }
+    .project-meta{ color:#667; font-style:italic; }
+    .project-cta{ margin-top:auto; }
+    .project-cta a{ font-weight:700; }
+
+    /* Lists / general spacing */
     ul{ margin:.25rem 0 .8rem 1.25rem; }
     li{ margin:.15rem 0; }
 
-    /* Two-column helper for compact sections */
-    .twocol{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px 24px;
-    }
+    /* Two-column helper */
+    .twocol{ display:grid; grid-template-columns:1fr 1fr; gap: 14px 24px; }
 
-    /* Social icon row (SVG, layout-safe) */
-    .social{
-      display:flex; gap:10px; align-items:center;
-      margin:.35rem 0 .2rem;
-    }
-    .social a{
-      display:inline-flex; width:34px; height:34px;
-      align-items:center; justify-content:center;
-      border-radius:999px;
-      background:#eef1ff;                       /* soft blue chip */
-      border:1px solid #e3e8ff;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .social a:hover{
-      transform:translateY(-1px);
-      box-shadow:0 6px 16px rgba(0,0,0,.08);
-      background:#e6ecff;
-    }
-    .social svg{ width:18px; height:18px; fill:var(--accent-ink); }
-
-    /* Optional: tidy contact line */
-    .contact{ margin:.2rem 0 0 0; color:#333; font-size:.95rem; }
-    .contact a{ color:#0b5cab; text-decoration:none; }
-    .contact a:hover{ text-decoration:underline; }
-
-    /* Print/PDF styles */
+    /* Print */
     @media print{
       @page{ size:A4; margin:18mm 22mm; }
       body{ max-width:none; margin:0; padding:0; }
@@ -219,35 +163,13 @@
       .masthead{ grid-template-columns:1fr auto; gap:14pt; }
       .avatar{ width:110px; height:110px; }
       .rule{ margin:.3rem 0 .7rem; }
-      .card{ box-shadow:none; background:#fff; }
+      .card, .project-card{ box-shadow:none; background:#fff; }
     }
 
-    /* --- Enhanced Skills layout --- */
-    .skills.card{ padding:18px 18px 14px; }
-    .skills-grid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:16px 20px;
-    }
-    .skill-group .sg-title{
-      display:flex; align-items:center; gap:8px;
-      margin:0 0 8px; font-weight:700; color:var(--accent-ink);
-    }
-    .sg-title svg{ width:18px; height:18px; fill:var(--accent-ink); opacity:.9 }
-    .chips{ display:flex; flex-wrap:wrap; gap:8px; }
-    .chip{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:.22rem .55rem; border-radius:999px;
-      background:#eef1ff; border:1px solid #e3e8ff; /* blue variant to match theme */
-      font-size:.92rem; color:#16286b; font-weight:700;
-    }
-    .chip svg{ width:14px; height:14px; fill:#16286b; opacity:.9 }
-
-    /* Smaller screens */
+    /* Responsive */
     @media (max-width:760px){
       .projects-grid{ grid-template-columns:1fr; }
       .twocol{ grid-template-columns:1fr; }
-      .skills-grid{ grid-template-columns:1fr; }
     }
     @media (max-width:560px){
       .masthead{ grid-template-columns:1fr; text-align:left; }
@@ -263,7 +185,6 @@
       <h1>Hossein Vahid, D. Sc. (Tech.)</h1>
       <div class="subtitle">Computational Physicist <small>— MD · BD · DFT · ML</small></div>
 
-      <!-- Icon buttons -->
       <div class="social">
         <!-- LinkedIn -->
         <a href="https://www.linkedin.com/in/hossein-vahid93/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -271,25 +192,22 @@
             <path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.6 4.6 6v6H18V16c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V21H9z"/>
           </svg>
         </a>
-
         <!-- GitHub -->
         <a href="https://github.com/hosseinv93" target="_blank" rel="noopener" aria-label="GitHub">
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.05 1.79 2.76 1.27 3.43.97.11-.77.41-1.27.75-1.56-2.6-.29-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.22-3.15-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.28 1.2a11.4 11.4 0 0 1 5.98 0c2.28-1.52 3.28-1.2 3.28-1.2.65 1.65.24 2.88.12 3.18.76.82 1.22 1.87 1.22 3.15 0 4.51-2.74 5.51-5.36 5.8.42.36.8 1.06.8 2.14v3.17c0 .31.21.68.81.56A11.5 11.5 0 0 0 12 .5z"/>
           </svg>
         </a>
-
-        
-  <a href="https://scholar.google.com/citations?user=C2zv5SYAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/512px-Google_Scholar_logo.svg.png?20200110094142" alt="Google Scholar" width="18" height="18" loading="lazy">
-  </a>
-
-  <a href="https://orcid.org/0000-0002-7345-5423" target="_blank" rel="noopener" aria-label="ORCID">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/512px-ORCID_iD.svg.png?20190308043226" alt="ORCID" width="18" height="18" loading="lazy">
-  </a>
+        <!-- Google Scholar -->
+        <a href="https://scholar.google.com/citations?user=C2zv5SYAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/512px-Google_Scholar_logo.svg.png?20200110094142" alt="Google Scholar" width="18" height="18" loading="lazy">
+        </a>
+        <!-- ORCID -->
+        <a href="https://orcid.org/0000-0002-7345-5423" target="_blank" rel="noopener" aria-label="ORCID">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/512px-ORCID_iD.svg.png?20190308043226" alt="ORCID" width="18" height="18" loading="lazy">
+        </a>
       </div>
 
-      <!-- Optional: email under icons -->
       <div class="contact">
         Email: <a href="mailto:vahid@ipfdd.de">vahid@ipfdd.de</a>
       </div>
@@ -300,10 +218,10 @@
 
   <div class="rule"></div>
 
-  <!-- BIO FIRST -->
-  <section class="bio-section" id="about">
+  <!-- About -->
+  <section id="about">
     <h2>About Me</h2>
-    <article class="card bio-card">
+    <article class="card">
       <p>
         Experienced in modeling materials and analyzing structure–property relationships using
         <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian dynamics (BD)</strong>, <strong>Density Functional Theory (DFT)</strong>, and
@@ -313,72 +231,73 @@
     </article>
   </section>
 
-  <!-- Projects & Movies -->
+  <!-- Research Highlights -->
   <section id="projects" style="margin-top:12px;">
     <h2>Research Highlights</h2>
+
     <div class="projects-grid">
 
-      <!-- Project 1 -->
-      <article class="card project-card">
-        <div class="project-title">
+      <!-- Project 1 (video) -->
+      <article class="project-card">
+        <div class="project-head">
           <span class="dot" aria-hidden="true"></span>
           <h3>Polar Polymer Assemblies</h3>
         </div>
         <div class="media">
           <video autoplay loop muted playsinline>
             <source src="assets/img/videos/TDAP.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
         </div>
-        <p>
-  <strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.  
-  (<a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a>)
-</p>
-        <p style="margin-top:6px; font-size:0.95rem; color:#444;">
-  <em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
-  <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, and Abhinav Sharma<br>
-  <em>Physical Review Research</em> (2025)
-</p>
+        <div class="project-body">
+          <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
+          <p class="project-meta"><em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
+          <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, Abhinav Sharma — <em>Physical Review Research</em> (2025)</p>
+          <p class="project-cta"><a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a></p>
+        </div>
       </article>
 
-
-
-        <article class="project-card">
-    <div class="media">
-      <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like Polyelectrolytes">
-    </div>
-    <div class="content">
-      <h3 class="title">DNA-like Polyelectrolytes</h3>
-      <p class="summary"><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength…</p>
-      <p class="meta"><em>Journal of Chemical Physics 161, 134907 (2024)</em></p>
-      <a class="more" href="https://doi.org/10.1063/5.0223124">Read more</a>
-    </div>
-  </article>
-
-      
+      <!-- Project 2 (image) -->
+      <article class="project-card">
+        <div class="project-head">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>DNA-like Polyelectrolytes</h3>
+        </div>
+        <div class="media">
+          <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like Polyelectrolytes">
+        </div>
+        <div class="project-body">
+          <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength, image-charge attraction, and monolayer formation in coarse-grained MD.</p>
+          <p class="project-meta"><em>Journal of Chemical Physics</em> 161, 134907 (2024)</p>
+          <p class="project-cta"><a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a></p>
+        </div>
+      </article>
 
       <!-- Project 3 -->
-      <article class="card project-card">
-        <div class="project-title">
+      <article class="project-card">
+        <div class="project-head">
           <span class="dot" aria-hidden="true"></span>
           <h3>High-Performance Computing & Data Analysis</h3>
         </div>
-        <div class="media">
+        <div class="media contain">
           <img src="images/hpc-placeholder.jpg" alt="HPC workflow schematic">
         </div>
-        <p>Scalable workflows and Python post-processing pipelines for large-scale MD simulations.</p>
+        <div class="project-body">
+          <p>Scalable workflows and Python post-processing pipelines for large-scale MD simulations.</p>
+        </div>
       </article>
 
       <!-- Project 4 -->
-      <article class="card project-card">
-        <div class="project-title">
+      <article class="project-card">
+        <div class="project-head">
           <span class="dot" aria-hidden="true"></span>
           <h3>Machine Learning for Materials</h3>
         </div>
-        <div class="media">
+        <div class="media contain">
           <img src="images/ml-placeholder.jpg" alt="ML models for materials properties">
         </div>
-        <p>Applying ML models to predict properties and behavior of materials at atomic and molecular scales.</p>
+        <div class="project-body">
+          <p>Applying ML models to predict properties and behavior of materials at atomic and molecular scales.</p>
+        </div>
       </article>
 
     </div>
@@ -411,89 +330,17 @@
   </section>
 
   <!-- Skills -->
-  <h2>Skills</h2>
-  <section class="skills card" aria-label="Skills">
-    <div class="skills-grid">
-
-      <!-- Programming -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <!-- code icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>
-          <span>Programming</span>
-        </div>
-        <div class="chips">
-          <span class="chip">
-            <!-- python -->
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h4a4 4 0 0 1 4 4v2H9a2 2 0 0 0-2 2v3H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h2Zm-1.5 2.5a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"/></svg>
-            Python
-          </span>
-          <span class="chip">Bash</span>
-          <span class="chip">C++</span>
-          <span class="chip">MATLAB</span>
-        </div>
-      </div>
-
-      <!-- Materials & Simulation -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <!-- flask / lab icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v2h-1v3.6l5.8 9.5A2 2 0 0 1 18 21H6a2 2 0 0 1-1.8-2.9L10 8.6V5H9V3Zm1.7 7-5.3 8.6a.5.5 0 0 0 .4.7h12a.5.5 0 0 0 .4-.7L13.9 10H10.7Z"/></svg>
-          <span>Materials &amp; Simulation</span>
-        </div>
-        <div class="chips">
-          <span class="chip">LAMMPS</span>
-          <span class="chip">GROMACS</span>
-          <span class="chip">VASP</span>
-          <span class="chip">FHI-aims</span>
-          <span class="chip">MLIP</span>
-          <span class="chip">USPEX</span>
-          <span class="chip">ORCA</span>
-          <span class="chip">Schrödinger&nbsp;Maestro</span>
-        </div>
-      </div>
-
-      <!-- Data Science -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <!-- database icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>
-          <span>Data Science</span>
-        </div>
-        <div class="chips">
-          <span class="chip">NumPy</span>
-          <span class="chip">Pandas</span>
-          <span class="chip">scikit-learn</span>
-          <span class="chip">Matplotlib</span>
-          <span class="chip">Jupyter</span>
-        </div>
-      </div>
-
-      <!-- Other -->
-      <div class="skill-group">
-        <div class="sg-title">
-          <!-- toolbox icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3h-4v2h-2v-2H8v2H6v-2H2V9a2 2 0 0 1 2-2h3Zm2-2h6v2H9V5Zm15 8v6a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-6h4v2h4v-2h8v2h4v-2h4Z"/></svg>
-          <span>Other</span>
-        </div>
-        <div class="chips">
-          <span class="chip">Linux</span>
-          <span class="chip">LaTeX</span>
-          <span class="chip">PyCharm</span>
-          <span class="chip">VESTA</span>
-          <span class="chip">VMD</span>
-          <span class="chip">OVITO</span>
-          <span class="chip">Overleaf</span>
-          <span class="chip">Inkscape</span>
-          <span class="chip">MS Office</span>
-          <span class="chip">Git</span>
-        </div>
-      </div>
-
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="card">
+      <p><strong>Programming:</strong> Python, Bash, C++, MATLAB</p>
+      <p><strong>Materials & Simulation:</strong> LAMMPS, GROMACS, VASP, FHI-aims, MLIP, USPEX, ORCA, Schrödinger Maestro</p>
+      <p><strong>Data Science:</strong> NumPy, Pandas, scikit-learn, Matplotlib, Jupyter</p>
+      <p><strong>Other:</strong> Linux, LaTeX, PyCharm, VESTA, VMD, OVITO, Overleaf, Inkscape, MS Office, Git</p>
     </div>
   </section>
 
-  <!-- Selected Publications -->
+  <!-- Publications -->
   <section id="publications">
     <h2>Selected Publications</h2>
     <ul>
