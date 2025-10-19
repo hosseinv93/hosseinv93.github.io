@@ -91,61 +91,61 @@
 
     /* ----- Projects (CLEAN + CONSISTENT) ----- */
 
-    /* Grid with equal-height columns */
-    .projects-grid{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 18px;
-      margin-top:.4rem;
-      align-items:stretch;
-    }
+ /* Project grid */
+.projects-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap:18px;
+  align-items:stretch;
+}
 
-    /* Each card fills its grid cell */
-    .project-card{
-      display:flex;
-      flex-direction:column;
-      height:100%;
-      background:#fff;
-      border:1px solid var(--hair);
-      border-radius:14px;
-      box-shadow:0 8px 24px rgba(0,0,0,.06);
-      overflow:hidden;
-      padding:0;                        /* card chrome handled by inner parts */
-    }
+/* Card container */
+.project-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  border:1px solid #e6e9f0;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  overflow:hidden;         /* <- critical: nothing can spill outside */
+  padding:0;               /* <- no inner padding that pushes media */
+  box-sizing:border-box;
+}
 
-    .project-head{ display:flex; align-items:center; gap:.5rem; padding:12px 14px 6px; }
-    .dot{ width:14px; height:14px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(26,49,139,.12); }
+/* Title row */
+.project-head{ display:flex; align-items:center; gap:.5rem; padding:12px 14px 6px; }
+.dot{ width:14px; height:14px; border-radius:50%; background:#1A318B; box-shadow:0 0 0 3px rgba(26,49,139,.12); }
 
-    /* Fixed media window: same height for all cards */
-    .media{
-      width:100%;
-      aspect-ratio: 4 / 3;              /* choose 4:3; change to 16/9 if you prefer */
-      overflow:hidden;
-      background:#f6f7fb;
-      border-top:1px solid var(--hair);
-      border-bottom:1px solid var(--hair);
-    }
-    .media > img,
-    .media > video{
-      width:100%;
-      height:100%;
-      display:block;
-      object-fit:cover;                 /* fill area; crop if needed (no empty bars) */
-      background:#f6f7fb;
-    }
-    /* Use .media.contain if you have diagrams you don't want cropped */
-    .media.contain > img,
-    .media.contain > video{ object-fit:contain; }
+/* Media window (same height for all) */
+.project-card .media{
+  aspect-ratio: 4 / 3;     /* pick 4/3 or 16/9 */
+  width:100%;
+  margin:0;                /* <- remove stray margins */
+  border-top:1px solid #e6e9f0;
+  border-bottom:1px solid #e6e9f0;
+  background:#f6f7fb;
+  overflow:hidden;
+}
 
-    .project-body{
-      display:flex; flex-direction:column; gap:8px;
-      padding:12px 14px 14px;
-      min-height:0;
-    }
-    .project-body p{ margin:0; color:#2f3338; }
-    .project-meta{ color:#667; font-style:italic; }
-    .project-cta{ margin-top:auto; }
-    .project-cta a{ font-weight:700; }
+/* Media content fills window; cannot exceed */
+.project-card .media > img,
+.project-card .media > video{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;        /* cover = fill + crop (no empty bars) */
+}
+
+/* If a figure must not be cropped, add .contain on that media */
+.project-card .media.contain > img,
+.project-card .media.contain > video{ object-fit:contain; background:#fff; }
+
+/* Body */
+.project-body{ display:flex; flex-direction:column; gap:8px; padding:12px 14px 14px; min-height:0; }
+.project-meta{ color:#667; font-style:italic; }
+.project-cta{ margin-top:auto; }
+
 
     /* Lists / general spacing */
     ul{ margin:.25rem 0 .8rem 1.25rem; }
@@ -237,40 +237,42 @@
 
     <div class="projects-grid">
 
-      <!-- Project 1 (video) -->
-      <article class="project-card">
-        <div class="project-head">
-          <span class="dot" aria-hidden="true"></span>
-          <h3>Polar Polymer Assemblies</h3>
-        </div>
-        <div class="media">
-          <video autoplay loop muted playsinline>
-            <source src="assets/img/videos/TDAP.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="project-body">
-          <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
-          <p class="project-meta"><em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
-          <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, Abhinav Sharma — <em>Physical Review Research</em> (2025)</p>
-          <p class="project-cta"><a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a></p>
-        </div>
-      </article>
+ <article class="project-card">
+  <div class="project-head">
+    <span class="dot" aria-hidden="true"></span>
+    <h3>Polar Polymer Assemblies</h3>
+  </div>
 
-      <!-- Project 2 (image) -->
-      <article class="project-card">
-        <div class="project-head">
-          <span class="dot" aria-hidden="true"></span>
-          <h3>DNA-like Polyelectrolytes</h3>
-        </div>
-        <div class="media">
-          <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like Polyelectrolytes">
-        </div>
-        <div class="project-body">
-          <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength, image-charge attraction, and monolayer formation in coarse-grained MD.</p>
-          <p class="project-meta"><em>Journal of Chemical Physics</em> 161, 134907 (2024)</p>
-          <p class="project-cta"><a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a></p>
-        </div>
-      </article>
+  <div class="media">
+    <video autoplay loop muted playsinline>
+      <source src="assets/img/videos/TDAP.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="project-body">
+    <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
+    <p class="project-meta"><em>Physical Review Research</em> (2025)</p>
+    <p class="project-cta"><a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a></p>
+  </div>
+</article>
+
+<article class="project-card">
+  <div class="project-head">
+    <span class="dot" aria-hidden="true"></span>
+    <h3>DNA-like Polyelectrolytes</h3>
+  </div>
+
+  <!-- use .contain if you don't want cropping -->
+  <div class="media contain">
+    <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like Polyelectrolytes">
+  </div>
+
+  <div class="project-body">
+    <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength…</p>
+    <p class="project-meta"><em>J. Chem. Phys.</em> 161, 134907 (2024)</p>
+    <p class="project-cta"><a href="https://doi.org/10.1063/5.0223124">Read more</a></p>
+  </div>
+</article>
 
       <!-- Project 3 -->
       <article class="project-card">
