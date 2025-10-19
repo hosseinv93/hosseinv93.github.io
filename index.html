@@ -90,30 +90,67 @@
     }
     .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
-   /* Masonry columns */
+/* Masonry columns (Option B) */
 .projects-grid{
-  column-count: 2;       /* change to 1/3 responsively if you like */
+  column-count: 2;          /* adjust at breakpoints if needed */
   column-gap: 18px;
 }
 
-/* Cards become masonry items */
+/* Card: padding added so text isn't near the edge */
 .project-card{
   display:inline-block;
   width:100%;
-  margin: 0 0 18px;
-  break-inside: avoid;   /* avoid splitting across columns */
-  border:1px solid #e6e9f0; border-radius:14px; overflow:hidden;
-  background:#fff; box-shadow:0 8px 24px rgba(0,0,0,.06);
+  margin:0 0 18px;
+  break-inside: avoid;
+  border:1px solid #e6e9f0;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  padding:14px 16px;        /* ← adds breathing room */
+  overflow:hidden;          /* keeps rounded corners clean */
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.project-card:hover{ transform:translateY(-3px); box-shadow:0 12px 32px rgba(0,0,0,.09); }
+
+/* Title row: bold, stylish, consistent spacing */
+.project-card .title{
+  display:flex; align-items:center; gap:.5rem;
+  margin:0 0 8px;
+}
+.project-card .title h3{
+  margin:0;
+  font-weight:800;          /* ← bolder */
+  font-size:1.06rem;
+  letter-spacing:.01em;
+  color:var(--accent-ink);  /* your dark blue */
+}
+.project-card .dot{
+  width:14px; height:14px; border-radius:50%;
+  background:var(--accent);
+  box-shadow:0 0 0 3px rgba(26,49,139,.12);
+  flex:0 0 auto;
 }
 
-/* Media scales naturally, no aspect clamp */
+/* Media scales naturally; keep it visually separated and full-bleed */
+.project-card .media{
+  margin:8px -16px 10px;    /* ← extends media edge-to-edge inside card */
+  background:#f6f7fb;
+  border-top:1px solid #e6e9f0;
+  border-bottom:1px solid #e6e9f0;
+}
 .project-card .media > img,
 .project-card .media > video{
   width:100%;
   height:auto;
   display:block;
-  object-fit:contain;
+  object-fit:contain;       /* no cropping; variable heights allowed */
 }
+
+/* Body text spacing */
+.project-card p{ margin:0 0 8px; line-height:1.55; }
+.project-card .meta{ color:#667; font-style:italic; }
+.project-card .more{ font-weight:700; }
+
 
     /* Lists / helpers */
     ul{ margin:.25rem 0 .8rem 1.25rem; }
@@ -219,24 +256,18 @@
 
     <div class="projects-grid">
 
-      <!-- Project 1 (video) -->
       <article class="project-card">
-        <div class="project-head">
-          <span class="dot" aria-hidden="true"></span>
-          <h3>Polar Polymer Assemblies</h3>
-        </div>
-        <div class="media">
-          <video autoplay loop muted playsinline>
-            <source src="assets/img/videos/TDAP.mp4" type="video/mp4">
-          </video>
-        </div>
-        <div class="project-body">
-          <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
-          <p class="project-meta"><em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
-            <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, Abhinav Sharma — <em>Physical Review Research</em> (2025)</p>
-          <p class="project-cta"><a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a></p>
-        </div>
-      </article>
+  <div class="title">
+    <span class="dot" aria-hidden="true"></span>
+    <h3>Polar Polymer Assemblies</h3>
+  </div>
+  <div class="media">
+    <img src="assets/img/polar.png" alt="Polar Polymer Assemblies">
+  </div>
+  <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
+  <p class="meta"><em>Physical Review Research</em> (2025)</p>
+  <a class="more" href="#">Read more</a>
+</article>
 
       <!-- Project 2 (image) -->
       <article class="project-card">
