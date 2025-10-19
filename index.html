@@ -96,6 +96,54 @@
       flex:0 0 auto;
     }
 
+    /* Grid that makes all columns equal height */
+.project-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  align-items: stretch;               /* stretch cards to same row height */
+}
+
+/* Card is a vertical flexbox that fills its grid cell */
+.project-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  border:1px solid #e6e9f0;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 8px 24px rgba(0,0,0,.06);
+  overflow:hidden;                     /* prevent content spill */
+}
+
+/* Image area with fixed aspect ratio; image covers fully (no empty bars) */
+.project-card .media{
+  aspect-ratio: 4 / 3;                 /* choose 4:3 (or 16/9, 1/1) */
+  width:100%;
+  overflow:hidden;
+  background:#f6f7fb;                  /* nice fallback color */
+}
+.project-card .media img{
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;                     /* fill + crop as needed */
+}
+
+/* Text block uses remaining height; footer sticks to bottom */
+.project-card .content{
+  display:flex;
+  flex-direction:column;
+  padding:14px 16px;
+  gap:8px;
+  min-height:0;                         /* allow flex children to shrink */
+}
+.project-card .title{ font-weight:700; }
+.project-card .summary{ color:#556; line-height:1.5; }
+.project-card .meta{ color:#667; font-style:italic; }
+.project-card .more{ margin-top:auto; } /* pushes “Read more” to bottom */
+
+
     /* Media frame (video/image) with aspect ratio */
     .media{
       position:relative;
@@ -293,31 +341,19 @@
 </p>
       </article>
 
-<!-- Project 2 -->
-<article class="card project-card">
-  <div class="project-title">
-    <span class="dot" aria-hidden="true"></span>
-    <h3>DNA-like Polyelectrolytes</h3>
-  </div>
 
-  <!-- Use an image for PNGs -->
-<div class="media-img">
-  <img src="assets/img/PE-ADSORPTION.png"
-       alt="Polyelectrolyte adsorption near a dielectric interface">
-</div>
 
-  <p>
-    <strong>Substrate dielectric contrast and salt valency</strong> critically govern adsorption strength,
-    image-charge attraction, and monolayer formation in coarse-grained MD.  
-    (<a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a>)
-  </p>
-
-  <p style="margin-top:6px; font-size:0.95rem; color:#444;">
-    <em>Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate</em><br>
-    <strong>Hossein Vahid</strong>, Alberto Scacchi, Maria Sammalkorpi, and Tapio Ala-Nissila<br>
-    <em>Journal of Chemical Physics</em> <strong>161</strong>, 134907 (2024)
-  </p>
-</article>
+        <article class="project-card">
+    <div class="media">
+      <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like Polyelectrolytes">
+    </div>
+    <div class="content">
+      <h3 class="title">DNA-like Polyelectrolytes</h3>
+      <p class="summary"><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength…</p>
+      <p class="meta"><em>Journal of Chemical Physics 161, 134907 (2024)</em></p>
+      <a class="more" href="https://doi.org/10.1063/5.0223124">Read more</a>
+    </div>
+  </article>
 
       
 
