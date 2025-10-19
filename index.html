@@ -90,109 +90,108 @@
     }
     .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
-/* Masonry columns (keeps variable heights) */
-.projects-grid{
-  column-count: 2;                 /* 1–3 works; change for width */
-  column-gap: 50px;
-}
+    /* Masonry columns (keeps variable heights) */
+    .projects-grid{
+      column-count: 2;                 /* 1–3 works; change for width */
+      column-gap: 50px;
+    }
 
-/* Fancy card */
-.project-card{
-  display:inline-block;
-  width:90%;                      /* fill the masonry column */
-  margin:0 0 22px;
-  break-inside: avoid;
-  border:1px solid #e6e9f0;
-  border-radius:16px;
-  background:
-    linear-gradient(180deg,#fbfcff, #ffffff 60%) padding-box,
-    linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box; /* soft tinted border */
-  box-shadow:0 10px 28px rgba(0,0,0,.06);
-  padding:16px 18px;
-  overflow:hidden;
-  transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
-.project-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 16px 42px rgba(0,0,0,.12);
-  border-color:#ff976a
-}
+    /* Fancy card */
+    .project-card{
+      display:inline-block;
+      width:90%;                      /* fill the masonry column */
+      margin:0 0 22px;
+      break-inside: avoid;
+      border:1px solid #e6e9f0;
+      border-radius:16px;
+      background:
+        linear-gradient(180deg,#fbfcff, #ffffff 60%) padding-box,
+        linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box; /* soft tinted border */
+      box-shadow:0 10px 28px rgba(0,0,0,.06);
+      padding:16px 18px;
+      overflow:hidden;
+      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .project-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 16px 42px rgba(0,0,0,.12);
+      border-color:#ff976a
+    }
 
-/* Title row */
-.project-card .title{
-  display:flex; align-items:center; gap:.6rem; margin:0 0 10px;
-}
-.project-card .dot{
-  width:14px; height:14px; border-radius:50%;
-  background:var(--accent);
-  box-shadow:
-    0 0 0 3px rgba(26,49,139,.12),
-    0 0 12px rgba(26,49,139,.25);   /* subtle glow */
-  flex:0 0 auto;
-}
-.project-card .title h3{
-  margin:0;
-  font-weight:800;
-  font-size:1.08rem;
-  letter-spacing:.01em;
-  color:var(--accent-ink);
-  position:relative;
-}
-.project-card .title h3::after{     /* animated underline */
-  content:"";
-  position:absolute; left:0; bottom:-6px;
-  width:44px; height:3px; border-radius:3px;
-  background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2));
-  transition:width .25s ease;
-}
-.project-card:hover .title h3::after{ width:72px; }
+    /* Title row */
+    .project-card .title{
+      display:flex; align-items:center; gap:.6rem; margin:0 0 10px;
+    }
+    .project-card .dot{
+      width:14px; height:14px; border-radius:50%;
+      background:var(--accent);
+      box-shadow:
+        0 0 0 3px rgba(26,49,139,.12),
+        0 0 12px rgba(26,49,139,.25);   /* subtle glow */
+      flex:0 0 auto;
+    }
+    .project-card .title h3{
+      margin:0;
+      font-weight:800;
+      font-size:1.08rem;
+      letter-spacing:.01em;
+      color:var(--accent-ink);
+      position:relative;
+    }
+    .project-card .title h3::after{     /* animated underline */
+      content:"";
+      position:absolute; left:0; bottom:-6px;
+      width:44px; height:3px; border-radius:3px;
+      background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2));
+      transition:width .25s ease;
+    }
+    .project-card:hover .title h3::after{ width:72px; }
 
-/* Media: edge-to-edge inside the card, rounded, with soft border */
-.project-card .media{
-  margin:12px 80px 20px;           /* extend to card edges */
-  padding:0;
-  background:#f6f7fb;
-  border-top:1px solid #e6e9f0;
-  border-bottom:1px solid #e6e9f0;
-}
-.project-card .media > img,
-.project-card .media > video{
-  width:100%; height:auto; display:block;
-  object-fit:contain;               /* no cropping (masonry can vary height) */
-}
+    /* Media: edge-to-edge inside the card, rounded, with soft border */
+    .project-card .media{
+      margin:12px 80px 20px;           /* extend to card edges */
+      padding:0;
+      background:#f6f7fb;
+      border-top:1px solid #e6e9f0;
+      border-bottom:1px solid #e6e9f0;
+    }
+    .project-card .media > img,
+    .project-card .media > video{
+      width:100%; height:auto; display:block;
+      object-fit:contain;               /* no cropping (masonry can vary height) */
+    }
 
-/* Body text + meta */
-.project-card p{ margin:0 0 10px; line-height:1.56; color:#2f3338; }
-.project-card .meta{ color:#667; font-style:italic; }
+    /* Body text + meta */
+    .project-card p{ margin:0 0 10px; line-height:1.56; color:#2f3338; }
+    .project-card .meta{ color:#667; font-style:italic; }
 
-/* CTA chip */
-.project-card .more{
-  display:inline-flex; align-items:center; gap:6px;
-  padding:.28rem .6rem; border-radius:999px;
-  background:#eef1ff; border:1px solid #e3e8ff;
-  font-weight:700; text-decoration:none;
-  color:var(--accent-ink);
-  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-}
-.project-card .more:hover{
-  transform:translateY(-1px);
-  box-shadow:0 6px 16px rgba(0,0,0,.08);
-  background:#ff976a;
-}
+    /* CTA chip */
+    .project-card .more{
+      display:inline-flex; align-items:center; gap:6px;
+      padding:.28rem .6rem; border-radius:999px;
+      background:#eef1ff; border:1px solid #e3e8ff;
+      font-weight:700; text-decoration:none;
+      color:var(--accent-ink);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .project-card .more:hover{
+      transform:translateY(-1px);
+      box-shadow:0 6px 16px rgba(0,0,0,.08);
+      background:#ff976a;
+    }
 
-/* Responsive: single column on phones */
-@media (max-width:760px){ .projects-grid{ column-count:1; } }
+    /* Responsive: single column on phones */
+    @media (max-width:760px){ .projects-grid{ column-count:1; } }
 
-/* Motion-safe */
-@media (prefers-reduced-motion:reduce){
-  .project-card, .project-card .more { transition:none; }
-}
+    /* Motion-safe */
+    @media (prefers-reduced-motion:reduce){
+      .project-card, .project-card .more { transition:none; }
+    }
 
-/* Body text spacing */
-.project-card p{ margin:0 0 8px; line-height:1.55; }
-.project-card .meta{ color:#667; font-style:italic; }
-.project-card .more{ font-weight:700; }
-
+    /* Body text spacing */
+    .project-card p{ margin:0 0 8px; line-height:1.55; }
+    .project-card .meta{ color:#667; font-style:italic; }
+    .project-card .more{ font-weight:700; }
 
     /* Lists / helpers */
     ul{ margin:.25rem 0 .8rem 1.25rem; }
@@ -240,6 +239,18 @@
       .masthead{ grid-template-columns:1fr; text-align:left; }
       .avatar{ width:112px; height:112px; justify-self:start; }
     }
+
+    /* --- Typewriter ONLY (new) --- */
+    .subtitle{ position:relative; display:flex; align-items:center; gap:.35rem; }
+    .cursor{
+      width:2px; height:1.2em; background:var(--accent-ink);
+      display:inline-block; translate:0 .1em;
+      animation: blink .9s steps(1) infinite;
+    }
+    @keyframes blink{ 50% { opacity:0; } }
+    @media (prefers-reduced-motion: reduce){
+      .cursor{ display:none; animation:none; }
+    }
   </style>
 </head>
 <body>
@@ -248,7 +259,12 @@
   <header class="masthead">
     <div class="titleblock">
       <h1>Hossein Vahid, D. Sc. (Tech.)</h1>
-      <div class="subtitle">Computational Physicist <small>— MD · BD · DFT · ML</small></div>
+
+      <!-- subtitle changed to typewriter -->
+      <div class="subtitle">
+        <span id="tw-text" aria-live="polite"></span>
+        <span class="cursor" aria-hidden="true"></span>
+      </div>
 
       <div class="social">
         <!-- LinkedIn -->
@@ -297,53 +313,48 @@
     <h2>Research Highlights</h2>
 
     <div class="projects-grid">
-<article class="project-card">
-  <div class="title">
-    <span class="dot" aria-hidden="true"></span>
-    <h3>Polar Polymer Assemblies</h3>
-  </div>
+      <article class="project-card">
+        <div class="title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>Polar Polymer Assemblies</h3>
+        </div>
 
-  <div class="media">
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
-      preload="metadata"
-      poster="assets/videos/TDAP_poster.jpg"  <!-- optional thumbnail -->
-    >
-      <source src="assets/videos/TDAP.mp4" type="video/mp4">
-      <!-- (Optional) add a WebM source if you have it
-      <source src="assets/img/videos/TDAP.webm" type="video/webm">
-      -->
-      Your browser does not support the video tag.
-    </video>
-  </div>
+        <div class="media">
+          <video
+            autoplay
+            loop
+            muted
+            playsinline
+            preload="metadata"
+            poster="assets/videos/TDAP_poster.jpg">
+            <source src="assets/videos/TDAP.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
 
-  <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
-  <p class="meta"><em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
-     <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, Abhinav Sharma — <em>Physical Review Research</em> (2025)
-  </p>
-  <a class="more" href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a>
-</article>
+        <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
+        <p class="meta"><em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
+          <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, Abhinav Sharma — <em>Physical Review Research</em> (2025)
+        </p>
+        <a class="more" href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a>
+      </article>
 
-<article class="project-card">
-  <div class="title">
-    <span class="dot" aria-hidden="true"></span>
-    <h3>DNA-like Polyelectrolytes</h3>
-  </div>
+      <article class="project-card">
+        <div class="title">
+          <span class="dot" aria-hidden="true"></span>
+          <h3>DNA-like Polyelectrolytes</h3>
+        </div>
 
-  <div class="media">
-    <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like polyelectrolyte adsorption simulation">
-  </div>
+        <div class="media">
+          <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like polyelectrolyte adsorption simulation">
+        </div>
 
-  <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength, image-charge attraction, and monolayer formation in coarse-grained MD.</p>
-  <p class="meta"><em>Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate</em><br>
-     <strong>Hossein Vahid</strong>, Alberto Scacchi, Maria Sammalkorpi, Tapio Ala-Nissila — <em>Journal of Chemical Physics</em> 161, 134907 (2024)</p>
-  </p>
-  <a class="more" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a>
-</article>
-
+        <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength, image-charge attraction, and monolayer formation in coarse-grained MD.</p>
+        <p class="meta"><em>Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate</em><br>
+          <strong>Hossein Vahid</strong>, Alberto Scacchi, Maria Sammalkorpi, Tapio Ala-Nissila — <em>Journal of Chemical Physics</em> 161, 134907 (2024)
+        </p>
+        <a class="more" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a>
+      </article>
 
       <!-- Project 3 -->
       <article class="project-card">
@@ -434,7 +445,7 @@
         <div class="skill-group">
           <div class="sg-title">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>
-            <span>Data Science</span>
+          <span>Data Science</span>
           </div>
           <div class="chips">
             <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span><span class="chip">Matplotlib</span><span class="chip">Jupyter</span>
@@ -457,6 +468,35 @@
       </div>
     </div>
   </section>
+
+  <!-- Typewriter script placed at end -->
+  <script>
+  (function(){
+    const phrases = ["Computational Physicist — MD · BD · DFT · ML"];
+    const el = document.getElementById("tw-text");
+    if (!el) return;
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) { el.textContent = phrases[0]; return; }
+
+    let i = 0, j = 0, typing = true;
+    const speedType = 55, speedErase = 35, holdAfterType = 1200, holdAfterErase = 350;
+
+    function tick(){
+      const phrase = phrases[i];
+      if (typing){
+        el.textContent = phrase.slice(0, ++j);
+        if (j === phrase.length){ typing = false; return void setTimeout(tick, holdAfterType); }
+        setTimeout(tick, speedType);
+      } else {
+        el.textContent = phrase.slice(0, --j);
+        if (j === 0){ typing = true; i = (i + 1) % phrases.length; return void setTimeout(tick, holdAfterErase); }
+        setTimeout(tick, speedErase);
+      }
+    }
+    tick();
+  })();
+  </script>
 
 </body>
 </html>
