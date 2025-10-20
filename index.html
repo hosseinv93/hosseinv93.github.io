@@ -177,12 +177,14 @@
   gap:0;
   scrollbar-width: none;       /* Firefox */
   -ms-overflow-style: none;    /* IE/Edge legacy */
+  --cards: 10;
+  flex-wrap: nowrap; 
 }
 .news-deck .deck::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
     .nd-card{
-      --w: 220px;        /* collapsed width (small) */
-      --h: 180px;        /* collapsed height */
-      --overlap: 120px;  /* negative margin to overlap */
+  --w: 220px;
+  --overlap: calc((var(--cards) * var(--w) - 100%) / (var(--cards) - 1));
+  --h: 180px;
       position:relative;
       flex: 0 0 var(--w);
       height: var(--h);
@@ -210,16 +212,19 @@
     .nd-card:first-child{ margin-left:0; }
 
     /* Staggered tilt + stacking like CSS-Tricks */
-    .nd-card:nth-child(1){ --tilt:-8deg; --z:11; }
-    .nd-card:nth-child(2){ --tilt:-5deg; --z:12; }
-    .nd-card:nth-child(3){ --tilt:-2deg; --z:13; }
-    .nd-card:nth-child(4){ --tilt:-1deg; --z:14; }
+    .nd-card:nth-child(1){ --tilt:-20deg; --z:11; }
+    .nd-card:nth-child(2){ --tilt:-17deg; --z:12; }
+    .nd-card:nth-child(3){ --tilt:-14deg; --z:13; }
+    .nd-card:nth-child(4){ --tilt:-11deg; --z:14; }
+    .nd-card:nth-child(5){ --tilt:-8deg; --z:15; }
+    .nd-card:nth-child(6){ --tilt:-5deg; --z:16; }
+    .nd-card:nth-child(7){ --tilt:-2deg; --z:17; }
 
-    .nd-head{ padding:12px 14px; }
+    .nd-head{ padding:15px 19px; }
     .nd-meta{ display:flex; align-items:center; gap:8px; color:rgba(255,255,255,.75); font-size:.88rem; }
     .nd-tag{
       display:inline-flex; align-items:center; padding:.16rem .48rem;
-      border:1px solid rgba(255,255,255,.18);
+      border:3px solid rgba(255,255,255,.18);
       background:rgba(255,255,255,.08);
       color:#fff; border-radius:999px; font-weight:700; font-size:.78rem;
     }
@@ -229,16 +234,16 @@
     }
 
     .nd-body{
-      padding:0 14px;
+      padding:7px 14px;
       color:#d7def0;
       max-height:0; overflow:hidden;
-      transition:max-height .35s ease, padding-top .2s ease;
+      transition:max-height 0.95s ease, padding-top 1s ease;
     }
     .nd-body p{ margin:.6rem 0; line-height:1.55; }
     .nd-link{ color:#79a8ff; text-decoration:none; border-bottom:1px solid rgba(121,168,255,.35); }
     .nd-link:hover{ text-decoration:underline; }
 
-    /* Hover/focus expansion — no click required */
+
     .nd-card:hover,
     .nd-card:focus-within{
       transform: rotate(0deg) translateY(-2px);
@@ -252,7 +257,7 @@
     .nd-card:hover .nd-body,
     .nd-card:focus-within .nd-body{
       padding-top:6px;
-      max-height:220px;
+      max-height:120px;
     }
 
     /* De-emphasize non-hovered cards a bit when deck is hovered */
@@ -263,7 +268,7 @@
     .nd-card:focus-visible{ outline:2px solid #79a8ff; outline-offset:3px; }
 
     /* Small screens: stack vertically (still tilt until hover) */
-    @media (max-width:10px){
+    @media (max-width:1px){
       .news-deck .deck{ overflow:visible; display:block; }
       .nd-card{ margin-left:0; flex-basis:auto; width:100%; }
     }
@@ -413,7 +418,7 @@
             <span>Programming</span>
           </div>
           <div class="chips">
-            <span class="chip"><svg viewBox="0 0 24 24"><path d="M9 3h4a4 4 0 0 1 4 4v2H9a2 2 0 0 0-2 2v3H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h2Z"/></svg>Python</span>
+            <span class="chip">Python</span>
             <span class="chip">Bash</span>
             <span class="chip">C++</span>
             <span class="chip">MATLAB</span>
@@ -460,9 +465,26 @@
     </div>
   </section>
   <!-- ======= NEWS (dark overlapping deck, tilted, hover to open) ======= -->
-  <section id="news" class="news-deck">
-    <h2>News</h2>
+      <!-- Card 3 -->
+  <section id="Recent Activities" class="news-deck">
+    <h2>Recent Activities</h2>
     <div class="deck" aria-label="News deck">
+      <article class="nd-card" tabindex="0">
+        <div class="nd-head">
+          <div class="nd-meta">
+            <span class="nd-tag">Position</span>
+            <time datetime="2024-10-01">Oct 1, 2024</time>
+          </div>
+          <h3 class="nd-title">Joined IPF Dresden as Postdoc</h3>
+        </div>
+        <div class="nd-body">
+          <p>I’ve joined the <strong>Leibniz Institute of Polymer Research Dresden</strong> as a postdoctoral researcher. I work in the active matter group. I am interested in collective behavior of active systems.</p>
+          <p><span class="nd-tag">Brownian Dynamics</span> <span class="nd-tag">Active Matter</span></p>
+        </div>
+      </article>
+
+
+
       <!-- Card 1 -->
       <article class="nd-card" tabindex="0">
         <div class="nd-head">
@@ -493,22 +515,42 @@
         </div>
       </article>
 
-      <!-- Card 3 -->
+
+      <!-- Card 2 -->
       <article class="nd-card" tabindex="0">
         <div class="nd-head">
           <div class="nd-meta">
-            <span class="nd-tag">Position</span>
-            <time datetime="2024-10-01">Oct 1, 2024</time>
+            <span class="nd-tag">Talk</span>
+            <time datetime="2025-07-02">Jul 2, 2025</time>
           </div>
-          <h3 class="nd-title">Joined IPF Dresden (Active Matter Group) as Postdoc</h3>
+          <h3 class="nd-title">Invited talk: Polyelectrolyte adsorption &amp; dielectric contrast</h3>
         </div>
         <div class="nd-body">
-          <p>I’ve joined the <strong>Leibniz Institute of Polymer Research Dresden</strong> to study chemotaxis of active–passive assemblies using Brownian dynamics and theory.</p>
-          <p><span class="nd-tag">Brownian Dynamics</span> <span class="nd-tag">Active Matter</span></p>
+          <p>Seminar on how <strong>substrate dielectric contrast</strong> and <strong>salt valency</strong> govern PE adsorption, image-charge attraction, and monolayer formation.</p>
+          <p><a class="nd-link" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Related paper</a></p>
         </div>
       </article>
+
+      <!-- Card 2 -->
+      <article class="nd-card" tabindex="0">
+        <div class="nd-head">
+          <div class="nd-meta">
+            <span class="nd-tag">Talk</span>
+            <time datetime="2025-07-02">Jul 2, 2025</time>
+          </div>
+          <h3 class="nd-title">Invited talk: Polyelectrolyte adsorption &amp; dielectric contrast</h3>
+        </div>
+        <div class="nd-body">
+          <p>Seminar on how <strong>substrate dielectric contrast</strong> and <strong>salt valency</strong> govern PE adsorption, image-charge attraction, and monolayer formation.</p>
+          <p><a class="nd-link" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Related paper</a></p>
+        </div>
+      </article>
+
     </div>
   </section>
+
+
+
 
 
  
@@ -524,7 +566,7 @@
     if (reduced) { el.textContent = phrases[0]; return; }
 
     let i = 0, j = 0, typing = true;
-    const speedType = 55, speedErase = 35, holdAfterType = 2000, holdAfterErase = 350;
+    const speedType = 95, speedErase = 45, holdAfterType = 20000, holdAfterErase = 550;
 
     function tick(){
       const phrase = phrases[i];
