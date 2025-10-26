@@ -186,13 +186,13 @@
     /* Research Highlights */
     .projects-grid{ column-count:2; column-gap:46px; }
     .project-card{
-      display:inline-block; width:100%; margin:0 0 22px; break-inside:avoid;
+      display:inline-block; width:95%; margin:0 0 22px; break-inside:avoid;
       border:1px solid color-mix(in oklab, var(--accent) 18%, var(--hair)); border-radius:18px;
       background:
         linear-gradient(180deg, color-mix(in sRGB, var(--bg-soft) 85%, transparent) 0%, var(--bg) 100%) padding-box,
         linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box;
       box-shadow:0 10px 28px rgba(0,0,0,.08);
-      padding:16px 16px 14px; overflow:hidden;
+      padding:16px 10px 14px; overflow:hidden;
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
     }
     .project-card:hover{
@@ -206,11 +206,11 @@
     .project-card .title h3{ margin:0; font-weight:900; font-size:1.08rem; letter-spacing:.01em; color:var(--accent-ink); position:relative; }
     .project-card .title h3::after{ content:""; position:absolute; left:0; bottom:-6px; width:44px; height:3px; border-radius:3px; background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2)); transition:width .25s ease; }
     .project-card:hover .title h3::after{ width:72px; }
-    .project-card .media{ margin:12px 120px 14px; padding:0; border-radius:1px; overflow:hidden; background:color-mix(in sRGB, var(--bg-soft) 80%, transparent); border:1px solid var(--hair); }
+    .project-card .media{ margin:38px 90px 14px; padding:0; border-radius:1px; overflow:hidden; background:color-mix(in sRGB, var(--bg-soft) 80%, transparent); border:0px solid var(--hair); }
     .project-card .media > img,.project-card .media > video{
-      width:100%; display:block; object-fit:cover; ;
+      width:100%; display:block; object-fit:cover;
     }
-    .project-card p{ margin:0 0 8px; line-height:1.56; color:var(--ink); }
+    .project-card p{ margin:0 0 1px; line-height:1.56; color:var(--ink); }
     .project-card .meta{ color:var(--muted); font-style:italic; }
     .project-card .more{
       display:inline-flex; align-items:center; gap:6px; padding:.32rem .7rem; border-radius:999px;
@@ -270,101 +270,102 @@
     @keyframes blink{ 50% { opacity:0; } }
     @media (prefers-reduced-motion: reduce){ .cursor{ display:none; animation:none; } }
 
-    /* ======= Activities (fancy text rail) ======= */
+    /* ======= Activities — CARD STYLE (with light/dark support) ======= */
     .activities{ margin-top:26px; }
-    .act-controls{ display:flex; align-items:center; gap:8px; margin:.35rem 0 .5rem; flex-wrap:wrap; }
-    .pill{
-      display:inline-flex; align-items:center; gap:6px;
-      padding:.26rem .66rem; border-radius:999px; cursor:pointer;
-      background:color-mix(in sRGB, var(--bg-soft) 85%, transparent); border:1px solid var(--hair); color:var(--accent-ink); font-weight:900; font-size:.86rem;
-      user-select:none; transition:transform .12s ease, background .15s ease, border-color .15s ease;
+
+    .act-controls{
+      display:flex; flex-wrap:wrap; gap:12px;
+      margin:.5rem 0 1rem;
     }
-    .pill[aria-pressed="true"]{ background:#ff976a22; border-color:#ff976a; }
-    .pill:hover{ transform:translateY(-1px); }
+    .pill{
+      padding:.35rem .85rem; border-radius:999px; cursor:pointer;
+      font-weight:700; font-size:.88rem;
+      background:var(--card-bg); color:var(--accent-ink);
+      border:1px solid color-mix(in sRGB, var(--hair) 85%, transparent);
+      box-shadow:0 2px 6px rgba(0,0,0,.06);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+    }
+    .pill:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 12px rgba(0,0,0,.10);
+      background:color-mix(in sRGB, var(--card-bg) 80%, var(--bg));
+    }
+    .pill[aria-pressed="true"]{
+      background:var(--accent); color:#fff;
+      border-color:var(--accent-ink);
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
+    .pill[aria-pressed="true"]:hover{ background:#16286b; color:#fff; }
 
     .rail-shell{
-      position:relative;
-      border:1px solid var(--hair);
-      border-radius:16px;
-      background:var(--bg);
-      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1) 14px, rgba(0,0,0,1) calc(100% - 14px), rgba(0,0,0,0));
-              mask-image: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,1) 14px, rgba(0,0,0,1) calc(100% - 14px), rgba(0,0,0,0));
+      background:var(--card-bg);
+      border-radius:var(--radius);
+      padding:8px;
+      box-shadow:var(--shadow);
+      border:1px solid color-mix(in sRGB, var(--hair) 90%, transparent);
+      overflow:hidden;
     }
-
     .activities-rail{
-      max-height: 240px;
-      overflow-y: auto;
-      padding:0 10px 6px;
-      scrollbar-color:#c5ccf5 #f0f2ff;
-      scrollbar-width:thin;
+      max-height:180px; overflow-y:auto; padding:10;
+      scrollbar-color: color-mix(in sRGB, var(--hair) 60%, orange) color-mix(in sRGB, var(--bg-soft) 70%, transparent);
+      scrollbar-width:thick;
     }
     .activities-rail::-webkit-scrollbar{ width:10px; }
-    .activities-rail::-webkit-scrollbar-track{ background:#f0f2ff22; border-radius:999px; }
-    .activities-rail::-webkit-scrollbar-thumb{
-      background:#c5ccf5aa; border-radius:999px; border:2px solid #f0f2ff33;
-    }
-    .activities-rail::-webkit-scrollbar-thumb:hover{ background:#aeb7f2; }
+    .activities-rail::-webkit-scrollbar-track{ background:color-mix(in sRGB, var(--bg-soft) 85%, transparent); border-radius:999px; }
+    .activities-rail::-webkit-scrollbar-thumb{ background:color-mix(in sRGB, var(--hair) 65%, transparent); border-radius:999px; border:2px solid color-mix(in sRGB, var(--bg-soft) 85%, transparent); }
+    .activities-rail::-webkit-scrollbar-thumb:hover{ background:color-mix(in sRGB, var(--hair) 80%, transparent); }
 
     .act-header{
+      display:grid; grid-template-columns:92px 84px 1fr auto; gap:10px;
+      padding:10px 12px; font-weight:700; color:var(--accent-ink); font-size:.9rem;
+      border-bottom:1px solid color-mix(in sRGB, var(--hair) 85%, transparent);
+      background:var(--card-bg);
       position:sticky; top:0; z-index:2;
-      display:grid; grid-template-columns: 92px 84px 1fr auto;
-      gap:10px; padding:10px 4px 8px;
-      background:linear-gradient(180deg, color-mix(in sRGB, var(--bg-soft) 90%, transparent), var(--bg));
-      border-bottom:1px solid var(--hair);
-      font-weight:900; color:var(--accent-ink); font-size:.9rem; letter-spacing:.02em;
     }
 
     .activity-line{
-      display:grid; grid-template-columns: 92px 84px 1fr auto;
-      align-items:center; gap:10px; padding:8px 4px;
-      border-bottom:1px dashed color-mix(in sRGB, var(--hair) 80%, transparent);
-      transition: background .15s ease;
+      display:grid; grid-template-columns:92px 84px 1fr auto; align-items:center;
+      gap:10px; padding:10px 12px; margin:6px 4px;
+      background:var(--bg); border-radius:var(--radius);
+      box-shadow:0 1px 4px rgba(0,0,0,.06);
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      border-left:4px solid transparent;
     }
-    .activity-line:last-child{ border-bottom:none; }
-    .activity-line:hover{ background:color-mix(in sRGB, var(--bg-soft) 75%, transparent); }
-    .activity-line:focus-within{ outline:2px solid #79a8ff; outline-offset:2px; }
+    .activity-line[data-type="Paper"]{ border-left-color:var(--paper-ink); }
+    .activity-line[data-type="Talk"]{ border-left-color:var(--talk-ink); }
+    .activity-line[data-type="Position"]{ border-left-color:var(--pos-ink); }
 
-    .act-date{ color:var(--muted); font-size:.9rem; white-space:nowrap; }
+    .activity-line:hover{
+      transform:translateY(-2px);
+      box-shadow:0 4px 14px rgba(0,0,0,.10);
+      background:color-mix(in sRGB, var(--card-bg) 60%, var(--bg));
+    }
+
+    .act-date{ color:var(--muted); font-size:.9rem; }
     .act-type{
-      justify-self:start; white-space:nowrap; font-weight:900; font-size:.8rem;
-      padding:.12rem .5rem; border-radius:999px; border:1px solid var(--hair);
-      background:color-mix(in sRGB, var(--bg-soft) 85%, transparent); color:var(--accent-ink);
+      justify-self:start; font-weight:700; font-size:.85rem;
+      padding:.2rem .45rem; border-radius:999px;
+      background:color-mix(in sRGB, var(--card-bg) 85%, transparent);
     }
-    .activity-line[data-type="Paper"] .act-type{ background:var(--paper-bg); border-color:var(--paper-border); color:var(--paper-ink); }
-    .activity-line[data-type="Talk"] .act-type{ background:var(--talk-bg); border-color:var(--talk-border); color:var(--talk-ink); }
-    .activity-line[data-type="Position"] .act-type{ background:var(--pos-bg); border-color:var(--pos-border); color:var(--pos-ink); }
-
-    .act-title{
-      color:var(--accent-ink); font-weight:900; font-size:1rem;
-      display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:1; overflow:hidden;
-    }
+    .act-title{ font-weight:600; color:var(--accent-ink); font-size:.97rem; }
     .act-title a{ color:inherit; text-decoration:none; border-bottom:1px solid transparent; }
-    .act-title a:hover{ border-bottom-color: currentColor; }
-
-    .act-link{
-      justify-self:end; white-space:nowrap; font-weight:800; font-size:.9rem;
-      text-decoration:none; color:var(--link); border-bottom:1px solid color-mix(in sRGB, var(--link) 50%, transparent);
-    }
-    .act-link:hover{ text-decoration:none; border-bottom-color: currentColor; }
+    .act-title a:hover{ border-bottom-color:currentColor; }
+    .act-link{ justify-self:end; font-weight:700; color:var(--accent); text-decoration:none; }
+    .act-link:hover{ text-decoration:underline; }
 
     @media (max-width:560px){
       .act-header, .activity-line{
-        grid-template-columns: 90px 1fr;
+        grid-template-columns:80px 1fr;
         grid-template-areas:
           "date type"
           "title title"
           "link link";
         row-gap:4px;
       }
-      .act-header div:nth-child(1){ grid-area: date; }
-      .act-header div:nth-child(2){ grid-area: type; justify-self:end; }
-      .act-header div:nth-child(3){ grid-area: title; }
-      .act-header div:nth-child(4){ display:none; }
-
-      .act-date{ grid-area: date; font-size:.88rem; }
-      .act-type{ grid-area: type; justify-self:end; font-size:.78rem; }
-      .act-title{ grid-area: title; font-size:.98rem; -webkit-line-clamp:2; }
-      .act-link{ grid-area: link; justify-self:start; }
+      .act-date{ grid-area:date; }
+      .act-type{ grid-area:type; justify-self:end; }
+      .act-title{ grid-area:title; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
+      .act-link{ grid-area:link; justify-self:start; }
     }
   </style>
 </head>
@@ -581,12 +582,22 @@
           <a class="act-link" href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Read</a>
         </div>
 
-        <div class="activity-line" role="listitem" data-type="Talk">
-          <time class="act-date" datetime="2025-07-02">Jul 2, 2025</time>
-          <span class="act-type">Talk</span>
-          <div class="act-title"><a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Invited talk: Polyelectrolyte adsorption &amp; dielectric contrast</a></div>
-          <a class="act-link" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Related</a>
+        <div class="activity-line" role="listitem" data-type="Paper">
+          <time class="act-date" datetime="2025-09-10">Sep 10, 2025</time>
+          <span class="act-type">Paper</span>
+          <div class="act-title"><a href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Active polar polymer assemblies — preprint out</a></div>
+          <a class="act-link" href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Read</a>
         </div>
+
+
+        <div class="activity-line" role="listitem" data-type="Paper">
+          <time class="act-date" datetime="2025-09-10">Sep 10, 2025</time>
+          <span class="act-type">Paper</span>
+          <div class="act-title"><a href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Active polar polymer assemblies — preprint out</a></div>
+          <a class="act-link" href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Read</a>
+        </div>
+
+
 
         <div class="activity-line" role="listitem" data-type="Talk">
           <time class="act-date" datetime="2025-07-02">Jul 2, 2025</time>
