@@ -157,14 +157,14 @@
 
     /* Social icons */
     .social{ display:flex; gap:10px; align-items:center; margin:.35rem 0 .2rem;
-      transition: opacity .5s ease, transform .5s ease; }
+      transition: opacity 2.5s ease, transform .5s ease; }
     .social a{
       display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center;
       border-radius:10px; background:color-mix(in sRGB, var(--bg-soft) 70%, transparent); border:1px solid var(--hair);
       transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
     }
     .social a:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08); background:color-mix(in sRGB, var(--bg-soft) 100%, transparent); }
-    .social svg{ width:18px; height:18px; fill:var(--accent-ink); }
+    .social svg{ width:28px; height:28px; fill:var(--accent-ink); }
     .social.hidden { opacity:0; transform: translateY(-6px); pointer-events:none; }
 
     .contact{ margin:.2rem 0 0; color:var(--muted); font-size:.96rem; }
@@ -398,11 +398,16 @@
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.05 1.79 2.76 1.27 3.43.97.11-.77.41-1.27.75-1.56-2.6-.29-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.22-3.15-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.28 1.2a11.4 11.4 0 0 1 5.98 0c2.28-1.52 3.28-1.2 3.28-1.2.65 1.65.24 2.88.12 3.18.76.82 1.22 1.87 1.22 3.15 0 4.51-2.74 5.51-5.36 5.8.42.36.8 1.06.8 2.14v3.17c0 .31.21.68.81.56A11.5 11.5 0 0 0 12 .5z"/></svg>
         </a>
         <a href="https://scholar.google.com/citations?user=C2zv5SYAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/512px-Google_Scholar_logo.svg.png?20200110094142" alt="Google Scholar" width="18" height="18" loading="lazy">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Google_Scholar_logo.svg/512px-Google_Scholar_logo.svg.png?20200110094142" alt="Google Scholar" width="28" height="28" loading="lazy">
         </a>
         <a href="https://orcid.org/0000-0002-7345-5423" target="_blank" rel="noopener" aria-label="ORCID">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/512px-ORCID_iD.svg.png?20190308043226" alt="ORCID" width="18" height="18" loading="lazy">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/ORCID_iD.svg/512px-ORCID_iD.svg.png?20190308043226" alt="ORCID" width="28" height="28" loading="lazy">
         </a>
+<a href="https://www.researchgate.net/profile/Hossein-Vahid?ev=prf_overview"
+   target="_blank" rel="noopener" aria-label="ResearchGate">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg"
+       alt="ResearchGate" width="28" height="28" loading="lazy">
+</a>
       </div>
 
       <div class="contact">
@@ -420,10 +425,7 @@
     <h2>About Me</h2>
     <article class="card">
       <p>
-        Experienced in modeling materials and analyzing structure–property relationships using
-        <strong>Molecular Dynamics (MD)</strong>, <strong>Brownian Dynamics (BD)</strong>, <strong>Density Functional Theory (DFT)</strong>, and
-        <strong>Machine Learning (ML)</strong>. I care about efficient, innovative strategies for practical problems and
-        collaborate smoothly across teams.
+        I'm a postdoctoral researcher at the Leibniz Institute of Polymer Research in Dresden. My background is in computational physics. I did my Ph.D. at Aalto University, and my focus has been on soft matter and materials science. My main tools are <strong>molecular dynamics</strong>, <strong>Brownian dynamics</strong>, <strong>density functional theory</strong>, and <strong>machine learning</strong>, which I use to study things like polyelectrolytes, active matter, and interfacial phenomena.
       </p>
     </article>
   </section>
@@ -515,6 +517,7 @@
             <span class="chip">Bash</span>
             <span class="chip">C++</span>
             <span class="chip">MATLAB</span>
+            <span class="chip">HTML</span>
           </div>
         </div>
 
@@ -636,7 +639,7 @@
     }
 
     let j = 0;
-    const speedType = 95;
+    const speedType = 65;
 
     function typeOnce(){
       if (j < phrase.length){
