@@ -202,15 +202,21 @@
     .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
 
     /* Research Highlights */
-    .projects-grid{ column-count:2; column-gap:46px; }
+    .projects-grid{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:22px 28px;
+      align-items:start;
+    }
     .project-card{
-      display:inline-block; width:95%; margin:0 0 22px; break-inside:avoid;
+      display:block; width:100%; margin:0; break-inside:avoid;
+      box-sizing:border-box;
       border:1px solid color-mix(in oklab, var(--accent) 18%, var(--hair)); border-radius:18px;
       background:
         linear-gradient(180deg, color-mix(in sRGB, var(--bg-soft) 85%, transparent) 0%, var(--bg) 100%) padding-box,
         linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box;
       box-shadow:0 10px 28px rgba(0,0,0,.08);
-      padding:16px 10px 14px; overflow:hidden;
+      padding:16px 14px 14px; overflow:hidden;
       transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
     }
     .project-card:hover{
@@ -224,7 +230,7 @@
     .project-card .title h3{ margin:0; font-weight:900; font-size:1.08rem; letter-spacing:.01em; color:var(--accent-ink); position:relative; }
     .project-card .title h3::after{ content:""; position:absolute; left:0; bottom:-6px; width:44px; height:3px; border-radius:3px; background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2)); transition:width .25s ease; }
     .project-card:hover .title h3::after{ width:72px; }
-    .project-card .media{ margin:38px 90px 14px; padding:0; border-radius:1px; overflow:hidden; background:color-mix(in sRGB, var(--bg-soft) 80%, transparent); border:0px solid var(--hair); }
+    .project-card .media{ margin:28px 24px 14px; padding:0; border-radius:8px; overflow:hidden; background:color-mix(in sRGB, var(--bg-soft) 80%, transparent); border:0px solid var(--hair); }
     .project-card .media > img,.project-card .media > video{
       width:100%; display:block; object-fit:cover;
     }
@@ -237,8 +243,10 @@
     }
     .project-card .more:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.1); background:#ff976a33; border-color:#ff976a; }
 
-    @media (max-width:560px){ .projects-grid{ column-count:1; } }
+    @media (max-width:560px){ .projects-grid{ grid-template-columns:1fr; } }
     @media (prefers-reduced-motion:reduce){ .project-card, .project-card .more, .card { transition:none; } }
+
+    section{ display:block; width:100%; clear:both; }
 
     ul{ margin:.25rem 0 .8rem 1.25rem; }
     li{ margin:.15rem 0; }
@@ -580,7 +588,8 @@
   </p>
 </article>
 
-
+    </div>
+  </section>
 
   <!-- Skills -->
   <section id="skills">
