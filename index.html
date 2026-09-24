@@ -1,945 +1,1195 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-theme="auto">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Hossein Vahid, D. Sc. (Tech.)</title>
+  <title>Hossein Vahid — Computational Physicist</title>
+  <meta name="description" content="Hossein Vahid, D.Sc. (Tech.) — computational physicist and DFG-funded postdoctoral researcher at the Leibniz Institute of Polymer Research Dresden, working on active matter, polyelectrolytes and soft-matter simulation." />
+  <link rel="canonical" href="https://hosseinv93.github.io/" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0e1320" media="(prefers-color-scheme: dark)" />
 
-  <!-- Lato -->
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <!-- Social previews -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:title" content="Hossein Vahid — Computational Physicist" />
+  <meta property="og:description" content="Active matter, polyelectrolytes and soft-matter simulation at the Leibniz Institute of Polymer Research Dresden." />
+  <meta property="og:url" content="https://hosseinv93.github.io/" />
+  <meta property="og:image" content="https://hosseinv93.github.io/assets/img/me.jpg" />
+  <meta name="twitter:card" content="summary" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231A318B'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='%23fff' text-anchor='middle'%3EHV%3C/text%3E%3C/svg%3E" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Hossein Vahid",
+    "honorificSuffix": "D.Sc. (Tech.)",
+    "jobTitle": "Postdoctoral Researcher",
+    "url": "https://hosseinv93.github.io/",
+    "image": "https://hosseinv93.github.io/assets/img/me.jpg",
+    "email": "mailto:vahid@ipfdd.de",
+    "worksFor": { "@type": "Organization", "name": "Leibniz Institute of Polymer Research Dresden" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "Aalto University" },
+      { "@type": "CollegeOrUniversity", "name": "University of Isfahan" },
+      { "@type": "CollegeOrUniversity", "name": "Isfahan University of Technology" }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/hossein-vahid93/",
+      "https://github.com/hosseinv93",
+      "https://scholar.google.com/citations?user=C2zv5SYAAAAJ",
+      "https://orcid.org/0000-0002-7345-5423",
+      "https://www.researchgate.net/profile/Hossein-Vahid"
+    ]
+  }
+  </script>
+
+  <!-- Apply saved theme before paint (no flash) -->
+  <script>
+    try { var t = localStorage.getItem('theme-pref'); if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ============ Design tokens ============ */
     :root{
+      --bg:#ffffff;
+      --bg-soft:#f6f8fc;
+      --surface:#ffffff;
+      --ink:#121620;
+      --ink-2:#3a4150;
+      --muted:#6a7282;
+      --hair:#e3e7ef;
       --accent:#1A318B;
-      --accent-ink:#16286b;
-      --ink:#101215;
-      --muted:#606870;
-      --card-bg:#f7f9ff;
-      --hair:#e6e9f0;
-      --content-width: 980px;
-      --outer-margin: 36px;
-      --side-padding: 26px;
-      --radius:16px;
-      --shadow: 0 10px 28px rgba(0,0,0,.06);
-      --shadow-hover: 0 12px 32px rgba(0,0,0,.10);
-      --bg: #ffffff;
-      --bg-soft: #fbfcff;
-      --link: #0b5cab;
+      --accent-2:#2f4fc4;
+      --accent-soft:#eaeefb;
+      --warm:#e0703f;
+      --warm-soft:#fdeee6;
+      --link:#1f47b8;
+      --media-bg:#ffffff;
+      --shadow:0 1px 2px rgba(16,24,40,.04), 0 6px 20px rgba(16,24,40,.06);
+      --shadow-hover:0 2px 4px rgba(16,24,40,.06), 0 14px 34px rgba(16,24,40,.12);
 
-      /* Activity type hues */
-      --paper-bg:#eef7ff;   --paper-border:#d9e9ff; --paper-ink:#0b5cab;
-      --talk-bg:#effaf3;    --talk-border:#d7f0e0;  --talk-ink:#136c3a;
-      --pos-bg:#fff4ec;     --pos-border:#ffe1ce;   --pos-ink:#9a4b00;
+      --t-paper:#1f5fbf;  --t-talk:#15803d;  --t-grant:#b45309;  --t-pos:#7c3aed;  --t-school:#0e7490; --t-visit:#be185d;
 
-      /* Collaboration pin hues */
-      --c-de:#0ea5e9; /* Germany */
-      --c-fi:#0b6a0b; /* Finland */
-      --c-it:#f97316; /* Italy */
-      --c-uk:#ff33ee; /* Italy */
-      --c-sw:#fcff33; /* Italy */
+      --map-land:#dfe5f1; --map-stroke:#ffffff; --map-sea:#f3f6fb; --map-arc:#1A318B;
+
+      --serif:"Source Serif 4", Georgia, "Times New Roman", serif;
+      --sans:Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --radius:14px;
+      --maxw:1040px;
     }
-
-    /* Dark theme tokens */
     @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#0f1116;
-        --bg-soft:#141824;
-        --ink:#e7ecf7;
-        --muted:#a5adba;
-        --hair:#2a3140;
-        --card-bg:#141a28;
-        --shadow: 0 10px 28px rgba(0,0,0,.45);
-        --shadow-hover: 0 14px 36px rgba(0,0,0,.7);
-        --link:#79a8ff;
-
-        --paper-bg:#13203a; --paper-border:#21335a; --paper-ink:#9ec4ff;
-        --talk-bg:#0f2620;  --talk-border:#1c3d34; --talk-ink:#8ed4b3;
-        --pos-bg:#2a1a10;   --pos-border:#50331f; --pos-ink:#f9b37b;
-
-        /* Dark map pins */
-      --c-de:#0ea5e9; /* Germany */
-      --c-fi:#0b6a0b; /* Finland */
-      --c-it:#f97316; /* Italy */
-      --c-uk:#ff33ee; /* Italy */
-       /* Italy */
+      :root:not([data-theme="light"]){
+        --bg:#0e1320; --bg-soft:#141a2a; --surface:#161d2e;
+        --ink:#e8ecf5; --ink-2:#c3cad8; --muted:#8f98ab; --hair:#263049;
+        --accent:#9db2ff; --accent-2:#b7c6ff; --accent-soft:#1d2744;
+        --warm:#f5a47c; --warm-soft:#3a2418;
+        --link:#a9bcff; --media-bg:#f4f6fa;
+        --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+        --shadow-hover:0 2px 4px rgba(0,0,0,.35), 0 16px 38px rgba(0,0,0,.5);
+        --t-paper:#7fb0ff; --t-talk:#5fd08c; --t-grant:#f3b25e; --t-pos:#bb9bff; --t-school:#5cc8dc; --t-visit:#f472b6;
+        --map-land:#26314b; --map-stroke:#0e1320; --map-sea:#121929; --map-arc:#9db2ff;
       }
     }
-
-    /* Manual toggle (data-theme="dark"/"light") overrides system */
-    html[data-theme="dark"]{
-      --bg:#0f1116; --bg-soft:#141824; --ink:#e7ecf7; --muted:#a5adba; --hair:#2a3140; --card-bg:#141a28; --shadow: 0 10px 28px rgba(0,0,0,.45); --shadow-hover: 0 14px 36px rgba(0,0,0,.7); --link:#79a8ff;
-      --paper-bg:#13203a; --paper-border:#21335a; --paper-ink:#9ec4ff;
-      --talk-bg:#0f2620;  --talk-border:#1c3d34; --talk-ink:#8ed4b3;
-      --pos-bg:#2a1a10;   --pos-border:#50331f; --pos-ink:#f9b37b;
-
-      --c-de:#60c7ff; --c-fi:#9bb4ff; --c-it:#ffb36b; --c-uk:#ff33ee; --c-sw:#fcff33;
-    }
-    html[data-theme="light"]{
-      --bg:#ffffff; --bg-soft:#fbfcff; --ink:#101215; --muted:#606870; --hair:#e6e9f0; --card-bg:#f7f9ff; --shadow: 0 10px 28px rgba(0,0,0,.06); --shadow-hover: 0 12px 32px rgba(0,0,0,.10); --link:#0b5cab;
-      --paper-bg:#eef7ff; --paper-border:#d9e9ff; --paper-ink:#0b5cab;
-      --talk-bg:#effaf3;  --talk-border:#d7f0e0;  --talk-ink:#136c3a;
-      --pos-bg:#fff4ec;   --pos-border:#ffe1ce;   --pos-ink:#9a4b00;
-
-      --c-de:#0ea5e9; --c-fi:#0b6a0b; --c-it:#f97316; --c-sw:#fcff33; --c-uk:#ff33ee;
+    :root[data-theme="dark"]{
+      --bg:#0e1320; --bg-soft:#141a2a; --surface:#161d2e;
+      --ink:#e8ecf5; --ink-2:#c3cad8; --muted:#8f98ab; --hair:#263049;
+      --accent:#9db2ff; --accent-2:#b7c6ff; --accent-soft:#1d2744;
+      --warm:#f5a47c; --warm-soft:#3a2418;
+      --link:#a9bcff; --media-bg:#f4f6fa;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
+      --shadow-hover:0 2px 4px rgba(0,0,0,.35), 0 16px 38px rgba(0,0,0,.5);
+      --t-paper:#7fb0ff; --t-talk:#5fd08c; --t-grant:#f3b25e; --t-pos:#bb9bff; --t-school:#5cc8dc; --t-visit:#f472b6;
+      --map-land:#26314b; --map-stroke:#0e1320; --map-sea:#121929; --map-arc:#9db2ff;
     }
 
-    html, body { direction:ltr; text-align:left; }
-    html { scroll-behavior:smooth; }
-
-    /* Background gradient + subtle grid */
+    /* ============ Base ============ */
+    *,*::before,*::after{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; scroll-padding-top:72px; -webkit-text-size-adjust:100%; }
     body{
-      font-family:Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
-      max-width:var(--content-width);
-      margin:var(--outer-margin) auto;
-      padding:0 var(--side-padding) 72px;
-      line-height:1.65;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(26,49,139,.06), transparent 60%),
-        radial-gradient(900px 700px at 120% 10%, rgba(255,151,106,.07), transparent 60%),
-        linear-gradient(180deg, var(--bg) 0%, var(--bg) 100%);
-      position:relative;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      overflow-x:hidden;
+      margin:0; background:var(--bg); color:var(--ink);
+      font:400 17px/1.65 var(--sans);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background:
-        linear-gradient(0deg, transparent 24%, rgba(0,0,0,.035) 25%, rgba(0,0,0,.035) 26%, transparent 27%) 0 0/100% 32px,
-        linear-gradient(90deg, transparent 24%, rgba(0,0,0,.035) 25%, rgba(0,0,0,.035) 26%, transparent 27%) 0 0/32px 100%;
-      opacity:.18; pointer-events:none; mix-blend-mode:overlay;
-    }
+    img,video,svg{ max-width:100%; }
+    a{ color:var(--link); text-decoration:none; }
+    a:hover{ text-decoration:underline; text-underline-offset:3px; }
+    :focus-visible{ outline:2px solid var(--accent-2); outline-offset:2px; border-radius:6px; }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
+    .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
 
-    /* Type */
-    h1{ font-size:2.2rem; margin:0 0 .3rem; color:var(--accent-ink); letter-spacing:.2px; font-weight:900; }
-    h1 .grad{
-      background:linear-gradient(90deg, var(--accent-ink), #ff976a);
-      -webkit-background-clip: text; background-clip:text; color:transparent;
-    }
+    h1,h2,h3{ margin:0; line-height:1.2; }
     h2{
-      font-size:1.08rem; margin:1.6rem 0 .7rem; color:var(--accent); text-transform:uppercase; letter-spacing:.12em;
-      display:inline-flex; align-items:center; gap:.6rem; position:relative;
+      font-family:var(--serif); font-weight:700; font-size:1.75rem; letter-spacing:-.01em; color:var(--ink);
     }
-    h2::after{
-      content:""; height:3px; width:78px; border-radius:3px;
-      background:linear-gradient(90deg, var(--accent), rgba(26,49,139,0));
+    .section{ padding:56px 0 8px; }
+    .section-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; flex-wrap:wrap; margin-bottom:22px; }
+    .eyebrow{
+      display:block; font-size:.78rem; font-weight:900; letter-spacing:.16em; text-transform:uppercase; color:var(--warm); margin-bottom:6px;
     }
-    h3{ font-size:1.03rem; margin:.2rem 0 .3rem; color:var(--ink); }
 
-    p, li{ font-size:1rem; }
-    a{ color:var(--link); text-decoration:none; border-bottom:1px solid transparent; }
-    a:hover{ text-decoration:none; border-bottom-color: currentColor; }
-
-    /* Top mini-nav */
-    .subnav{
+    /* ============ Nav ============ */
+    .nav{
       position:sticky; top:0; z-index:50;
-      display:flex; gap:10px; padding:10px var(--side-padding);
-      margin:8px calc(-1 * var(--side-padding)) 12px;
-      background:linear-gradient(180deg, color-mix(in oklab, var(--bg) 92%, transparent), color-mix(in oklab, var(--bg) 92%, transparent));
-      backdrop-filter:saturate(120%) blur(6px);
+      background:color-mix(in srgb, var(--bg) 86%, transparent);
+      backdrop-filter:saturate(140%) blur(10px); -webkit-backdrop-filter:saturate(140%) blur(10px);
       border-bottom:1px solid var(--hair);
     }
-    .subnav a{
-      display:inline-flex; align-items:center; gap:8px;
-      padding:.34rem .7rem; border-radius:999px; border:1px solid var(--hair);
-      color:var(--accent-ink); font-weight:800; background:color-mix(in sRGB, var(--bg-soft) 60%, transparent);
+    .nav .wrap{ display:flex; align-items:center; gap:18px; height:60px; }
+    .brand{ font-family:var(--serif); font-weight:700; font-size:1.1rem; color:var(--ink); white-space:nowrap; }
+    .brand:hover{ text-decoration:none; color:var(--accent); }
+    .nav-links{ display:flex; gap:4px; margin-left:auto; overflow-x:auto; scrollbar-width:none; }
+    .nav-links::-webkit-scrollbar{ display:none; }
+    .nav-links a{
+      color:var(--ink-2); font-weight:700; font-size:.92rem; padding:6px 11px; border-radius:8px; white-space:nowrap;
     }
-    .subnav a:hover{ transform:translateY(-1px); box-shadow:0 6px 12px rgba(0,0,0,.07); }
-
-    /* Divider */
-    .rule{ height:3px; width:92px; background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0)); margin:.7rem 0 1.2rem; border-radius:2px; }
-
-    /* Masthead */
-    .masthead{
-      display:grid; grid-template-columns: 1fr auto; gap:22px; align-items:center; margin-bottom:8px;
-    }
-    .subtitle{ color:#1a1a1a; font-weight:900; margin:2px 0 4px; letter-spacing:.02em; }
-    .subtitle small{ color:var(--muted); font-weight:700; }
-
-    .avatar{
-      width:168px; height:168px; object-fit:cover;
-      border-radius:22px;
-      border:2px solid color-mix(in oklab, var(--accent) 30%, transparent);
-      box-shadow:0 10px 30px rgba(0,0,0,.15);
-    }
-
-    /* Theme toggle */
+    .nav-links a:hover, .nav-links a.active{ color:var(--accent); background:var(--accent-soft); text-decoration:none; }
     .theme-toggle{
-      margin-left:auto; display:inline-flex; gap:8px; align-items:center;
-      border:1px solid var(--hair); border-radius:999px; padding:.26rem .5rem;
-      background:color-mix(in sRGB, var(--bg-soft) 70%, transparent); cursor:pointer;
-      font-weight:800; color:var(--accent-ink);
+      flex:0 0 auto; width:38px; height:38px; display:grid; place-items:center; cursor:pointer;
+      border:1px solid var(--hair); border-radius:10px; background:var(--surface); color:var(--ink-2);
+    }
+    .theme-toggle:hover{ color:var(--accent); border-color:var(--accent); }
+    .theme-toggle svg{ width:18px; height:18px; }
+    .theme-toggle .moon{ display:none; }
+    :root[data-theme="dark"] .theme-toggle .sun{ display:none; }
+    :root[data-theme="dark"] .theme-toggle .moon{ display:block; }
+    @media (prefers-color-scheme: dark){
+      :root:not([data-theme="light"]) .theme-toggle .sun{ display:none; }
+      :root:not([data-theme="light"]) .theme-toggle .moon{ display:block; }
     }
 
-    /* Social icons */
-    .social{ display:flex; gap:10px; align-items:center; margin:.35rem 0 .2rem;
-      transition: opacity 2.5s ease, transform .5s ease; }
+    /* ============ Hero ============ */
+    .hero{
+      position:relative; overflow:hidden;
+      background:
+        radial-gradient(900px 420px at 88% -10%, color-mix(in srgb, var(--warm) 12%, transparent), transparent 70%),
+        radial-gradient(900px 520px at 0% 0%, color-mix(in srgb, var(--accent-2) 12%, transparent), transparent 70%);
+      border-bottom:1px solid var(--hair);
+    }
+    .hero .wrap{ display:grid; grid-template-columns:1fr auto; gap:48px; align-items:center; padding-top:64px; padding-bottom:56px; }
+    .hero h1{ font-family:var(--serif); font-weight:700; font-size:clamp(2.3rem, 5vw, 3.4rem); letter-spacing:-.02em; color:var(--ink); }
+    .hero h1 .cred{ font-family:var(--sans); font-weight:400; font-size:.42em; letter-spacing:0; color:var(--muted); vertical-align:middle; margin-left:.3em; white-space:nowrap; }
+    .role{ margin:12px 0 0; font-size:1.12rem; color:var(--ink-2); }
+    .role strong{ color:var(--ink); }
+    .lede{ margin:18px 0 0; max-width:60ch; color:var(--ink-2); }
+    .hero-actions{ display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin-top:26px; }
+    .btn{
+      display:inline-flex; align-items:center; gap:8px; height:42px; padding:0 18px; border-radius:10px;
+      font-weight:700; font-size:.95rem; border:1px solid var(--hair); background:var(--surface); color:var(--ink);
+      transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .btn:hover{ text-decoration:none; transform:translateY(-1px); box-shadow:var(--shadow); border-color:var(--accent); }
+    .btn.primary{ background:#1A318B; border-color:#1A318B; color:#fff; }
+    .btn.primary:hover{ background:#223da6; }
+    .btn svg{ width:18px; height:18px; }
+    .social{ display:flex; gap:6px; margin-left:6px; }
     .social a{
-      display:inline-flex; width:36px; height:36px; align-items:center; justify-content:center;
-      border-radius:10px; background:color-mix(in sRGB, var(--bg-soft) 70%, transparent); border:1px solid var(--hair);
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+      width:42px; height:42px; display:grid; place-items:center; border-radius:10px;
+      color:var(--ink-2); border:1px solid transparent; transition:color .15s, background .15s, border-color .15s;
     }
-    .social a:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.08); background:color-mix(in sRGB, var(--bg-soft) 100%, transparent); }
-    .social svg{ width:28px; height:28px; fill:var(--accent-ink); }
-    .social.hidden { opacity:0; transform: translateY(-6px); pointer-events:none; }
+    .social a:hover{ color:var(--accent); background:var(--surface); border-color:var(--hair); }
+    .social svg{ width:21px; height:21px; fill:currentColor; }
+    .portrait{
+      width:230px; height:auto; aspect-ratio:1; border-radius:24px; object-fit:cover; display:block;
+      box-shadow:0 20px 50px rgba(16,24,40,.18); border:4px solid var(--surface);
+    }
 
-    .contact{ margin:.2rem 0 0; color:var(--muted); font-size:.96rem; }
-    .contact a{ color:var(--link); }
+    /* Key facts */
+    .facts{ display:grid; grid-template-columns:repeat(4, 1fr); gap:14px; margin-top:-28px; position:relative; }
+    .fact{
+      background:var(--surface); border:1px solid var(--hair); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:16px 18px;
+    }
+    .fact b{ display:block; font-family:var(--serif); font-size:1.5rem; line-height:1.15; color:var(--accent); }
+    .fact span{ display:block; margin-top:4px; font-size:.88rem; color:var(--muted); line-height:1.4; }
 
-    /* Base card */
+    /* ============ Research ============ */
+    .research-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:20px; }
     .card{
-      background:
-        linear-gradient(180deg, var(--card-bg) 0%, color-mix(in sRGB, var(--bg) 5%, transparent) 100%) padding-box,
-        linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box;
-      border-radius: var(--radius);
-      border:1px solid color-mix(in oklab, var(--accent) 15%, var(--hair));
-      box-shadow: var(--shadow);
-      padding:18px 20px;
-      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      background:var(--surface); border:1px solid var(--hair); border-radius:var(--radius); box-shadow:var(--shadow);
+      padding:22px; transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
-    .card:hover{ transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+    .card:hover{ transform:translateY(-3px); box-shadow:var(--shadow-hover); border-color:color-mix(in srgb, var(--accent) 35%, var(--hair)); }
+    .research-card{ display:flex; flex-direction:column; padding:0; overflow:hidden; }
+    .research-card .media{ position:relative; background:var(--media-bg); border-bottom:1px solid var(--hair); aspect-ratio:16/10; overflow:hidden; }
+    .research-card .media img, .research-card .media video{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block; padding:10px; }
+    .research-card .body{ padding:20px 22px 22px; display:flex; flex-direction:column; flex:1; }
+    .research-card .tag{ font-size:.75rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; color:var(--warm); }
+    .research-card h3{ font-family:var(--serif); font-size:1.3rem; margin:6px 0 8px; color:var(--ink); }
+    .research-card p{ margin:0 0 12px; color:var(--ink-2); }
+    .research-card .ref{ font-size:.88rem; color:var(--muted); border-left:3px solid var(--hair); padding-left:10px; margin-top:auto; }
+    .research-card .ref a{ font-weight:700; }
+    .research-card.compact .icon{
+      width:44px; height:44px; border-radius:12px; display:grid; place-items:center;
+      background:var(--accent-soft); color:var(--accent); margin-bottom:12px;
+    }
+    .research-card.compact .icon svg{ width:24px; height:24px; }
 
-    /* Research Highlights */
-    .projects-grid{
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:22px 28px;
-      align-items:start;
-    }
-    .project-card{
-      display:block; width:100%; margin:0; break-inside:avoid;
-      box-sizing:border-box;
-      border:1px solid color-mix(in oklab, var(--accent) 18%, var(--hair)); border-radius:18px;
-      background:
-        linear-gradient(180deg, color-mix(in sRGB, var(--bg-soft) 85%, transparent) 0%, var(--bg) 100%) padding-box,
-        linear-gradient(135deg, rgba(26,49,139,.14), rgba(26,49,139,0)) border-box;
-      box-shadow:0 10px 28px rgba(0,0,0,.08);
-      padding:16px 14px 14px; overflow:hidden;
-      transition:transform .25s ease, box-shadow .25s ease, border-color .25s ease, filter .25s ease;
-    }
-    .project-card:hover{
-      transform:translateY(-6px);
-      box-shadow:0 18px 42px rgba(0,0,0,.16);
-      border-color:#ff976a;
-      filter:saturate(1.02);
-    }
-    .project-card .title{ display:flex; align-items:center; gap:.6rem; margin:0 0 10px; }
-    .project-card .dot{ width:14px; height:14px; border-radius:90%; background:var(--accent); box-shadow:0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent),0 0 14px rgba(26,49,139,.28); flex:0 0 auto; }
-    .project-card .title h3{ margin:0; font-weight:900; font-size:1.08rem; letter-spacing:.01em; color:var(--accent-ink); position:relative; }
-    .project-card .title h3::after{ content:""; position:absolute; left:0; bottom:-6px; width:44px; height:3px; border-radius:3px; background:linear-gradient(90deg,var(--accent), rgba(26,49,139,0.2)); transition:width .25s ease; }
-    .project-card:hover .title h3::after{ width:72px; }
-    .project-card .media{ margin:28px 24px 14px; padding:0; border-radius:8px; overflow:hidden; background:color-mix(in sRGB, var(--bg-soft) 80%, transparent); border:0px solid var(--hair); }
-    .project-card .media > img,.project-card .media > video{
-      width:100%; display:block; object-fit:cover;
-    }
-    .project-card p{ margin:0 0 1px; line-height:1.56; color:var(--ink); }
-    .project-card .meta{ color:var(--muted); font-style:italic; }
-    .project-card .more{
-      display:inline-flex; align-items:center; gap:6px; padding:.32rem .7rem; border-radius:999px;
-      background:color-mix(in sRGB, var(--bg-soft) 85%, transparent); border:1px solid var(--hair); font-weight:800;
-      text-decoration:none; color:var(--accent-ink); transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-    }
-    .project-card .more:hover{ transform:translateY(-1px); box-shadow:0 6px 16px rgba(0,0,0,.1); background:#ff976a33; border-color:#ff976a; }
-
-    @media (max-width:560px){ .projects-grid{ grid-template-columns:1fr; } }
-    @media (prefers-reduced-motion:reduce){ .project-card, .project-card .more, .card { transition:none; } }
-
-    section{ display:block; width:100%; clear:both; }
-
-    ul{ margin:.25rem 0 .8rem 1.25rem; }
-    li{ margin:.15rem 0; }
-
-    /* Skills */
-    .skills.card{ padding:18px 18px 14px; }
-    .skills-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px 22px; }
-    .skill-group .sg-title{ display:flex; align-items:center; gap:8px; margin:0 0 8px; font-weight:900; color:var(--accent-ink); letter-spacing:.01em; }
-    .sg-title svg{ width:18px; height:18px; fill:var(--accent-ink); opacity:.9 }
-    .chips{ display:flex; flex-wrap:wrap; gap:8px; }
-    .chip{
-      display:inline-flex; align-items:center; gap:6px; padding:.24rem .62rem; border-radius:12px;
-      background:color-mix(in sRGB, var(--bg-soft) 85%, transparent); border:1px solid var(--hair);
-      font-size:.94rem; color:var(--accent-ink); font-weight:800;
-      transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
-    }
-    .chip:hover{ transform:translateY(-1px); box-shadow:0 6px 12px rgba(0,0,0,.06); border-color:#ff976a; background:#ff976a22; }
-
-    /* Print */
-    @media print{
-      @page{ size:A4; margin:18mm 22mm; }
-      body{ max-width:none; margin:0; padding:0; background:#fff; }
-      a{ text-decoration:none; color:inherit; }
-      h2{ margin-top:10pt; }
-      .masthead{ grid-template-columns:1fr auto; gap:14pt; }
-      .avatar{ width:110px; height:110px; }
-      .rule{ margin:.3rem 0 .7rem; }
-      .card, .project-card{ box-shadow:none; background:#fff; transform:none; border-color:#ddd; }
-      .subnav, .theme-toggle{ display:none !important; }
-    }
-
-    @media (max-width:760px){
-      .skills-grid{ grid-template-columns:1fr; }
-    }
-    @media (max-width:560px){
-      .masthead{ grid-template-columns:1fr; text-align:left; }
-      .avatar{ width:124px; height:124px; justify-self:start; border-radius:16px; }
-    }
-
-    /* Typewriter */
-    .subtitle{ position:relative; display:flex; align-items:center; gap:.4rem; }
-    .cursor{
-      width:2px; height:1.2em; background:var(--accent-ink);
-      display:inline-block; translate:0 .1em;
-      animation: blink .9s steps(1) infinite;
-    }
-    @keyframes blink{ 50% { opacity:0; } }
-    @media (prefers-reduced-motion: reduce){ .cursor{ display:none; animation:none; } }
-
-    /* ======= Activities — CARD STYLE (with light/dark support) ======= */
-    .activities{ margin-top:26px; }
-
-    .act-controls{
-      display:flex; flex-wrap:wrap; gap:12px;
-      margin:.5rem 0 1rem;
-    }
+    /* ============ Filters (shared) ============ */
+    .filters{ display:flex; flex-wrap:wrap; gap:6px; }
     .pill{
-      padding:.35rem .85rem; border-radius:999px; cursor:pointer;
-      font-weight:700; font-size:.88rem;
-      background:var(--card-bg); color:var(--accent-ink);
-      border:1px solid color-mix(in sRGB, var(--hair) 85%, transparent);
-      box-shadow:0 2px 6px rgba(0,0,0,.06);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease, color .2s ease;
+      font:inherit; font-size:.86rem; font-weight:700; cursor:pointer;
+      padding:5px 13px; border-radius:999px; border:1px solid var(--hair); background:var(--surface); color:var(--ink-2);
+      transition:background .15s, color .15s, border-color .15s;
     }
-    .pill:hover{
-      transform:translateY(-2px);
-      box-shadow:0 4px 12px rgba(0,0,0,.10);
-      background:color-mix(in sRGB, var(--card-bg) 80%, var(--bg));
-    }
-    .pill[aria-pressed="true"]{
-      background:var(--accent); color:#fff;
-      border-color:var(--accent-ink);
-      box-shadow:0 4px 12px rgba(0,0,0,.15);
-    }
-    .pill[aria-pressed="true"]:hover{ background:#16286b; color:#fff; }
+    .pill:hover{ border-color:var(--accent); color:var(--accent); }
+    .pill[aria-pressed="true"]{ background:var(--accent); border-color:var(--accent); color:var(--bg); }
 
-    .rail-shell{
-      background:var(--card-bg);
-      border-radius:var(--radius);
-      padding:8px;
-      box-shadow:var(--shadow);
-      border:1px solid color-mix(in sRGB, var(--hair) 90%, transparent);
-      overflow:hidden;
+    /* ============ News timeline ============ */
+    .timeline{ list-style:none; margin:0; padding:0; position:relative; }
+    .timeline::before{ content:""; position:absolute; left:112px; top:8px; bottom:8px; width:2px; background:var(--hair); }
+    .tl-item{ display:grid; grid-template-columns:96px 1fr; gap:32px; padding:10px 0; position:relative; }
+    .tl-item::before{
+      content:""; position:absolute; left:107px; top:19px; width:12px; height:12px; border-radius:50%;
+      background:var(--bg); border:3px solid var(--dotc, var(--accent));
     }
-    .activities-rail{
-      max-height:180px; overflow-y:auto; padding:10;
-      scrollbar-color: color-mix(in sRGB, var(--hair) 60%, orange) color-mix(in sRGB, var(--bg-soft) 70%, transparent);
-      scrollbar-width:thick;
-    }
-    .activities-rail::-webkit-scrollbar{ width:10px; }
-    .activities-rail::-webkit-scrollbar-track{ background:color-mix(in sRGB, var(--bg-soft) 85%, transparent); border-radius:999px; }
-    .activities-rail::-webkit-scrollbar-thumb{ background:color-mix(in sRGB, var(--hair) 65%, transparent); border-radius:999px; border:2px solid color-mix(in sRGB, var(--bg-soft) 85%, transparent); }
-    .activities-rail::-webkit-scrollbar-thumb:hover{ background:color-mix(in sRGB, var(--hair) 80%, transparent); }
+    .tl-item[data-type="Paper"]{ --dotc:var(--t-paper); }
+    .tl-item[data-type="Talk"]{ --dotc:var(--t-talk); }
+    .tl-item[data-type="Grant"]{ --dotc:var(--t-grant); }
+    .tl-item[data-type="Position"]{ --dotc:var(--t-pos); }
+    .tl-item[data-type="School"]{ --dotc:var(--t-school); }
+    .tl-item[data-type="Visit"]{ --dotc:var(--t-visit); }
+    .tl-date{ text-align:right; color:var(--muted); font-size:.9rem; font-weight:700; padding-top:4px; white-space:nowrap; }
+    .tl-body{ background:var(--surface); border:1px solid var(--hair); border-radius:12px; padding:12px 16px; }
+    .tl-type{ font-size:.72rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase; color:var(--dotc); }
+    .tl-title{ margin:2px 0 0; font-weight:700; color:var(--ink); line-height:1.45; }
+    .tl-meta{ margin:2px 0 0; font-size:.9rem; color:var(--muted); }
+    .tl-item.is-hidden{ display:none; }
+    .show-more{ margin:14px 0 0 128px; }
 
-    .act-header{
-      display:grid; grid-template-columns:92px 84px 1fr auto; gap:10px;
-      padding:10px 12px; font-weight:700; color:var(--accent-ink); font-size:.9rem;
-      border-bottom:1px solid color-mix(in sRGB, var(--hair) 85%, transparent);
-      background:var(--card-bg);
-      position:sticky; top:0; z-index:2;
-    }
+    /* ============ Publications ============ */
+    .pub-year{ font-family:var(--serif); font-size:1.15rem; color:var(--muted); margin:26px 0 8px; padding-bottom:6px; border-bottom:1px solid var(--hair); }
+    .pub-year:first-of-type{ margin-top:0; }
+    .pubs{ list-style:none; margin:0; padding:0; }
+    .pub{ padding:12px 0; display:grid; grid-template-columns:1fr auto; gap:16px; align-items:start; }
+    .pub + .pub{ border-top:1px dashed var(--hair); }
+    .pub-title{ font-weight:700; color:var(--ink); line-height:1.45; }
+    .pub-authors{ font-size:.93rem; color:var(--ink-2); margin-top:2px; }
+    .pub-authors .me{ font-weight:900; color:var(--ink); text-decoration:underline; text-decoration-color:color-mix(in srgb, var(--warm) 70%, transparent); text-decoration-thickness:2px; text-underline-offset:3px; }
+    .pub-venue{ font-size:.93rem; color:var(--muted); font-style:italic; }
+    .badge{ display:inline-block; font-style:normal; font-size:.7rem; font-weight:900; letter-spacing:.08em; text-transform:uppercase; padding:1px 7px; border-radius:6px; margin-left:6px; vertical-align:1px; background:var(--warm-soft); color:var(--warm); }
+    .pub-link{ font-size:.85rem; font-weight:700; padding:4px 11px; border:1px solid var(--hair); border-radius:8px; white-space:nowrap; color:var(--ink-2); }
+    .pub-link:hover{ border-color:var(--accent); color:var(--accent); text-decoration:none; }
+    .pub.is-hidden, .pub-year.is-hidden{ display:none; }
 
-    .activity-line{
-      display:grid; grid-template-columns:92px 84px 1fr auto; align-items:center;
-      gap:10px; padding:10px 12px; margin:6px 4px;
-      background:var(--bg); border-radius:var(--radius);
-      box-shadow:0 1px 4px rgba(0,0,0,.06);
-      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-      border-left:4px solid transparent;
-    }
-    .activity-line[data-type="Paper"]{ border-left-color:var(--paper-ink); }
-    .activity-line[data-type="Talk"]{ border-left-color:var(--talk-ink); }
-    .activity-line[data-type="Position"]{ border-left-color:var(--pos-ink); }
+    /* ============ Experience ============ */
+    .two-col{ display:grid; grid-template-columns:1.4fr 1fr; gap:24px; align-items:start; }
+    .cv-list{ list-style:none; margin:0; padding:0; }
+    .cv-item{ display:grid; grid-template-columns:1fr auto; gap:4px 16px; padding:14px 0; }
+    .cv-item + .cv-item{ border-top:1px solid var(--hair); }
+    .cv-item h3{ font-size:1.02rem; color:var(--ink); }
+    .cv-when{ color:var(--muted); font-size:.88rem; font-weight:700; white-space:nowrap; }
+    .cv-where{ grid-column:1 / -1; color:var(--accent); font-weight:700; font-size:.93rem; }
+    .cv-item p{ grid-column:1 / -1; margin:4px 0 0; color:var(--ink-2); font-size:.95rem; }
+    .side-card h3{ font-family:var(--serif); font-size:1.15rem; color:var(--ink); margin-bottom:6px; }
+    .side-card + .side-card{ margin-top:18px; }
+    .grant{ padding:10px 0; }
+    .grant + .grant{ border-top:1px solid var(--hair); }
+    .grant b{ display:block; color:var(--ink); }
+    .grant .amt{ font-family:var(--serif); font-weight:700; font-size:1.3rem; color:var(--warm); }
+    .grant span{ font-size:.92rem; color:var(--muted); }
+    .side-card ul{ margin:6px 0 0; padding-left:18px; color:var(--ink-2); font-size:.94rem; }
+    .side-card li{ margin:4px 0; }
 
-    .activity-line:hover{
-      transform:translateY(-2px);
-      box-shadow:0 4px 14px rgba(0,0,0,.10);
-      background:color-mix(in sRGB, var(--card-bg) 60%, var(--bg));
-    }
+    /* ============ Skills ============ */
+    .skills-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:20px; }
+    .skills-grid .wide{ grid-column:1 / -1; }
+    .skill-group h3{ display:flex; align-items:center; gap:10px; font-size:1rem; color:var(--ink); margin-bottom:12px; }
+    .skill-group h3 svg{ width:20px; height:20px; color:var(--accent); fill:currentColor; }
+    .chips{ display:flex; flex-wrap:wrap; gap:7px; }
+    .chip{ font-size:.88rem; font-weight:700; padding:4px 11px; border-radius:8px; background:var(--bg-soft); border:1px solid var(--hair); color:var(--ink-2); }
+    .chip.core{ background:var(--accent-soft); border-color:color-mix(in srgb, var(--accent) 30%, var(--hair)); color:var(--accent); }
+    .legend{ font-size:.85rem; color:var(--muted); display:flex; align-items:center; gap:8px; }
+    .legend .chip{ padding:1px 8px; font-size:.78rem; }
 
-    .act-date{ color:var(--muted); font-size:.9rem; }
-    .act-type{
-      justify-self:start; font-weight:700; font-size:.85rem;
-      padding:.2rem .45rem; border-radius:999px;
-      background:color-mix(in sRGB, var(--card-bg) 85%, transparent);
-    }
-    .act-title{ font-weight:600; color:var(--accent-ink); font-size:.97rem; }
-    .act-title a{ color:inherit; text-decoration:none; border-bottom:1px solid transparent; }
-    .act-title a:hover{ border-bottom-color:currentColor; }
-    .act-link{ justify-self:end; font-weight:700; color:var(--accent); text-decoration:none; }
-    .act-link:hover{ text-decoration:underline; }
+    /* ============ Network ============ */
+    .network{ display:grid; grid-template-columns:1fr; gap:18px; }
+    .collab-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:10px; }
+    .site-group{ border:1px solid var(--hair); border-radius:12px; background:var(--surface); padding:12px 14px; cursor:pointer; transition:border-color .15s, box-shadow .15s; }
+    .site-group:hover, .site-group.active{ border-color:var(--accent); box-shadow:var(--shadow); }
+    .site-group .site-name{ display:flex; align-items:center; gap:8px; font-weight:900; color:var(--ink); font-size:.95rem; }
+    .site-group .sdot{ width:10px; height:10px; border-radius:50%; background:var(--warm); flex:0 0 auto; }
+    .site-group[data-home] .sdot{ background:var(--accent); }
+    .site-group .people{ margin:4px 0 0 18px; font-size:.88rem; color:var(--ink-2); line-height:1.5; }
+    .site-group .note{ display:block; margin:2px 0 0 18px; font-size:.8rem; color:var(--muted); font-style:italic; }
+    .map-box{ position:relative; border:1px solid var(--hair); border-radius:var(--radius); background:var(--map-sea); overflow:hidden; aspect-ratio:900/500; }
+    .map-box svg{ display:block; width:100%; height:100%; }
+    .map-box .arc.off{ stroke-dasharray:2 5; }
+    .map-box .country{ fill:var(--map-land); stroke:var(--map-stroke); stroke-width:.6; }
+    .map-box .arc{ fill:none; stroke:var(--map-arc); stroke-width:1.6; stroke-dasharray:4 4; opacity:.55; }
+    .map-box .pin circle.core{ fill:var(--warm); stroke:var(--surface); stroke-width:2.5; }
+    .map-box .pin.home circle.core{ fill:var(--accent); }
+    .map-box .pin circle.halo{ fill:var(--warm); opacity:.22; transform-box:fill-box; transform-origin:center; }
+    .map-box .pin.home circle.halo{ fill:var(--accent); }
+    .map-box .pin.active circle.halo{ animation:pulse 1.6s ease-out infinite; opacity:.45; }
+    .map-box .pin text{ font:900 12px var(--sans); fill:var(--ink); paint-order:stroke; stroke:var(--map-sea); stroke-width:4px; stroke-linejoin:round; }
+    .map-box .pin{ cursor:pointer; }
+    .map-fallback{ position:absolute; inset:0; display:grid; place-items:center; color:var(--muted); font-size:.9rem; }
+    @keyframes pulse{ 0%{ transform:scale(.6); opacity:.6; } 100%{ transform:scale(2.2); opacity:0; } }
 
-    @media (max-width:560px){
-      .act-header, .activity-line{
-        grid-template-columns:80px 1fr;
-        grid-template-areas:
-          "date type"
-          "title title"
-          "link link";
-        row-gap:4px;
-      }
-      .act-date{ grid-area:date; }
-      .act-type{ grid-area:type; justify-self:end; }
-      .act-title{ grid-area:title; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:2; overflow:hidden; }
-      .act-link{ grid-area:link; justify-self:start; }
+    /* ============ Contact / footer ============ */
+    .contact-card{
+      display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+      background:linear-gradient(135deg, #1A318B, #2b4bc0); color:#fff; border-radius:18px; padding:32px;
     }
+    .contact-card h2{ color:#fff; }
+    .contact-card p{ margin:6px 0 0; color:#dbe3ff; max-width:52ch; }
+    .contact-card .btn{ background:#fff; color:#1A318B; border-color:#fff; }
+    footer{ padding:32px 0 48px; color:var(--muted); font-size:.88rem; }
+    footer .wrap{ display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; border-top:1px solid var(--hair); padding-top:20px; }
 
-    /* ========= NETWORKS (list + static map with pins) ========= */
-    .networks-grid{
-      display:grid; grid-template-columns: minmax(200px, 280px) 1fr; gap:16px; align-items:start;
-      margin-top: 8px;
+    /* ============ Responsive ============ */
+    @media (max-width:900px){
+      .facts{ grid-template-columns:repeat(2, 1fr); }
+      .two-col{ grid-template-columns:1fr; }
+      .collab-list{ grid-template-columns:repeat(2, minmax(0,1fr)); }
+      .skills-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
     }
-    @media (max-width: 720px){
-      .networks-grid{ grid-template-columns: 1fr; }
+    @media (max-width:720px){
+      body{ font-size:16px; }
+      .wrap{ padding:0 16px; }
+      .brand{ display:none; }
+      .nav .wrap{ gap:10px; }
+      .nav-links{ margin-left:0; flex:1; }
+      .hero .wrap{ grid-template-columns:1fr; gap:24px; padding-top:36px; }
+      .portrait{ width:132px; border-radius:20px; order:-1; }
+      .research-grid, .skills-grid{ grid-template-columns:1fr; }
+      .timeline::before{ left:6px; }
+      .tl-item{ grid-template-columns:1fr; gap:4px; padding-left:28px; }
+      .tl-item::before{ left:1px; top:8px; }
+      .tl-date{ text-align:left; padding-top:0; }
+      .show-more{ margin-left:28px; }
+      .pub{ grid-template-columns:1fr; gap:8px; }
+      .pub-link{ justify-self:start; }
+      .map-box{ aspect-ratio:4/3; }
+      .collab-list{ grid-template-columns:1fr; }
+      .contact-card{ padding:24px; }
+      .social{ margin-left:0; }
     }
-    .collab-list{
-      list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px;
+    @media (prefers-reduced-motion:reduce){
+      html{ scroll-behavior:auto; }
+      *{ transition:none !important; animation:none !important; }
     }
-    .collab-list li{
-      display:flex; align-items:center; gap:8px; padding:6px 10px; font-size:.72rem; border-radius:12px;
-      background:var(--card-bg); border:1px solid color-mix(in sRGB, var(--hair) 85%, transparent);
-      box-shadow:var(--shadow); cursor:pointer; user-select:none;
+    @media print{
+      .nav, .theme-toggle, .filters, .show-more, .network, .hero-actions{ display:none !important; }
+      .tl-item.is-hidden, .pub.is-hidden, .pub-year.is-hidden{ display:grid !important; }
+      .card, .fact, .tl-body{ box-shadow:none; }
+      body{ background:#fff; }
     }
-    .collab-list li:hover{ transform:translateY(-1px); box-shadow:var(--shadow-hover); }
-    .cdot{ width:10px; height:10px; border-radius:50%; flex:0 0 auto; box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.15); }
-    .cdot.c-de{ background:var(--c-de); } .cdot.c-fi{ background:var(--c-fi);} .cdot.c-it{ background:var(--c-it);} .cdot.c-uk{ background:var(--c-uk);} .cdot.c-sw{ background:var(--c-sw);}
-
-    .collab-static{
-      position:relative; border:1px solid color-mix(in sRGB, var(--accent) 15%, transparent); border-radius:12px; overflow:hidden;
-      box-shadow:var(--shadow); background:var(--bg-soft);
-      width:100%; margin:.6rem auto;
-    }
-    .collab-static img.map{ width:100%; height:auto; display:block; background:linear-gradient(180deg,color-mix(in sRGB, var(--accent) 6%, transparent),transparent); }
-    .collab-static #pins{ position:absolute; inset:0; pointer-events:auto; z-index:2; }
-
-    .pin{ position:absolute; transform:translate(-50%,-100%); pointer-events:auto; cursor:default; outline:none; color:var(--c-uk);
-      --stem-h: 14px; --dot-size: 10px; --ring-size: 22px; --ring2-size: 0px; z-index:1; transition:filter .15s ease, opacity .15s ease; }
-    .pin .stem{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); width:0; height:var(--stem-h); border-left:2px solid currentColor; filter:drop-shadow(0 0 1px rgba(0,0,0,.2)); }
-    .pin .dot{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--dot-size) / 2)); transform: translateX(-50%); width:var(--dot-size); height:var(--dot-size); border-radius:50%; background: currentColor; box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.15); transition:transform .12s ease; z-index:2; }
-    .pin:hover .dot, .pin:focus-visible .dot{ transform: translateX(-50%) scale(1.15);} 
-    .pin .ring{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--ring-size) / 2)); transform: translateX(-50%); width:var(--ring-size); height:var(--ring-size); border-radius:50%; border:2px solid currentColor; opacity:.85; animation:ping 1.6s ease-out infinite; z-index:1; }
-    .pin .ring2{ position:absolute; left:50%; bottom: calc(var(--stem-h) - (var(--ring2-size) / 2)); transform: translateX(-50%); width:var(--ring2-size); height:var(--ring2-size); border-radius:50%; border:2px solid currentColor; opacity:.7; animation:pingStrong 1.6s .25s ease-out infinite; z-index:1; }
-
-    .pin.home{ --stem-h: 16px; --dot-size: 12px; --ring-size: 28px; --ring2-size: 38px; color:var(--c-de); }
-    .pin.c-de{ color:var(--c-de); } .pin.c-fi{ color:var(--c-fi);} .pin.c-it{ color:var(--c-it);} .cdot.c-sw{ background:var(--c-sw);} .cdot.c-uk{ background:var(--c-uk);}
-    .pin.home .dot{ box-shadow:0 0 0 2px #fff inset, 0 0 0 1px rgba(0,0,0,.2), 0 0 8px rgba(0,100,0,.35); }
-
-    .pin.inactive{ opacity:.55; filter:grayscale(.2); }
-    .pin.inactive:hover{ opacity:1; filter:none; z-index:6; }
-
-    .collab-card{
-      position:absolute; width:3.9cm; max-width: min(3.9cm, calc(100% - 24px)); background:var(--bg); border:1px solid color-mix(in sRGB, var(--hair) 75%, transparent); border-radius:10px; box-shadow:0 6px 22px rgba(0,0,0,.14); padding:.55rem .65rem .65rem; opacity:0; visibility:hidden; transition:opacity .18s ease, visibility .18s ease; z-index:10; pointer-events:auto;
-      color:var(--ink);
-    }
-    .collab-card.open{ opacity:1; visibility:visible; }
-    .collab-card .card-title{ font-weight:700; font-size:.85rem; margin:0 0 .2rem; color:var(--accent-ink); }
-    .collab-card .card-body{ font-size:.8rem; line-height:1.35; word-wrap:break-word; }
-    .collab-caret{ position:absolute; top:50%; transform:translateY(-50%); width:0; height:0; filter:drop-shadow(0 1px 0 rgba(0,0,0,.08)); }
-    .collab-card.place-right .collab-caret{ left:-8px; border:8px solid transparent; border-right-color:var(--bg); }
-    .collab-card.place-left  .collab-caret{ right:-8px; border:8px solid transparent; border-left-color:var(--bg); }
-
-    @keyframes ping{ 0% { transform:translateX(-50%) scale(.2); opacity:.85; } 70%{ transform:translateX(-50%) scale(1.5); opacity:0; } 100%{ transform:translateX(-50%) scale(1.6); opacity:0; } }
-    @keyframes pingStrong{ 0% { transform:translateX(-50%) scale(.22); opacity:.95; } 65%{ transform:translateX(-50%) scale(1.8); opacity:0; } 100%{ transform:translateX(-50%) scale(1.9); opacity:0; } }
   </style>
 </head>
 <body>
 
-  <!-- Sticky mini-nav -->
-  <nav class="subnav" aria-label="Section navigation">
-    <a href="#about">About</a>
-    <a href="#projects">Highlights</a>
-    <a href="#skills">Skills</a>
-    <a href="#recent-activities">Activities</a>
-    <a href="#networks">Networks</a>
-    <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false" title="Toggle light/dark">🌞 / 🌙</button>
+  <!-- ===================== Nav ===================== -->
+  <nav class="nav" aria-label="Main">
+    <div class="wrap">
+      <a class="brand" href="#top">Hossein Vahid</a>
+      <div class="nav-links">
+        <a href="#research">Research</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#network">Network</a>
+      </div>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode">
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11Z"/></svg>
+      </button>
+    </div>
   </nav>
 
-  <!-- Masthead -->
-  <header class="masthead">
-    <div class="titleblock">
-      <h1><span class="grad">Hossein Vahid, D. Sc. (Tech.)</span></h1>
-
-      <div class="subtitle">
-        <span id="tw-text" aria-live="polite"></span>
-        <span class="cursor" aria-hidden="true"></span>
+  <!-- ===================== Hero ===================== -->
+  <header class="hero" id="top">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Computational Physicist</span>
+        <h1>Hossein Vahid <span class="cred">D.Sc. (Tech.)</span></h1>
+        <p class="role"><strong>Postdoctoral Researcher</strong> · Leibniz Institute of Polymer Research Dresden<br>Institute of Polymer Theory, Active Matter Group</p>
+        <p class="lede">
+          I use <strong>molecular dynamics</strong>, <strong>Brownian dynamics</strong>, <strong>density functional theory</strong> and
+          <strong>machine learning</strong> to understand soft and active matter, from how charged polymers interact with ions
+          and surfaces to how active–passive assemblies organise and navigate chemical gradients. My current research is funded by a personal DFG grant.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="mailto:vahid@ipfdd.de">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            vahid@ipfdd.de
+          </a>
+          <a class="btn" href="#publications">Publications</a>
+          <div class="social">
+            <a href="https://scholar.google.com/citations?user=C2zv5SYAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1 9l4 2.2v5.3C7 18.6 9.4 20 12 20s5-1.4 7-3.5v-5.3L21 10v6h2V9L12 2Zm0 4.2a4.8 4.8 0 1 1 0 9.6 4.8 4.8 0 0 1 0-9.6Z" opacity=".95"/></svg>
+            </a>
+            <a href="https://orcid.org/0000-0002-7345-5423" target="_blank" rel="noopener" aria-label="ORCID" title="ORCID">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 1a11 11 0 1 0 0 22 11 11 0 0 0 0-22ZM8.3 17.4H6.5V7.7h1.8v9.7ZM7.4 6.4a1.1 1.1 0 1 1 0-2.2 1.1 1.1 0 0 1 0 2.2Zm3.2 11V7.7h3.6c3.4 0 5 2.4 5 4.9 0 2.7-2.1 4.8-5 4.8h-3.6Zm1.8-1.6h1.6c2.4 0 3.3-1.7 3.3-3.2 0-2-1.3-3.3-3.3-3.3h-1.6v6.5Z"/></svg>
+            </a>
+            <a href="https://github.com/hosseinv93" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.05 1.79 2.76 1.27 3.43.97.11-.77.41-1.27.75-1.56-2.6-.29-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.22-3.15-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.28 1.2a11.4 11.4 0 0 1 5.98 0c2.28-1.52 3.28-1.2 3.28-1.2.65 1.65.24 2.88.12 3.18.76.82 1.22 1.87 1.22 3.15 0 4.51-2.74 5.51-5.36 5.8.42.36.8 1.06.8 2.14v3.17c0 .31.21.68.81.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/hossein-vahid93/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.6 4.6 6v6H18V16c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V21H9z"/></svg>
+            </a>
+            <a href="https://www.researchgate.net/profile/Hossein-Vahid" target="_blank" rel="noopener" aria-label="ResearchGate" title="ResearchGate">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 2h18a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1Zm4.2 5.2v9.6h1.7v-4h1.2l2 4h2l-2.3-4.3c1.1-.4 1.8-1.4 1.8-2.6 0-1.7-1.3-2.7-3.1-2.7H7.2Zm1.7 1.4h1.5c.9 0 1.5.5 1.5 1.3s-.6 1.4-1.5 1.4H8.9V8.6Zm8.4 1.2c-1.6 0-2.5 1.1-2.5 2.5v1.3c0 1.5 1 2.4 2.4 2.4 1.5 0 2.3-.9 2.3-2.3v-1.2h-2.3v1.1h.9v.2c0 .6-.4.9-.9.9-.6 0-1-.4-1-1.1v-1.4c0-.7.4-1.1 1-1.1.5 0 .8.3.9.7h1.3c-.1-1.2-1-2-2.1-2Z"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
-
-      <div class="social hidden">
-        <a href="https://www.linkedin.com/in/hossein-vahid93/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-.9 1.7-1.9 3.6-1.9 3.9 0 4.6 2.6 4.6 6v6H18V16c0-1.5 0-3.5-2.1-3.5-2.1 0-2.4 1.6-2.4 3.4V21H9z"/></svg>
-        </a>
-        <a href="https://github.com/hosseinv93" target="_blank" rel="noopener" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.42c.58.11.8-.25.8-.56v-2.1c-3.26.71-3.95-1.4-3.95-1.4-.53-1.34-1.3-1.7-1.3-1.7-1.07-.74.08-.72.08-.72 1.18.08 1.8 1.22 1.8 1.22 1.05 1.79 2.76 1.27 3.43.97.11-.77.41-1.27.75-1.56-2.6-.29-5.33-1.3-5.33-5.8 0-1.28.46-2.33 1.22-3.15-.12-.3-.53-1.53.12-3.18 0 0 1-.32 3.28 1.2a11.4 11.4 0 0 1 5.98 0c2.28-1.52 3.28-1.2 3.28-1.2.65 1.65.24 2.88.12 3.18.76.82 1.22 1.87 1.22 3.15 0 4.51-2.74 5.51-5.36 5.8.42.36.8 1.06.8 2.14v3.17c0 .31.21.68.81.56A11.5 11.5 0 0 0 12 .5z"/></svg>
-        </a>
-        <a href="https://scholar.google.com/citations?user=C2zv5SYAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Google_Scholar_logo.svg" alt="Google Scholar" width="28" height="28" loading="lazy">
-        </a>
-        <a href="https://orcid.org/0000-0002-7345-5423" target="_blank" rel="noopener" aria-label="ORCID">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/ORCID_iD.svg" alt="ORCID" width="28" height="28" loading="lazy">
-        </a>
-        <a href="https://www.researchgate.net/profile/Hossein-Vahid?ev=prf_overview"
-           target="_blank" rel="noopener" aria-label="ResearchGate">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/ResearchGate_icon_SVG.svg"
-               alt="ResearchGate" width="28" height="28" loading="lazy">
-        </a>
-      </div>
-
-      <div class="contact">
-        Email: <a href="mailto:vahid@ipfdd.de">vahid@ipfdd.de</a>
-      </div>
+      <img class="portrait" src="assets/img/me.jpg" width="480" height="480" alt="Portrait of Hossein Vahid" />
     </div>
-
-    <img class="avatar" src="assets/img/me.png" alt="Portrait of Hossein Vahid" />
   </header>
 
-  <div class="rule"></div>
-
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
-    <article class="card">
-      <p>
-        I'm a postdoctoral researcher at the Leibniz Institute of Polymer Research in Dresden. My background is in computational physics. I did my Ph.D. at Aalto University, and my focus has been on soft matter and materials science. My main tools are <strong>molecular dynamics</strong>, <strong>Brownian dynamics</strong>, <strong>density functional theory</strong>, and <strong>machine learning</strong>, which I use to study things like polyelectrolytes, active matter, and interfacial phenomena.
-      </p>
-    </article>
-  </section>
-
-  <!-- Research Highlights -->
-  <section id="projects" style="margin-top:10px;">
-    <h2>Research Highlights</h2>
-
-    <div class="projects-grid">
-      <article class="project-card">
-        <div class="title">
-          <span class="dot" aria-hidden="true"></span>
-          <h3>Polar Polymer Assemblies</h3>
-        </div>
-
-        <div class="media">
-          <video autoplay loop muted playsinline preload="metadata" poster="assets/videos/TDAP_poster.jpg">
-            <source src="assets/videos/TDAP.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-
-        <p><strong>Polar polymers in stochastic activity gradients</strong> spontaneously form long-lived entangled clusters.</p>
-        <p class="meta"><em>Collective Dynamics in Active Polar Polymer Assemblies</em><br>
-          <strong>Hossein Vahid</strong>, Jens-Uwe Sommer, Abhinav Sharma — <em>Physical Review Research</em> (2025)
-        </p>
-        <a class="more" href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read more</a>
-      </article>
-
-      <article class="project-card">
-        <div class="title">
-          <span class="dot" aria-hidden="true"></span>
-          <h3>DNA-like Polyelectrolytes</h3>
-        </div>
-
-        <div class="media">
-          <img src="assets/img/PE-ADSORPTION.png" alt="DNA-like polyelectrolyte adsorption simulation" loading="lazy">
-        </div>
-
-        <p><strong>Substrate dielectric contrast and salt valency</strong> govern adsorption strength, image-charge attraction, and monolayer formation in coarse-grained MD.</p>
-        <p class="meta"><em>Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate</em><br>
-          <strong>Hossein Vahid</strong>, Alberto Scacchi, Maria Sammalkorpi, Tapio Ala-Nissila — <em>Journal of Chemical Physics</em> 161, 134907 (2024)
-        </p>
-        <a class="more" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read more</a>
-      </article>
-
-      <article class="project-card">
-      <div class="title">
-    <span class="dot" aria-hidden="true"></span>
-    <h3>High-Performance Computing & Data Analysis</h3>
-  </div>
-
-
-  <p>Scalable workflows and Python post-processing pipelines for large-scale molecular dynamics simulations.</p>
-
-  <p class="meta"><em>LAMMPS and molecular simulation analysis tools</em><br>
-    Python-based parsing, plotting, averaging, and post-processing utilities for large-scale simulation data.
-  </p>
-
-  <a class="more" href="https://github.com/hosseinv93/analysis" target="_blank" rel="noopener">Read more</a>
-</article>
-
-
-
-
-<article class="project-card">
-  <div class="title">
-    <span class="dot" aria-hidden="true"></span>
-    <h3>Machine Learning for Materials</h3>
-  </div>
-
-  <p>Developing and applying machine-learning potentials and data-driven models to study materials at atomic and molecular scales.</p>
-
-  <p class="meta"><em>Machine-learning interatomic potentials and atomistic materials modeling</em><br>
-    Combining first-principles calculations, molecular dynamics, and active-learning workflows for materials simulations.
-  </p>
-</article>
-
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="card skills">
-      <div class="skills-grid">
-
-        <!-- Programming -->
-        <div class="skill-group">
-          <div class="sg-title">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>
-            <span>Programming</span>
-          </div>
-          <div class="chips">
-            <span class="chip">Python</span>
-            <span class="chip">Bash</span>
-            <span class="chip">C++</span>
-            <span class="chip">MATLAB</span>
-            <span class="chip">HTML</span>
-          </div>
-        </div>
-
-        <!-- Materials & Simulation -->
-        <div class="skill-group">
-          <div class="sg-title">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v2h-1v3.6l5.8 9.5A2 2 0 0 1 18 21H6a2 2 0 0 1-1.8-2.9L10 8.6V5H9V3Zm1.7 7-5.3 8.6a.5.5 0 0 0 .4.7h12a.5.5 0 0 0 .4-.7L13.9 10H10.7Z"/></svg>
-            <span>Materials &amp; Simulation</span>
-          </div>
-          <div class="chips">
-            <span class="chip">LAMMPS</span><span class="chip">GROMACS</span><span class="chip">VASP</span><span class="chip">FHI-aims</span>
-            <span class="chip">MLIP</span><span class="chip">USPEX</span><span class="chip">ORCA</span><span class="chip">Schrödinger&nbsp;Maestro</span>
-          </div>
-        </div>
-
-        <!-- Data Science -->
-        <div class="skill-group">
-          <div class="sg-title">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>
-          <span>Data Science</span>
-          </div>
-          <div class="chips">
-            <span class="chip">NumPy</span><span class="chip">Pandas</span><span class="chip">scikit-learn</span><span class="chip">Matplotlib</span><span class="chip">Jupyter</span>
-          </div>
-        </div>
-
-        <!-- Other -->
-        <div class="skill-group">
-          <div class="sg-title">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h3a2 2 0 0 1 2 2v3h-4v2h-2v-2H8v2H6v-2H2V9a2 2 0 0 1 2-2h3Z"/></svg>
-            <span>Other</span>
-          </div>
-          <div class="chips">
-            <span class="chip">Linux</span><span class="chip">LaTeX</span><span class="chip">PyCharm</span><span class="chip">VESTA</span>
-            <span class="chip">VMD</span><span class="chip">OVITO</span><span class="chip">Overleaf</span><span class="chip">Inkscape</span>
-            <span class="chip">MS Office</span><span class="chip">Git</span>
-          </div>
-        </div>
-
+  <main>
+    <!-- Key facts -->
+    <div class="wrap">
+      <div class="facts">
+        <div class="fact"><b>Active matter</b><span>current focus: chemotaxis and self-organisation of active–passive assemblies</span></div>
+        <div class="fact"><b>MD · DFT · ML</b><span>molecular simulation, electronic structure and machine learning</span></div>
+        <div class="fact"><b>D.Sc.</b><span>Applied Physics, Aalto University (2024)</span></div>
+        <div class="fact"><b>20+</b><span>peer-reviewed papers, conference talks, schools and workshops</span></div>
       </div>
     </div>
-  </section>
 
-  <!-- Activities -->
-  <section id="recent-activities" class="activities">
-    <h2>Activities</h2>
-
-    <div class="act-controls" aria-label="Filter activities by type">
-      <button class="pill" data-filter="All" aria-pressed="true">All</button>
-      <button class="pill" data-filter="Paper" aria-pressed="false">Paper</button>
-      <button class="pill" data-filter="Talk" aria-pressed="false">Talk</button>
-      <button class="pill" data-filter="Position" aria-pressed="false">Position</button>
-    </div>
-
-    <div class="rail-shell">
-      <div class="activities-rail" role="list" aria-label="Recent activities (scroll to view more)">
-        <div class="act-header" aria-hidden="true">
-          <div>Date</div><div>Type</div><div>Title</div><div>Link</div>
+    <!-- ===================== Research ===================== -->
+    <section class="section" id="research">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">What I work on</span><h2>Research</h2></div>
         </div>
 
+        <div class="research-grid">
+          <article class="card research-card">
+            <div class="media">
+              <video autoplay loop muted playsinline preload="metadata" poster="assets/videos/TDAP_poster.jpg" aria-label="Simulation of active polar polymers forming an entangled cluster">
+                <source src="assets/videos/TDAP.mp4" type="video/mp4">
+              </video>
+            </div>
+            <div class="body">
+              <span class="tag">Active matter</span>
+              <h3>Active polymers &amp; chemotaxis</h3>
+              <p>Polar polymers in stochastic activity gradients spontaneously form long-lived, entangled clusters. I study how active–passive assemblies self-organise, position themselves and respond to chemical gradients.</p>
+              <div class="ref">
+                <em>Collective dynamics in active polar polymer assemblies</em>, Phys. Rev. Research (2025) ·
+                <a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Read paper →</a>
+              </div>
+            </div>
+          </article>
 
+          <article class="card research-card">
+            <div class="media">
+              <img src="assets/img/PE-ADSORPTION.png" width="543" height="350" alt="Coarse-grained simulation of a rod-like polyelectrolyte adsorbing onto a substrate in salt solution" loading="lazy">
+            </div>
+            <div class="body">
+              <span class="tag">Charged soft matter</span>
+              <h3>Polyelectrolytes, ions &amp; interfaces</h3>
+              <p>How substrate dielectric contrast, salt valency and ion shape control the adsorption, effective interactions and electrophoretic mobility of DNA-like polyelectrolytes.</p>
+              <div class="ref">
+                <em>Adsorption of polyelectrolytes … dielectric discontinuity</em>, J. Chem. Phys. 161, 134907 (2024) ·
+                <a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Read paper →</a>
+              </div>
+            </div>
+          </article>
 
-        <div class="activity-line" role="listitem" data-type="Paper">
-          <time class="act-date" datetime="2025-09-10">Sep 10, 2025</time>
-          <span class="act-type">Paper</span>
-          <div class="act-title"><a href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Active polar polymer assemblies — preprint out</a></div>
-          <a class="act-link" href="https://doi.org/10.48550/arXiv.2503.11396" target="_blank" rel="noopener">Read</a>
+          <article class="card research-card compact">
+            <div class="body">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5S5.5 9.6 5.5 14.3a6.5 6.5 0 0 0 13 0C18.5 9.6 12 2.5 12 2.5Z"/><path d="M9 15a3 3 0 0 0 3 3"/></svg>
+              </div>
+              <span class="tag">Applied simulation</span>
+              <h3>Polymers for water purification</h3>
+              <p>Atomistic molecular dynamics of cationic polyacrylamides, tuning the block ratio to enhance nitrate rejection under an applied electric potential.</p>
+              <div class="ref">
+                <em>Block ratio optimized cationic polyacrylamides …</em>, Chem. Eng. J. (2025) ·
+                <a href="https://doi.org/10.1016/j.cej.2025.162346" target="_blank" rel="noopener">Read paper →</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card research-card compact">
+            <div class="body">
+              <div class="icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/><rect x="9" y="9" width="6" height="6"/></svg>
+              </div>
+              <span class="tag">Methods</span>
+              <h3>Machine learning &amp; HPC workflows</h3>
+              <p>Machine-learning interatomic potentials (MLIP, NEP/GPUMD), active-learning workflows and scalable Python pipelines for large-scale molecular simulation data.</p>
+              <div class="ref">
+                <a href="https://github.com/hosseinv93/analysis" target="_blank" rel="noopener">Analysis tools on GitHub →</a>
+              </div>
+            </div>
+          </article>
         </div>
-
-
-
-
-        <div class="activity-line" role="listitem" data-type="Talk">
-          <time class="act-date" datetime="2025-07-02">Jul 2, 2025</time>
-          <span class="act-type">Talk</span>
-          <div class="act-title"><a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Invited talk: Polyelectrolyte adsorption &amp; dielectric contrast</a></div>
-          <a class="act-link" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Related</a>
-        </div>
-
-        <div class="activity-line" role="listitem" data-type="Position">
-          <time class="act-date" datetime="2024-10-01">Oct 1, 2024</time>
-          <span class="act-type">Position</span>
-          <div class="act-title">Joined IPF Dresden as Postdoc (Active Matter Group)</div>
-          <span></span>
-        </div>
-
       </div>
+    </section>
+
+    <!-- ===================== News ===================== -->
+    <section class="section" id="news">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Latest</span><h2>News &amp; activities</h2></div>
+          <div class="filters" role="group" aria-label="Filter news">
+            <button class="pill" data-filter="All" aria-pressed="true">All</button>
+            <button class="pill" data-filter="Paper" aria-pressed="false">Papers</button>
+            <button class="pill" data-filter="Talk" aria-pressed="false">Talks</button>
+            <button class="pill" data-filter="Grant" aria-pressed="false">Grants</button>
+            <button class="pill" data-filter="Position" aria-pressed="false">Positions</button>
+            <button class="pill" data-filter="Visit" aria-pressed="false">Visits</button>
+          </div>
+        </div>
+
+        <!-- To add news: copy an <li class="tl-item"> block to the top. data-type = Paper | Talk | Grant | Position | School | Visit -->
+        <ol class="timeline" id="timeline">
+          <li class="tl-item" data-type="Visit">
+            <time class="tl-date" datetime="2026-07-15">Jul 2026</time>
+            <div class="tl-body">
+              <span class="tl-type">Research visit</span>
+              <p class="tl-title">Visit to the group of Prof. Hartmut Löwen</p>
+              <p class="tl-meta">15–17 July 2026 · <a href="https://www2.thphy.uni-duesseldorf.de/~hlowen/tea.php" target="_blank" rel="noopener">Institute for Theoretical Physics II: Soft Matter</a>, Heinrich Heine University Düsseldorf, Germany</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Talk">
+            <time class="tl-date" datetime="2026-03">Mar 2026</time>
+            <div class="tl-body">
+              <span class="tl-type">Talk</span>
+              <p class="tl-title">Directed motion of active collectives in activity gradients</p>
+              <p class="tl-meta">DPG Spring Meeting, Dresden, Germany</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Paper">
+            <time class="tl-date" datetime="2026">2026</time>
+            <div class="tl-body">
+              <span class="tl-type">Paper</span>
+              <p class="tl-title"><a href="https://doi.org/10.1021/acs.jpcb.5c07785" target="_blank" rel="noopener">Routes to the density profile and structural inconsistency</a></p>
+              <p class="tl-meta">Published in The Journal of Physical Chemistry B</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Paper">
+            <time class="tl-date" datetime="2025-11">Nov 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">Paper</span>
+              <p class="tl-title"><a href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">Collective dynamics in active polar polymer assemblies</a></p>
+              <p class="tl-meta">Published in Physical Review Research</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Paper">
+            <time class="tl-date" datetime="2025-10">Oct 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">Preprint</span>
+              <p class="tl-title"><a href="https://doi.org/10.48550/arXiv.2510.15771" target="_blank" rel="noopener">Self-organization and cyclic positioning of active condensates</a></p>
+              <p class="tl-meta">Now on arXiv, under review</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Talk">
+            <time class="tl-date" datetime="2025-07-02">Jul 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">Talk</span>
+              <p class="tl-title">Invited talk: Polyelectrolyte adsorption &amp; dielectric contrast</p>
+              <p class="tl-meta">Related paper: <a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">J. Chem. Phys. (2024)</a></p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Paper">
+            <time class="tl-date" datetime="2025-06">Jun 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">Paper</span>
+              <p class="tl-title"><a href="https://doi.org/10.1016/j.cej.2025.162346" target="_blank" rel="noopener">Block-ratio-optimized cationic polyacrylamides for enhanced nitrate rejection</a></p>
+              <p class="tl-meta">Published in Chemical Engineering Journal</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Grant">
+            <time class="tl-date" datetime="2025-04">Apr 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">Grant</span>
+              <p class="tl-title"><a href="https://gepris.dfg.de/gepris/person/561699035" target="_blank" rel="noopener">Personal postdoctoral research grant from the German Research Foundation (DFG)</a></p>
+              <p class="tl-meta">For research on active matter</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="School">
+            <time class="tl-date" datetime="2025-04">Apr 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">School</span>
+              <p class="tl-title">New Frontiers in Classical Density Functional Theory</p>
+              <p class="tl-meta">University of Fribourg, Switzerland</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Talk">
+            <time class="tl-date" datetime="2025-03">Mar 2025</time>
+            <div class="tl-body">
+              <span class="tl-type">Talk</span>
+              <p class="tl-title">Effect of interactions on the chemotactic response of active–passive chains</p>
+              <p class="tl-meta">DPG Spring Meeting, Regensburg, Germany</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Position">
+            <time class="tl-date" datetime="2024-10">Oct 2024</time>
+            <div class="tl-body">
+              <span class="tl-type">Position</span>
+              <p class="tl-title">Joined the Leibniz Institute of Polymer Research Dresden as a postdoc</p>
+              <p class="tl-meta">Institute of Polymer Theory, Active Matter Group</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Paper">
+            <time class="tl-date" datetime="2024-10">Oct 2024</time>
+            <div class="tl-body">
+              <span class="tl-type">Paper</span>
+              <p class="tl-title"><a href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity</a></p>
+              <p class="tl-meta">Published in The Journal of Chemical Physics</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Position">
+            <time class="tl-date" datetime="2024-09">Sep 2024</time>
+            <div class="tl-body">
+              <span class="tl-type">Degree</span>
+              <p class="tl-title">Doctor of Science (Tech.) in Applied Physics, Aalto University</p>
+              <p class="tl-meta">Thesis: Modeling of charged polymers in aqueous solutions in the presence of excess ions and interface</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Talk">
+            <time class="tl-date" datetime="2024-09">Sep 2024</time>
+            <div class="tl-body">
+              <span class="tl-type">Talk</span>
+              <p class="tl-title">Controlling polyelectrolyte interactions and electrophoretic mobility in aqueous environments via salt</p>
+              <p class="tl-meta">11th Multiscale Materials Modeling (MMM), Prague, Czech Republic</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Talk">
+            <time class="tl-date" datetime="2024-03">Mar 2024</time>
+            <div class="tl-body">
+              <span class="tl-type">Talk</span>
+              <p class="tl-title">Effect of salt on polyelectrolyte interactions and electrophoretic mobility</p>
+              <p class="tl-meta">13th Nordic Workshop on Statistical Physics, NORDITA, Stockholm, Sweden</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Grant">
+            <time class="tl-date" datetime="2024-02">Feb 2024</time>
+            <div class="tl-body">
+              <span class="tl-type">Grant</span>
+              <p class="tl-title">Personal research grant from the Finnish Cultural Foundation</p>
+              <p class="tl-meta">For doctoral dissertation work on modeling of soft materials</p>
+            </div>
+          </li>
+          <li class="tl-item" data-type="Talk">
+            <time class="tl-date" datetime="2023-03">Mar 2023</time>
+            <div class="tl-body">
+              <span class="tl-type">Talk</span>
+              <p class="tl-title">Controlling polyelectrolyte interactions by ion size, shape and valency</p>
+              <p class="tl-meta">Physics Days 2023, Tampere University, Finland</p>
+            </div>
+          </li>
+        </ol>
+        <button class="pill show-more" id="showMore" type="button" aria-expanded="false">Show all</button>
+      </div>
+    </section>
+
+    <!-- ===================== Publications ===================== -->
+    <section class="section" id="publications">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Peer-reviewed &amp; preprints</span><h2>Publications</h2></div>
+          <div class="filters" role="group" aria-label="Filter publications">
+            <button class="pill" data-pubfilter="all" aria-pressed="true">All</button>
+            <button class="pill" data-pubfilter="first" aria-pressed="false">First author</button>
+            <a class="pill" href="https://scholar.google.com/citations?user=C2zv5SYAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar ↗</a>
+          </div>
+        </div>
+
+        <div class="card" id="pubList">
+          <h3 class="pub-year">2026</h3>
+          <ol class="pubs">
+            <li class="pub">
+              <div>
+                <div class="pub-title">Routes to the density profile and structural inconsistency</div>
+                <div class="pub-authors">S. M. Tschopp, <span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">The Journal of Physical Chemistry B (2026)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1021/acs.jpcb.5c07785" target="_blank" rel="noopener">DOI</a>
+            </li>
+          </ol>
+
+          <h3 class="pub-year">2025</h3>
+          <ol class="pubs">
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Self-organization and cyclic positioning of active condensates <span class="badge">Preprint</span></div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">arXiv:2510.15771 (2025), under review</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.48550/arXiv.2510.15771" target="_blank" rel="noopener">arXiv</a>
+            </li>
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Collective dynamics in active polar polymer assemblies</div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, J.-U. Sommer, A. Sharma</div>
+                <div class="pub-venue">Physical Review Research (2025)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1103/g369-z3hn" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Block ratio optimized cationic polyacrylamides for enhanced nitrate rejection under applied potential</div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">Chemical Engineering Journal (2025)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1016/j.cej.2025.162346" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li class="pub">
+              <div>
+                <div class="pub-title">Combining integral equation closures with force density functional theory for the study of inhomogeneous fluids</div>
+                <div class="pub-authors">S. M. Tschopp, <span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">Soft Matter (2025)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1039/D4SM01262C" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li class="pub">
+              <div>
+                <div class="pub-title">Active transport of cargo-carrying and interconnected chiral particles</div>
+                <div class="pub-authors">B. Valecha, <span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">Soft Matter (2025)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1039/D5SM00170F" target="_blank" rel="noopener">DOI</a>
+            </li>
+          </ol>
+
+          <h3 class="pub-year">2024</h3>
+          <ol class="pubs">
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Adsorption of polyelectrolytes in the presence of varying dielectric discontinuity between solution and substrate</div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, A. Scacchi, M. Sammalkorpi, T. Ala-Nissila</div>
+                <div class="pub-venue">The Journal of Chemical Physics 161, 134907 (2024)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1063/5.0223124" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Nonmonotonic electrophoretic mobility of rodlike polyelectrolytes by multivalent coions in added salt</div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">Physical Review E 109, 014501 (2024)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1103/PhysRevE.109.014501" target="_blank" rel="noopener">DOI</a>
+            </li>
+          </ol>
+
+          <h3 class="pub-year">2023</h3>
+          <ol class="pubs">
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Interactions between rigid polyelectrolytes mediated by ordering and orientation of multivalent nonspherical ions in salt solutions</div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">Physical Review Letters 130, 158202 (2023)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1103/PhysRevLett.130.158202" target="_blank" rel="noopener">DOI</a>
+            </li>
+          </ol>
+
+          <h3 class="pub-year">2022</h3>
+          <ol class="pubs">
+            <li class="pub" data-first>
+              <div>
+                <div class="pub-title">Modified Poisson–Boltzmann theory for polyelectrolytes in monovalent salt solutions with finite-size ions</div>
+                <div class="pub-authors"><span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">The Journal of Chemical Physics (2022)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1063/5.0092273" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li class="pub">
+              <div>
+                <div class="pub-title">Interaction between two polyelectrolytes in monovalent aqueous salt solutions</div>
+                <div class="pub-authors">X. Yang, A. Scacchi, <span class="me">H. Vahid</span>, et al.</div>
+                <div class="pub-venue">Physical Chemistry Chemical Physics (2022)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1039/D2CP02066A" target="_blank" rel="noopener">DOI</a>
+            </li>
+            <li class="pub">
+              <div>
+                <div class="pub-title">Application of amino acid ionic liquids for increasing the stability of DNA in long term storage</div>
+                <div class="pub-authors">M. Khavani, A. Mehranfar, <span class="me">H. Vahid</span></div>
+                <div class="pub-venue">Journal of Biomolecular Structure and Dynamics (2022)</div>
+              </div>
+              <a class="pub-link" href="https://doi.org/10.1080/07391102.2022.2067239" target="_blank" rel="noopener">DOI</a>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Experience ===================== -->
+    <section class="section" id="experience">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Career</span><h2>Experience &amp; education</h2></div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <ol class="cv-list">
+              <li class="cv-item">
+                <h3>Postdoctoral Researcher</h3><span class="cv-when">Oct 2024 – present</span>
+                <span class="cv-where">Leibniz Institute of Polymer Research Dresden, Germany</span>
+                <p>Institute of Polymer Theory, Active Matter Group. Chemotaxis of active–passive assemblies studied with computer simulations.</p>
+              </li>
+              <li class="cv-item">
+                <h3>D.Sc. (Tech.) in Applied Physics</h3><span class="cv-when">Sep 2020 – Sep 2024</span>
+                <span class="cv-where">Aalto University, Finland</span>
+                <p>Modeling of charged polymers in aqueous solutions with excess ions and interfaces. Supervisor: Prof. Tapio Ala-Nissila. Coarse-grained and atomistic MD on HPC systems, plus an open-source C++ package for interactions of anisotropic particles.</p>
+              </li>
+              <li class="cv-item">
+                <h3>Research Assistant</h3><span class="cv-when">Sep 2018 – Aug 2020</span>
+                <span class="cv-where">Isfahan University of Technology, Iran</span>
+                <p>Machine-learning-assisted models for predicting materials properties; automated HPC workflows.</p>
+              </li>
+              <li class="cv-item">
+                <h3>M.Sc. in Physics</h3><span class="cv-when">2015 – 2018</span>
+                <span class="cv-where">University of Isfahan, Iran</span>
+                <p>Simulation of quantum-dot effects on solar-cell efficiency. Supervisor: Prof. Hamidreza Fallah.</p>
+              </li>
+              <li class="cv-item">
+                <h3>B.Sc. in Physics</h3><span class="cv-when">2011 – 2015</span>
+                <span class="cv-where">Isfahan University of Technology, Iran</span>
+              </li>
+            </ol>
+          </div>
+
+          <div>
+            <div class="card side-card">
+              <h3>Grants &amp; funding</h3>
+              <div class="grant">
+                <span class="amt">2025</span>
+                <b>German Research Foundation (DFG)</b>
+                <span>Personal postdoctoral research grant, active matter</span>
+              </div>
+              <div class="grant">
+                <span class="amt">2024</span>
+                <b>Finnish Cultural Foundation</b>
+                <span>Personal grant for doctoral research</span>
+              </div>
+            </div>
+            <div class="card side-card">
+              <h3>Schools &amp; workshops</h3>
+              <ul>
+                <li>New Frontiers in Classical DFT, Fribourg (2025)</li>
+                <li>CECAM &amp; Psi-k Machine Learning Interatomic Potential School, Aalto (2023)</li>
+                <li>Fundamentals of Machine Learning, CSC Finland (2023)</li>
+                <li>Nordic Workshop on Statistical Physics, NORDITA (2023)</li>
+                <li>Soft and Biological Active Matter, NORDITA (2022)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Skills ===================== -->
+    <section class="section" id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Toolbox</span><h2>Skills</h2></div>
+          <span class="legend"><span class="chip core">Advanced</span> <span class="chip">Working knowledge</span></span>
+        </div>
+        <div class="skills-grid">
+          <div class="card skill-group wide">
+            <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v2h-1v3.6l5.8 9.5A2 2 0 0 1 18 21H6a2 2 0 0 1-1.8-2.9L10 8.6V5H9V3Zm1.7 7-5.3 8.6a.5.5 0 0 0 .4.7h12a.5.5 0 0 0 .4-.7L13.9 10H10.7Z"/></svg>Simulation &amp; materials codes</h3>
+            <div class="chips">
+              <span class="chip core">LAMMPS</span><span class="chip core">GROMACS</span><span class="chip core">VASP</span><span class="chip core">GPUMD / NEP</span>
+              <span class="chip core">MLIP</span><span class="chip core">FHI-aims</span><span class="chip core">Schrödinger Maestro</span><span class="chip core">Lumerical</span>
+              <span class="chip">USPEX</span><span class="chip">ORCA</span><span class="chip">GPAW</span><span class="chip">Gaussian</span>
+            </div>
+          </div>
+          <div class="card skill-group">
+            <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.7 17.7 3 12l5.7-5.7 1.4 1.4L5.8 12l4.3 4.3-1.4 1.4Zm6.6 0-1.4-1.4 4.3-4.3-4.3-4.3 1.4-1.4L21 12l-5.7 5.7Z"/></svg>Programming</h3>
+            <div class="chips">
+              <span class="chip core">Python</span><span class="chip core">Bash</span><span class="chip">C++</span><span class="chip">MATLAB</span>
+            </div>
+          </div>
+          <div class="card skill-group">
+            <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c5 0 9 1.57 9 3.5S17 10 12 10 3 8.43 3 6.5 7 3 12 3Zm9 5v3.5C21 13.43 17 15 12 15s-9-1.57-9-3.5V8c1.9 1.52 5.6 2.5 9 2.5S19.1 9.52 21 8Zm0 6v3.5C21 19.43 17 21 12 21s-9-1.57-9-3.5V14c1.9 1.52 5.6 2.5 9 2.5s7.1-.98 9-2.5Z"/></svg>Data science &amp; ML</h3>
+            <div class="chips">
+              <span class="chip core">scikit-learn</span><span class="chip core">NumPy</span><span class="chip core">Pandas</span><span class="chip core">Matplotlib</span><span class="chip core">seaborn</span><span class="chip core">Jupyter</span>
+            </div>
+          </div>
+          <div class="card skill-group">
+            <h3><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 4h18a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-7v2h3v2H7v-2h3v-2H3a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm1 2v9h16V6H4Z"/></svg>Visualisation &amp; tools</h3>
+            <div class="chips">
+              <span class="chip core">Linux / HPC</span><span class="chip core">OVITO</span><span class="chip core">VMD</span><span class="chip core">VESTA</span>
+              <span class="chip core">LaTeX</span><span class="chip core">Inkscape</span><span class="chip">Git</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Network ===================== -->
+    <section class="section" id="network">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="eyebrow">Collaborators</span><h2>Research network</h2></div>
+        </div>
+        <div class="network">
+          <!-- To add a collaborator: add a name to a group below; for a new place also add it to SITES in the script at the bottom. -->
+          <div class="map-box" id="mapBox" aria-label="Map of collaborating institutions">
+            <div class="map-fallback" id="mapFallback">Loading map…</div>
+          </div>
+          <ul class="collab-list" id="collabList">
+            <li class="site-group" data-key="dresden" data-home>
+              <div class="site-name"><span class="sdot"></span>Leibniz IPF Dresden, Germany</div>
+              <div class="people">Jens-Uwe Sommer</div>
+            </li>
+            <li class="site-group" data-key="augsburg">
+              <div class="site-name"><span class="sdot"></span>University of Augsburg, Germany</div>
+              <div class="people">Abhinav Sharma</div>
+            </li>
+            <li class="site-group" data-key="fribourg">
+              <div class="site-name"><span class="sdot"></span>University of Fribourg, Switzerland</div>
+              <div class="people">Joseph M. Brader · S. M. Tschopp</div>
+            </li>
+            <li class="site-group" data-key="aalto">
+              <div class="site-name"><span class="sdot"></span>Aalto University, Finland</div>
+              <div class="people">Tapio Ala-Nissilä · Maria Sammalkorpi</div>
+              <span class="note">T. Ala-Nissilä also at Loughborough University, UK</span>
+            </li>
+            <li class="site-group" data-key="turku">
+              <div class="site-name"><span class="sdot"></span>University of Turku, Finland</div>
+              <div class="people">Alberto Scacchi</div>
+            </li>
+            <li class="site-group" data-key="uef">
+              <div class="site-name"><span class="sdot"></span>University of Eastern Finland, Finland</div>
+              <div class="people">Arsalan Hashemi</div>
+            </li>
+            <li class="site-group" data-key="berkeley">
+              <div class="site-name"><span class="sdot"></span>UC Berkeley, USA</div>
+              <div class="people">Mohammad R. K. Mofrad</div>
+            </li>
+            <li class="site-group" data-key="ttu">
+              <div class="site-name"><span class="sdot"></span>Texas Tech University, USA</div>
+              <div class="people">Mohammad Khavani</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section class="section" id="contact">
+      <div class="wrap">
+        <div class="contact-card">
+          <div>
+            <h2>Get in touch</h2>
+            <p>I'm happy to hear about collaborations, student projects and speaking invitations in soft and active matter.</p>
+          </div>
+          <a class="btn" href="mailto:vahid@ipfdd.de">vahid@ipfdd.de</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Hossein Vahid</span>
+      <span>Last updated September 2026</span>
     </div>
-  </section>
+  </footer>
 
-  <!-- ======================= Networks (map + list) ======================= -->
-  <section id="networks">
-    <h2>Networks</h2>
-    <div class="networks-grid" aria-label="Collaborator map and list">
-      <!-- LEFT: Collaborator list -->
-      <ul class="collab-list" id="collabList" aria-label="Collaborators (click to highlight)">
-        <li data-key="home">
-          <span class="cdot c-it"></span>
-          <span>Me — Leibniz IPF Dresden, Germany</span>
-        </li>
-        <li data-key="abhinav">
-          <span class="cdot c-de"></span>
-          <span>A. Sharma — IPF Dresden, Germany</span>
-        </li>
-        <li data-key="jus">
-          <span class="cdot c-de"></span>
-          <span>J.-U. Sommer — IPF Dresden, Germany</span>
-        </li>
-        <li data-key="tapio">
-          <span class="cdot c-uk"></span>
-          <span>T. Ala-Nissila — Aalto University, Finland</span>
-        </li>
-        <li data-key="arsalan">
-          <span class="cdot c-fi"></span>
-          <span>A. Hashemi — Aalto University, Finland</span>
-        </li>
-        <li data-key="maria">
-          <span class="cdot c-fi"></span>
-          <span>M. Sammalkorpi — Aalto University, Finland</span>
-        </li>
-        <li data-key="alberto">
-          <span class="cdot c-fi"></span>
-          <span>A. Scacchi — University of Turku, Finland</span>
-        </li>
-      </ul>
-
-      <!-- RIGHT: Static world map with pins -->
-      <section class="collab-static" aria-label="Static map with collaboration pins">
-        <img class="map" id="worldmap" src="assets/img/dd.jpg" alt="World map (equirectangular)" loading="lazy" decoding="async" />
-        <div id="pins"></div>
-      </section>
-    </div>
-  </section>
-
-  <!-- Typewriter (writes once, then reveals social) -->
+  <!-- ===================== Scripts ===================== -->
   <script>
   (function(){
-    const phrase = "Computational Physicist";
-    const el = document.getElementById("tw-text");
-    const cursor = document.querySelector(".cursor");
-    const socials = document.querySelector(".social");
-    if (!el || !cursor || !socials) return;
+    'use strict';
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    /* ---- Theme toggle ---- */
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    function isDark(){ var t = root.getAttribute('data-theme'); return t ? t === 'dark' : mq.matches; }
+    btn.addEventListener('click', function(){
+      var next = isDark() ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme-pref', next); } catch (e) {}
+      document.dispatchEvent(new Event('themechange'));
+    });
 
-    if (reduced) {
-      el.textContent = phrase;
-      socials.classList.remove("hidden");
-      cursor.style.display = "none";
-      return;
+    /* ---- News filter + show more ---- */
+    var VISIBLE = 6;
+    var items = Array.prototype.slice.call(document.querySelectorAll('.tl-item'));
+    var more = document.getElementById('showMore');
+    var newsFilter = 'All', expanded = false;
+    function renderNews(){
+      var shown = 0, matched = 0;
+      items.forEach(function(it){
+        var match = newsFilter === 'All' || it.dataset.type === newsFilter;
+        if (match) matched++;
+        var show = match && (expanded || shown < VISIBLE);
+        if (show) shown++;
+        it.classList.toggle('is-hidden', !show);
+      });
+      more.hidden = matched <= VISIBLE;
+      more.textContent = expanded ? 'Show fewer' : 'Show all (' + matched + ')';
+      more.setAttribute('aria-expanded', expanded);
     }
+    document.querySelectorAll('[data-filter]').forEach(function(p){
+      p.addEventListener('click', function(){
+        document.querySelectorAll('[data-filter]').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); });
+        p.setAttribute('aria-pressed', 'true');
+        newsFilter = p.dataset.filter; renderNews();
+      });
+    });
+    more.addEventListener('click', function(){ expanded = !expanded; renderNews(); });
+    renderNews();
 
-    let j = 0;
-    const speedType = 65;
+    /* ---- Publications filter ---- */
+    document.querySelectorAll('[data-pubfilter]').forEach(function(p){
+      p.addEventListener('click', function(){
+        document.querySelectorAll('[data-pubfilter]').forEach(function(x){ x.setAttribute('aria-pressed', 'false'); });
+        p.setAttribute('aria-pressed', 'true');
+        var firstOnly = p.dataset.pubfilter === 'first';
+        document.querySelectorAll('#pubList .pubs').forEach(function(list){
+          var any = false;
+          list.querySelectorAll('.pub').forEach(function(pub){
+            var show = !firstOnly || pub.hasAttribute('data-first');
+            pub.classList.toggle('is-hidden', !show);
+            if (show) any = true;
+          });
+          list.previousElementSibling.classList.toggle('is-hidden', !any);
+          list.classList.toggle('is-hidden', !any);
+        });
+      });
+    });
 
-    function typeOnce(){
-      if (j < phrase.length){
-        el.textContent = phrase.slice(0, ++j);
-        setTimeout(typeOnce, speedType);
-      } else {
-        socials.classList.remove("hidden");
-        cursor.style.display = "none";
-      }
+    /* ---- Active nav link on scroll ---- */
+    var links = document.querySelectorAll('.nav-links a');
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){
+            links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id); });
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      document.querySelectorAll('main section[id]').forEach(function(s){ io.observe(s); });
     }
-    typeOnce();
   })();
   </script>
 
-  <!-- Theme toggle + Activities filter -->
+  <!-- Network map: d3-geo + Natural Earth (loaded only when the section scrolls into view) -->
   <script>
-    (function(){
-      /* Theme toggle (persisted) */
-      const root = document.documentElement;
-      const btn = document.getElementById('themeToggle');
+  (function(){
+    'use strict';
+    // lat/lon are real coordinates; add a site here and a matching <li data-key> in the list above.
+    // side: which side of the pin the label sits on ('l' or 'r').
+    var SITES = [
+      { key:'dresden',  label:'Dresden',  lon:13.75, lat:51.03, side:'r', home:true },
+      { key:'augsburg', label:'Augsburg', lon:10.90, lat:48.33, side:'r' },
+      { key:'fribourg', label:'Fribourg', lon:7.15,  lat:46.79, side:'r' },
+      { key:'aalto',    label:'Espoo',    lon:24.83, lat:60.19, side:'r' },
+      { key:'turku',    label:'Turku',    lon:22.27, lat:60.45, side:'l' },
+      { key:'uef',      label:'Kuopio',   lon:27.68, lat:62.89, side:'r' },
+      // Outside the frame: pinned to the left edge at edgeY.
+      { key:'berkeley', label:'← Berkeley, USA', lon:-122.26, lat:37.87, side:'r', edgeY:48 },
+      { key:'ttu',      label:'← Lubbock, Texas, USA', lon:-101.88, lat:33.58, side:'r', edgeY:92 }
+    ];
+    var box = document.getElementById('mapBox');
+    var fallback = document.getElementById('mapFallback');
+    var list = document.getElementById('collabList');
+    var loaded = false;
 
-      // restore preference
-      const saved = localStorage.getItem('theme-pref'); // 'dark' | 'light' | 'auto'
-      if(saved){ root.setAttribute('data-theme', saved); btn.setAttribute('aria-pressed', saved==='dark'); }
+    function loadScript(src){
+      return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); });
+    }
 
-      btn.addEventListener('click', ()=>{
-        const current = root.getAttribute('data-theme') || 'auto';
-        const next = current === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        localStorage.setItem('theme-pref', next);
-        btn.setAttribute('aria-pressed', next==='dark');
+    function draw(world){
+      var W = 900, H = 500, NS = 'http://www.w3.org/2000/svg';
+      var projection = d3.geoAzimuthalEqualArea().rotate([-12, -52]);
+      projection.fitExtent([[20, 20], [W - 20, H - 20]], { type:'MultiPoint', coordinates:[[-9, 40], [32, 40], [30, 64], [-6, 60]] });
+      // Sites outside the frame (e.g. the USA) are pinned to the nearest edge.
+      function place(s){
+        var p = projection([s.lon, s.lat]);
+        var off = !p || p[0] < 16 || p[0] > W - 16 || p[1] < 16 || p[1] > H - 16;
+        if (off) p = [16, s.edgeY != null ? s.edgeY : Math.max(40, Math.min(H - 40, p ? p[1] : H / 2))];
+        return { x:p[0], y:p[1], off:off };
+      }
+      var path = d3.geoPath(projection);
+      var countries = topojson.feature(world, world.objects.countries);
+
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      svg.setAttribute('role', 'img');
+      svg.setAttribute('aria-label', 'Map showing collaborating institutions: ' + SITES.map(function(s){ return s.label.replace('← ', ''); }).join(', '));
+
+      var g = document.createElementNS(NS, 'g');
+      countries.features.forEach(function(f){
+        var d = path(f); if (!d) return;
+        var p = document.createElementNS(NS, 'path'); p.setAttribute('d', d); p.setAttribute('class', 'country'); g.appendChild(p);
+      });
+      svg.appendChild(g);
+
+      var home = SITES.filter(function(s){ return s.home; })[0];
+      var hp = projection([home.lon, home.lat]);
+      SITES.forEach(function(s){
+        if (s.home) return;
+        var q = place(s), p = [q.x, q.y];
+        var mx = (hp[0] + p[0]) / 2, my = (hp[1] + p[1]) / 2 - Math.hypot(p[0] - hp[0], p[1] - hp[1]) * 0.25;
+        var arc = document.createElementNS(NS, 'path');
+        arc.setAttribute('d', 'M' + hp[0] + ',' + hp[1] + ' Q' + mx + ',' + my + ' ' + p[0] + ',' + p[1]);
+        arc.setAttribute('class', 'arc' + (s.visit ? ' visit' : '') + (q.off ? ' off' : '')); svg.appendChild(arc);
       });
 
-      /* Activities filter */
-      const pills = document.querySelectorAll('.pill[data-filter]');
-      const rows = document.querySelectorAll('.activity-line[role="listitem"]');
-
-      function applyFilter(type){
-        rows.forEach(r=>{
-          const match = (type === 'All') || (r.getAttribute('data-type') === type);
-          r.style.display = match ? 'grid' : 'none';
-        });
-      }
-
-      pills.forEach(p=>{
-        p.addEventListener('click', ()=>{
-          pills.forEach(x=>x.setAttribute('aria-pressed','false'));
-          p.setAttribute('aria-pressed','true');
-          applyFilter(p.dataset.filter);
-        });
+      var pins = {};
+      SITES.forEach(function(s){
+        var q = place(s);
+        var pin = document.createElementNS(NS, 'g');
+        pin.setAttribute('class', 'pin' + (s.home ? ' home' : '') + (s.visit ? ' visit' : ''));
+        pin.setAttribute('transform', 'translate(' + q.x + ',' + q.y + ')');
+        var halo = document.createElementNS(NS, 'circle'); halo.setAttribute('r', s.home ? 16 : 12); halo.setAttribute('class', 'halo');
+        var core = document.createElementNS(NS, 'circle'); core.setAttribute('r', s.home ? 7 : 6); core.setAttribute('class', 'core');
+        var t = document.createElementNS(NS, 'text');
+        var labelLeft = s.side === 'l';
+        t.setAttribute('x', labelLeft ? -12 : 12); t.setAttribute('y', 4);
+        if (labelLeft) t.setAttribute('text-anchor', 'end');
+        t.textContent = s.label;
+        pin.appendChild(halo); pin.appendChild(core); pin.appendChild(t);
+        pin.addEventListener('mouseenter', function(){ setActive(s.key); });
+        pin.addEventListener('click', function(){ setActive(s.key); });
+        svg.appendChild(pin);
+        pins[s.key] = pin;
       });
-    })();
+
+      function setActive(key){
+        Object.keys(pins).forEach(function(k){ pins[k].classList.toggle('active', k === key); });
+        list.querySelectorAll('.site-group').forEach(function(li){ li.classList.toggle('active', li.dataset.key === key); });
+      }
+      list.querySelectorAll('.site-group').forEach(function(li){
+        li.addEventListener('mouseenter', function(){ setActive(li.dataset.key); });
+        li.addEventListener('click', function(){ setActive(li.dataset.key); });
+      });
+      setActive('dresden');
+
+      fallback.remove();
+      box.appendChild(svg);
+    }
+
+    function init(){
+      if (loaded) return; loaded = true;
+      Promise.all([
+        loadScript('https://cdn.jsdelivr.net/npm/d3-array@3'),
+        loadScript('https://cdn.jsdelivr.net/npm/topojson-client@3')
+      ])
+      .then(function(){ return loadScript('https://cdn.jsdelivr.net/npm/d3-geo@3'); })
+      .then(function(){ return fetch('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-50m.json'); })
+      .then(function(r){ return r.json(); })
+      .then(draw)
+      .catch(function(){ fallback.textContent = 'Map unavailable. See the list of collaborating institutions.'; });
+    }
+
+    if ('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(e){ if (e[0].isIntersecting){ io.disconnect(); init(); } }, { rootMargin:'400px' });
+      io.observe(box);
+    } else { init(); }
+  })();
   </script>
-
-  <!-- Networks: pins + cards -->
-  <script>
-    (function(){
-      'use strict';
-
-      // Helpers
-      const qs  = (s, r=document) => r.querySelector(s);
-      const qsa = (s, r=document) => Array.from(r.querySelectorAll(s));
-
-      // Site data (approximate lat/lon)
-      const SITES = [
-        { key:'home',    person:'Me', title:'Leibniz IPF Dresden, Germany', lat:25.050, lon:1.737, cls:'c-it', home:true, desc:'Active Matter Group' },
-        { key:'abhinav', person:'A. Sharma', title:'Leibniz IPF Dresden, Germany', lat:51.050, lon:13.737, cls:'c-de', desc:'Co-author on active polymers' },
-        { key:'jus',     person:'J.-U. Sommer', title:'Leibniz IPF Dresden, Germany', lat:51.050, lon:13.737, cls:'c-de', desc:'Co-author & group lead' },
-        { key:'tapio',   person:'T. Ala-Nissila', title:'Aalto University, Finland', lat:29.050, lon:-8.737, cls:'c-uk', desc:'Ph.D. advisor / collaborator' },
-        { key:'arsalan',   person:'A. Hashemi', title:'Aalto University, Finland', lat:29.050, lon:-8.737, cls:'c-fi', desc:'Ph.D. advisor / collaborator' },
-        { key:'maria',   person:'M. Sammalkorpi', title:'Aalto University, Finland', lat:60.187, lon:24.826, cls:'c-fi', desc:'Co-author on polyelectrolytes' },
-        { key:'alberto', person:'A. Scacchi', title:'University of Turku, Finland', lat:45.465, lon:9.190, cls:'c-fi', desc:'Co-author on adsorption' },
-      ];
-
-      const MODELS = [];
-      const container = qs('.collab-static');
-      const pinsMount = qs('#pins');
-      const mapImg = qs('#worldmap');
-
-      function equirectToPct(lon, lat) {
-        return { xPct: ((lon + 180) / 360) * 100, yPct: ((90 - lat) / 180) * 100 };
-      }
-
-      function buildPins(){
-        if(!pinsMount) return;
-        pinsMount.innerHTML = '';
-        SITES.forEach(s => {
-          const { xPct, yPct } = equirectToPct(s.lon, s.lat);
-          const pin = document.createElement('div');
-          pin.className = `pin ${s.cls || ''} ${s.home ? 'home' : ''}`;
-          pin.style.left = xPct + '%';
-          pin.style.top  = yPct + '%';
-          pin.tabIndex = 0;
-          pin.setAttribute('role','button');
-          pin.setAttribute('aria-label', `${s.person} — ${s.title}`);
-
-          const stem = document.createElement('div'); stem.className = 'stem';
-          const ring = document.createElement('div'); ring.className = 'ring';
-          const dot  = document.createElement('div'); dot.className  = 'dot';
-          pin.append(stem, ring, dot);
-          if(s.home){ const ring2 = document.createElement('div'); ring2.className='ring2'; pin.append(ring2); }
-
-          pinsMount.appendChild(pin);
-
-          // Info card
-          const card = document.createElement('div');
-          card.className = 'collab-card';
-          const caret = document.createElement('div'); caret.className = 'collab-caret';
-          const title = document.createElement('div'); title.className = 'card-title'; title.textContent = `${s.person} — ${s.title}`;
-          const body = document.createElement('div'); body.className = 'card-body'; body.textContent = s.desc || '';
-          card.append(caret, title, body);
-          pinsMount.appendChild(card);
-
-          // interactions
-          function toggleCard(){
-            qsa('.collab-card.open', pinsMount).forEach(c=>c.classList.remove('open'));
-            card.classList.add('open');
-            layoutCards();
-          }
-          pin.addEventListener('click', toggleCard);
-          pin.addEventListener('focus', toggleCard);
-
-          MODELS.push({ key:s.key, pin, card, xPct, yPct });
-        });
-      }
-
-      function layoutCards(){
-        if(!container) return;
-        const cw = container.clientWidth, ch = container.clientHeight, pad = 8, gap = 12;
-        MODELS.forEach(({card, xPct, yPct}) => {
-          const centerX = cw*(xPct/100), centerY = ch*(yPct/100);
-          const w = Math.min(card.offsetWidth || 180, cw-2*pad), h = Math.min(card.offsetHeight||100, ch-2*pad);
-          let left = centerX+gap, placeRight = true;
-          if(left+w+pad>cw){ left=centerX-gap-w; placeRight=false; }
-          left = Math.max(pad, Math.min(left, cw-w-pad));
-          let top = Math.max(pad, Math.min(centerY-h/2, ch-h-pad));
-          card.style.left = left+'px';
-          card.style.top = top+'px';
-          card.classList.toggle('place-right', placeRight);
-          card.classList.toggle('place-left', !placeRight);
-        });
-      }
-
-      function connectList(){
-        const items = qsa('.collab-list li');
-        items.forEach(li=>{
-          li.addEventListener('click', ()=>{
-            const key = li.getAttribute('data-key');
-            MODELS.forEach(m=>{
-              const active = m.key === key || (key==='home' && m.key==='home');
-              m.pin.classList.toggle('inactive', !active);
-            });
-            // open the card for the selected
-            const model = MODELS.find(m=>m.key===key);
-            if(model){
-              qsa('.collab-card.open', pinsMount).forEach(c=>c.classList.remove('open'));
-              model.card.classList.add('open');
-              layoutCards();
-            }
-          });
-        });
-      }
-
-      // Build once image has loaded (so we know dimensions)
-      function init(){
-        buildPins();
-        connectList();
-        layoutCards();
-      }
-      if (mapImg && !mapImg.complete) {
-        mapImg.addEventListener('load', init, { once:true });
-      } else {
-        init();
-      }
-      window.addEventListener('resize', layoutCards);
-    })();
-  </script>
-
 </body>
 </html>
