@@ -231,6 +231,60 @@
     }
     .research-card.compact .icon svg{ width:24px; height:24px; }
 
+    /* Featured paper spotlight */
+    .feature{
+      grid-column:1 / -1; position:relative; display:grid; grid-template-columns:minmax(0,1.12fr) minmax(0,1fr);
+      padding:0; overflow:hidden; border:1px solid transparent;
+      background:
+        linear-gradient(var(--surface), var(--surface)) padding-box,
+        linear-gradient(120deg, var(--accent-2), var(--warm) 55%, var(--accent)) border-box;
+    }
+    .feature::before{
+      content:""; position:absolute; inset:0; pointer-events:none;
+      background:
+        radial-gradient(520px 260px at 100% 0%, color-mix(in srgb, var(--warm) 12%, transparent), transparent 70%),
+        radial-gradient(520px 300px at 55% 100%, color-mix(in srgb, var(--accent-2) 10%, transparent), transparent 70%);
+    }
+    .feature .ga{
+      position:relative; margin:0; background:var(--media-bg); border-right:1px solid var(--hair);
+      display:flex; flex-direction:column; justify-content:center; padding:18px;
+    }
+    .feature .ga img{ display:block; width:100%; height:auto; border-radius:8px; transition:transform .35s ease; }
+    .feature:hover .ga img{ transform:scale(1.015); }
+    .feature .ga figcaption{ margin-top:10px; font-size:.74rem; line-height:1.4; color:#6a7282; text-align:center; }
+    .feature .ga figcaption a{ color:#1f47b8; }
+    .feature .body{ position:relative; padding:26px 28px 26px; display:flex; flex-direction:column; }
+    .feature .kicker{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+    .feature .new{
+      display:inline-flex; align-items:center; gap:6px; font-size:.7rem; font-weight:900; letter-spacing:.12em; text-transform:uppercase;
+      color:#fff; background:linear-gradient(120deg, #e0703f, #c2512a); padding:3px 10px; border-radius:999px;
+    }
+    .feature .new::before{ content:""; width:6px; height:6px; border-radius:50%; background:#fff; animation:pulse 1.8s ease-in-out infinite; }
+    @keyframes pulse{ 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.35; transform:scale(.7); } }
+    .feature .journal{ font-size:.82rem; font-weight:700; color:var(--muted); }
+    .feature h3{ font-family:var(--serif); font-size:1.55rem; line-height:1.22; margin:12px 0 6px; color:var(--ink); }
+    .feature .authors{ font-size:.9rem; color:var(--muted); margin:0 0 12px; }
+    .feature .authors b{ color:var(--ink); font-weight:700; }
+    .feature p.sum{ margin:0 0 14px; color:var(--ink-2); }
+    .feature .findings{ list-style:none; margin:0 0 20px; padding:0; display:grid; gap:9px; }
+    .feature .findings li{ display:grid; grid-template-columns:26px 1fr; gap:10px; align-items:start; font-size:.94rem; color:var(--ink-2); line-height:1.45; }
+    .feature .findings .n{
+      width:26px; height:26px; border-radius:8px; display:grid; place-items:center; font-size:.78rem; font-weight:900;
+      color:var(--accent); background:var(--accent-soft);
+    }
+    .feature .actions{ display:flex; flex-wrap:wrap; gap:10px; margin-top:auto; }
+    .feature .actions .btn{ height:40px; font-size:.9rem; }
+    @media (max-width:860px){
+      .feature{ grid-template-columns:1fr; }
+      .feature .ga{ border-right:0; border-bottom:1px solid var(--hair); }
+      .feature .body{ padding:22px; }
+      .feature h3{ font-size:1.35rem; }
+    }
+    @media (prefers-reduced-motion:reduce){
+      .feature .new::before{ animation:none; }
+      .feature:hover .ga img{ transform:none; }
+    }
+
     /* ============ Filters (shared) ============ */
     .filters{ display:flex; flex-wrap:wrap; gap:6px; }
     .pill{
@@ -465,6 +519,39 @@
         </div>
 
         <div class="research-grid">
+          <article class="card feature" aria-labelledby="feature-title">
+            <figure class="ga">
+              <a href="https://www.nature.com/articles/s42005-026-02903-1" target="_blank" rel="noopener">
+                <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42005-026-02903-1/MediaObjects/42005_2026_2903_Figa_HTML.png"
+                     alt="Graphical abstract: attractive active Brownian particle condensates in an activity gradient, migrating toward higher activity, evaporating and reassembling"
+                     loading="lazy" decoding="async"
+                     onerror="this.closest('.ga').style.display='none'; this.closest('.feature').style.gridTemplateColumns='1fr';">
+              </a>
+              <figcaption>Graphical abstract · Vahid, Sommer &amp; Sharma, <em>Commun. Phys.</em> 9, 327 (2026), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener" style="white-space:nowrap">CC BY 4.0</a></figcaption>
+            </figure>
+            <div class="body">
+              <div class="kicker">
+                <span class="new">New paper</span>
+                <span class="journal">Communications Physics · Oct 2026 · Open access</span>
+              </div>
+              <h3 id="feature-title">Self-organization and collective migration of active condensates</h3>
+              <p class="authors"><b>H. Vahid</b>, J.-U. Sommer, A. Sharma</p>
+              <p class="sum">Cohesive droplets of attractive active particles do the opposite of what passive droplets do in a temperature gradient: they climb activity gradients. Using large-scale Brownian dynamics, we show how cohesion and spatially varying motility alone set where active condensates live, move and renew.</p>
+              <ul class="findings">
+                <li><span class="n">1</span><span>Condensates migrate <strong>up</strong> activity gradients, driven by outward-polarized particles at their interfaces.</span></li>
+                <li><span class="n">2</span><span>Competition between activity and attraction sets their stability: they localize, split, or evaporate.</span></li>
+                <li><span class="n">3</span><span>Finite clusters cycle through birth, migration and evaporation, with no biochemical feedback needed.</span></li>
+              </ul>
+              <div class="actions">
+                <a class="btn primary" href="https://doi.org/10.1038/s42005-026-02903-1" target="_blank" rel="noopener">Read paper
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+                </a>
+                <a class="btn" href="https://www.nature.com/articles/s42005-026-02903-1.pdf" target="_blank" rel="noopener">PDF</a>
+                <a class="btn" href="https://doi.org/10.48550/arXiv.2510.15771" target="_blank" rel="noopener">arXiv</a>
+              </div>
+            </div>
+          </article>
+
           <article class="card research-card">
             <div class="media">
               <video autoplay loop muted playsinline preload="metadata" poster="assets/videos/TDAP_poster.jpg" aria-label="Simulation of active polar polymers forming an entangled cluster">
